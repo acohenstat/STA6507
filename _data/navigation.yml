@@ -2,5 +2,5 @@
   link: /SyllabusSTA6507.html
 - name: Course (Canvas)
   link: https://uwf.instructure.com/courses/39688
-- name: .Rmd template 
-  link: https://github.com/UWFTeaching/AdvStatsModeling/tree/main/Template_Rmd_Report
+- name: R Codes 
+  link: /RCodes.html
