@@ -1,6 +1,6 @@
 ---
-title: STA6257 - Advanced Statistical Modeling
-subtitle: Previous Projects
+title: STA6607 - Nonparametric Statistics
+subtitle: R Codes
 layout: page
 #callouts: home_callouts
 show_sidebar: false
