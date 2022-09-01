@@ -1,0 +1,45 @@
+---
+title: "Assignment 1"
+author: "My name"
+date: "2/10/2022"
+output:
+  html_document:
+    df_print: paged
+  keep_tex: yes
+  pdf_document: null
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Problem A
+This is data about gestation age and weights. We want to model the weights vs. age:
+$$ weights_i = \beta_0 + \beta_1 age_i + \varepsilon_i$$
+
+
+
+```{r eval=TRUE, echo=TRUE}
+library(GLMsData)
+data("gestation")
+summary(gestation)
+
+```
+
+Comments...
+
+```{r}
+plot( Weight ~ Age, data=gestation, las=1, pch=ifelse( Births<50, 1, 19),
+      xlab="Gestational age (weeks)", ylab="Mean birthweight (kg)",
+      xlim=c(20, 45), ylim=c(0, 4))
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r}
+wlm=lm(Weight ~ Age, data=gestation,weights = Births)
+summary(wlm)
+```
+
