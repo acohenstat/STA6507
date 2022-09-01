@@ -1,8 +1,6 @@
 - name: Syllabus
-  link: /SyllabusSTA6257.html
-- name: Project Instructions (Canvas)
-  link: https://uwf.instructure.com/courses/38291/pages/project-instructions?module_item_id=2227116
-- name: .Rmd template for project report
+  link: /SyllabusSTA6507.html
+- name: Course (Canvas)
+  link: https://uwf.instructure.com/courses/39688
+- name: .Rmd template 
   link: https://github.com/UWFTeaching/AdvStatsModeling/tree/main/Template_Rmd_Report
-- name: Previous Projects
-  link: /PreviousProjects.html
