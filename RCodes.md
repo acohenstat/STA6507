@@ -10,6 +10,7 @@ show_sidebar: false
 
 | **Topic** | **R Code**  |
 |:-----------------------|:---:|
-| - Introduction to R    | [.R file](Code.R) | 
-| - Introduction to Tidyverse    | [.R file](code) | 
+| - Introduction to R    | [.R file](Rbase.R) | 
+| - Introduction to Tidyverse    | [.R file](TidyverseR.R) | 
+| - Rmd Sample tile    | [.Rmd file](SampleRmd.Rmd) | 
 
