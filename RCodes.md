@@ -12,5 +12,5 @@ show_sidebar: false
 |:-----------------------|:---:|
 | - Introduction to R    | [.R file](Rbase.R) | 
 | - Introduction to Tidyverse    | [.R file](TidyverseR.R) | 
-| - Rmd Sample tile    | [.Rmd file](SampleRmd.Rmd) | 
+| - Rmd Sample tile    | [.Rmd file](Sample.Rmd) | 
 
