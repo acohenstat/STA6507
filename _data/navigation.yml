@@ -1,6 +1,6 @@
-- name: Syllabus
-  link: /SyllabusSTA6507.html
-- name: Course (Canvas)
-  link: https://uwf.instructure.com/courses/39688
+#- name: Syllabus
+#  link: /SyllabusSTA6507.html
+#- name: Course (Canvas)
+#  link: https://uwf.instructure.com/courses/39688
 - name: R Codes 
   link: /RCodes.html
