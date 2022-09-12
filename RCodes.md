@@ -1,5 +1,5 @@
 ---
-title: STA6607 - Nonparametric Statistics
+title: STA6507 - Nonparametric Statistics
 subtitle: R Codes
 layout: page
 #callouts: home_callouts
