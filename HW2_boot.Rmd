@@ -1,0 +1,82 @@
+---
+title: "Assignment 2"
+subtitle: "STA 6507 Nonparametric Stats "
+author: "Student name"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+In this assignment, you will conduct simulation studies using the bootstrap methods for confidence intervals.
+ 
+ 
+
+```{r}
+#Load packages here
+
+#Load data here
+
+
+```
+
+
+## Problem A: Bootstrap methods for confidence intervals
+
+
+A random sample of twenty Texas Tech law school graduates took the bar exam and 18 of them passed.  Consider $p$ is the proportion of the Texas Tech law school graduates that passed the test. From the sample we have $\hat{p}=\frac{18}{20}=0.9$.
+
+
+1. Explain how do the bootstrap methods work for confidence intervals?
+2. Calculate the $90\%$ confidence intervals (Normal, Basic, Percentiles and BCa) of the population proportion $p$ using the bootstrap procedure, for the following setups:
+    - The number of replications $ \in \{100,250,1000,5000\}$
+    - Plot the histograms of the bootstrap statistics for each case of replications (4 hist).
+    - Calculate the width of each CI $w=UpperLimit - LowerLimit$.
+    - Discuss and comment on the results. Is there a significant difference between CI widths with different number of replications? if yes, what number of replications you would use? Why?
+
+```{r}
+#code here
+```
+
+## Problem B: Bootstrap methods for confidence intervals (Normal distribution)
+
+
+We will use the bootstrap technique to find the confidence interval of the mean of a normal distribution. We will study how the original sample size can affect the approximation of the confidence interval using the bootstrap methods.
+
+1. Generate $n\in \{ 5,10,30, 50, 100\}$ observations from the standard normal distribution. 
+
+```{r}
+#code here
+```
+
+2. Select a number of Replications (use result from Problem A) and consider the confidence level  $ = 95\%$. Then Calculate the confidence interval of the population mean $\mu=0$ using the bootstrap procedures (Boot) and using the normal theory CI (N) - $\overline{X}\pm qnorm(0.975)/{\sqrt{n}}$, for each sample.
+
+```{r}
+#code here
+```
+
+3. Calculate the difference between the bounds of the confidence limits, that is: 
+
+   $$ D=(LowerBoot-LowerN)^2 + (UpperBoot-UpperN)^2 $$
+
+```{r}
+#code here
+```
+
+4. In order to have a reasonable results about the sample size, we would have to repeat steps 1-3 several times (Monte-Carlo simulation) and find the average as well as the standard error of $D$. Plot the average of the differences for the 4 bootstrap methods (Normal.boot, Basic, Percentiles, and BCa), you can consider a boxplot or another plot to visualize your results.
+
+```{r}
+#code here
+```
+
+5. Determine the smallest sample size $n \in \mathbb{N}^*$ that would provide the best approximation compared to the normal theory CI in terms D, where $D < 0.00001$. The value $0.00001$ may be changed to be higher if you cannot achieve a solution because of computation problems.
+
+```{r}
+#code here
+```
+6. Discuss and comment on the results.
+
+> discuss here...
