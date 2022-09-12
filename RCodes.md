@@ -13,5 +13,5 @@ show_sidebar: false
 | - Introduction to R    | [.R file](R_Basics.R) | 
 | - Introduction to Tidyverse    | [.R file](R_Tidyverse.R) | 
 | - Rmd Sample tile    | [.Rmd file](Sample.Rmd) | 
-| - Bootstrap CI code | [.Rmd file](BootstrapCIExample.R) | 
+| - Bootstrap CI code | [.R file](BootstrapCIExample.R) | 
 
