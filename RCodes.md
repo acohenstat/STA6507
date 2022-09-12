@@ -14,4 +14,4 @@ show_sidebar: false
 | - Introduction to Tidyverse    | [.R file](R_Tidyverse.R) | 
 | - Rmd Sample tile    | [.Rmd file](Sample.Rmd) | 
 | - Bootstrap CI code | [.R file](BootstrapCIExample.R) | 
-
+| - Assignment Bootstrap CI | [.Rmd file](HW2_boot.Rmd) | 
