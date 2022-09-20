@@ -10,7 +10,7 @@ show_sidebar: false
 ## Tentative Schedule
 
 | **Week** | **Day** | **Topic(s)** | **R Codes** | **Slides** |
-|:-:|:---:|--------------------|:--:|:-:|:-:
+|:-:|:---:|:--------------------:|:--:|:-:|:-:|
 | 1    | M    | 08/22 | Introduction to Nonparametric Statistics| |
 |      | W    | 08/24 | Counting methods, binomial and normal distributions (review) | |
 | 2    | M    | 08/29 | Qunatiles  | |
