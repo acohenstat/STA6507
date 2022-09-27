@@ -19,7 +19,7 @@ show_sidebar: false
 |      | W  | 09/07   | Practice with R (no meeting) + HW1 | | 
 | 4    | M   | 09/12 | Bootstrap CI | | 
 |      | W   | 09/14 | Bootstrap CI | | 
-| 5    | M   | 09/19 | Project1: Bootsrap CI Project (short meeting) | |
+| 5    | M   | 09/19 | Project1: Bootsrap CI Project  | |
 |      | W  | 09/21  | Project1: Bootsrap CI Project (short meeting)| |
 | 6    | M   | 09/26 | | |
 |      | W  | 09/28  | | | 
