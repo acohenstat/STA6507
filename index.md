@@ -9,36 +9,36 @@ show_sidebar: false
 
 ## Tentative Schedule
 
-| **Week** | **Day** | **Topic(s)** | **R Codes** | **Slides** |
-|:-:|:---:|:--------------------:|:--:|:-:|:-:|
-| 1    | M    | 08/22 | Introduction to Nonparametric Statistics| |
-|      | W    | 08/24 | Counting methods, binomial and normal distributions (review) | |
-| 2    | M    | 08/29 | Qunatiles  | |
-|      | W    | 08/31   | Hypothesis testing | |
-| 3    | M   | 09/05 | Labor day (no meeting) | | 
-|      | W  | 09/08 | Practice with R (no meeting) | | 
-| 4    | M   | 09/13 | Bootstrap CI | | 
-|      | W   | 09/15 | Assignment 1  | | 
-| 5    | M   | 09/20 | Bootsrap CI Project (short meeting) | |
-|      | W  | 09/22  | | |
-| 6    | M   | 09/27 | | |
-|      | W  | 09/29  | | | 
-| 7    | M   | 10/04 | | |
-|      | W  | 10/06 | | |
-| 8    | M   | 10/11 | | |
-|      | W  | 10/13 | | |
-| 9    | M   | 10/18 | | |
-|      | W  | 10/20 | | |
-| 10   | M   | 10/25 | | |
-|      | W  | 10/27 | | |
-| 11   | M   | 11/01 | | |
-|      | W  | 11/03 | | |
-| 12   | M   | 11/08 | | |
-|      | W  | 11/11| | |
-| 13   | M   | 11/15 | | |
-|      | W  | 11/17 | | |
-| 14   | M   | 11/22 | | |
-|      | W  | 11/24 | | |
-| 15   | M   | 11/29 | | |
-|      | W   | 12/01 | | |
-| 16   |     |       | | | 
+| **Week** | **Day** | **Date** | **Topic(s)** | **Slides/R Codes** |
+|:-:|:---:|:--------------------:|:--|:-:|
+| 1    | M    | 08/22 | Intro to Nonparametric Statistics + Intro to R/RStudio| |
+|      | W    | 08/24 | Counting methods, discrete and continuous distributions (review) | |
+| 2    | M    | 08/29 | Qunatiles, Expected Values (review) | |
+|      | W    | 08/31 | Hypothesis testing (review) | |
+| 3    | M   | 09/05  | Labor day (no meeting) | | 
+|      | W  | 09/07   | Practice with R (no meeting) + HW1 | | 
+| 4    | M   | 09/12 | Bootstrap CI | | 
+|      | W   | 09/14 | Bootstrap CI | | 
+| 5    | M   | 09/19 | Project1: Bootsrap CI Project (short meeting) | |
+|      | W  | 09/21  | Project1: Bootsrap CI Project (short meeting)| |
+| 6    | M   | 09/26 | | |
+|      | W  | 09/28  | | | 
+| 7    | M   | 10/03 | | |
+|      | W  | 10/05 | | |
+| 8    | M   | 10/10 | | |
+|      | W  | 10/11 | | |
+| 9    | M   | 10/17 | | |
+|      | W  | 10/19 | | |
+| 10   | M   | 10/24 | | |
+|      | W  | 10/26 | | |
+| 11   | M   | 10/31 | | |
+|      | W  | 11/02 | | |
+| 12   | M   | 11/07 | | |
+|      | W  | 11/09| | |
+| 13   | M   | 11/14 | | |
+|      | W  | 11/16 | | |
+| 14   | M   | 11/21 | | |
+|      | W  | 11/23 | | |
+| 15   | M   | 11/28 | | |
+|      | W   | 12/30 | | |
+| 16   | M-W   |       | Final Week| | 
