@@ -2,6 +2,7 @@
 title: "R Code for Binomial based Tests"
 format: html
 editor: visual
+self-contained: true
 ---
 
 ## The binomial Test -p- Example from Lecture Notes
