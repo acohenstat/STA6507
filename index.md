@@ -22,8 +22,8 @@ show_sidebar: false
 | 5    | M   | 09/19 | Project1: Bootsrap CI Project  | |
 |      | W  | 09/21  | Project1: Bootsrap CI Project (short meeting)| |
 | 6    | M   | 09/26 | Feedback on Bootsrap CI Project | |
-|      | W  | 09/28  | Binomial and Sign Tests | | 
-| 7    | M   | 10/03 | | |
+|      | W  | 09/28  | Binomial and Sign Tests | []()| 
+| 7    | M   | 10/03 | Quantile test and Tolerance Limits | |
 |      | W  | 10/05 | | |
 | 8    | M   | 10/10 | | |
 |      | W  | 10/11 | | |
