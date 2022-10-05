@@ -1,0 +1,133 @@
+---
+title: "R Code for Binomial based Tests"
+format: html
+editor: visual
+---
+
+## The binomial Test -p- Example from Lecture Notes
+
+#### Example 1:
+
+- From studies 50% of men suffer from side effects of a surgery.
+- New method of performing the surgery is tested.
+- Out of 19 operations only 3 men suffered from the side effects.
+
+Question: is it safe to conclude that the new method is effective?
+
+
+To answer the question we run a lower tailed binomial test.
+
+```{r}
+binom.test(x=3, # #successes
+          n=19, # total number of operations
+          p= 0.5, # hypothesized probability
+          alternative="l" # lower tailed test
+          )
+```
+
+#### Example 2:
+
+To answer the Mendelian example from the notes we run a two tailed binomial test.
+
+```{r}
+binom.test(x=682, # #tall plants
+          n=925, # total number of plants
+          p= 0.75, # hypothesized probability
+          alternative="t" # two tailed test
+          )
+```
+
+
+
+## The quantile Test -x_p- Example from Lecture Notes
+
+#### Example 3:
+Assume X is the score of a high school examination to go to college. Previous studies showed that the upper quartile of these scores is $X_{0.75} = $ 193.
+
+15 graduate high school students scores are given:
+
+189, 233, 195, 160, 212, 176, 231, 185, 199, 213, 202, 193, 174, 166, 248.
+
+To test whether the population upper quartile is still 193, we run a two-tailed quantile test.
+
+```{r}
+# data
+x= c(189, 233, 195, 160, 212, 176, 231, 185, 199, 213, 202, 193, 174, 166, 248)
+
+# Test statistics
+T1 = sum(x<=193)
+T2 = sum(x<193)
+
+# p-value
+p = 2*min(pbinom(T1,15,0.75),pbinom(T2-1,15,0.75,lower.tail = F))
+p
+```
+
+
+
+## The sign Test - Example from Lecture Notes
+
+#### Example 4:
+- Item A (old process) and Item B (new process)
+- Out of 10 consumers:
+  -   8 preferred B over A ==> +
+  -   1 preferred A over B ==> -
+  -   1 had no preference ==> 0
+- Do consumers prefer B over A?
+- To answer this we run an upper tailed sign test.
+
+Th sign test is a binomial test with p=0.5.
+
+```{r}
+binom.test(x=8,
+           n=9,
+           p=0.5,
+           alternative = "g")
+```
+
+
+
+
+#### Example 5:
+- 6 students went on a diet to lose weight. A Pair is (WB, WA)
+  -   5 lost weight (WB > WA) ==> -
+  -   1 gained weight (WB < WA) ==> +
+- Is the diet effective?
+- To answer this we run an lower tailed sign test.
+
+Th sign test is a binomial test with p=0.5.
+
+```{r}
+binom.test(x=1,
+           n=6,
+           p=0.5,
+           alternative = "l")
+```
+
+
+
+## Tolerance Limits
+
+#### Example 6:
+- Electric seat adjusters.
+- A car manufacture wants to know how much range of adjustment is needed to be 90% sure that at least 80% of the population of buyers will be able to adjust their seats.
+
+```{r}
+#install.packages("tolerance") # install package
+library(tolerance)
+
+# How to find Q
+distfree.est(n = 18, # sample size
+             alpha = 0.1, # 1-alpha is the confidence
+             P= NULL,
+             side = 2. # two sided interval
+               )
+
+# How to find n
+distfree.est(n = NULL, # sample size
+             alpha = 0.1, # 1-alpha is the confidence
+             P= 0.8,
+             side = 2. # two sided interval
+               )
+```
+

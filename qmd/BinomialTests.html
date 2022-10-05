@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.189">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>R Code for Binomial based Tests</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="BinomialTests_files/libs/clipboard/clipboard.min.js"></script>
+<script src="BinomialTests_files/libs/quarto-html/quarto.js"></script>
+<script src="BinomialTests_files/libs/quarto-html/popper.min.js"></script>
+<script src="BinomialTests_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="BinomialTests_files/libs/quarto-html/anchor.min.js"></script>
+<link href="BinomialTests_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="BinomialTests_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="BinomialTests_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="BinomialTests_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="BinomialTests_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">R Code for Binomial based Tests</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<section id="the-binomial-test--p--example-from-lecture-notes" class="level2">
+<h2 class="anchored" data-anchor-id="the-binomial-test--p--example-from-lecture-notes">The binomial Test -p- Example from Lecture Notes</h2>
+<section id="example-1" class="level4">
+<h4 class="anchored" data-anchor-id="example-1">Example 1:</h4>
+<ul>
+<li>From studies 50% of men suffer from side effects of a surgery.</li>
+<li>New method of performing the surgery is tested.</li>
+<li>Out of 19 operations only 3 men suffered from the side effects.</li>
+</ul>
+<p>Question: is it safe to conclude that the new method is effective?</p>
+<p>To answer the question we run a lower tailed binomial test.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">binom.test</span>(<span class="at">x=</span><span class="dv">3</span>, <span class="co"># #successes</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">n=</span><span class="dv">19</span>, <span class="co"># total number of operations</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">p=</span> <span class="fl">0.5</span>, <span class="co"># hypothesized probability</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">alternative=</span><span class="st">"l"</span> <span class="co"># lower tailed test</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>          )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Exact binomial test
+
+data:  3 and 19
+number of successes = 3, number of trials = 19, p-value = 0.002213
+alternative hypothesis: true probability of success is less than 0.5
+95 percent confidence interval:
+ 0.0000000 0.3594256
+sample estimates:
+probability of success 
+             0.1578947 </code></pre>
+</div>
+</div>
+</section>
+<section id="example-2" class="level4">
+<h4 class="anchored" data-anchor-id="example-2">Example 2:</h4>
+<p>To answer the Mendelian example from the notes we run a two tailed binomial test.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">binom.test</span>(<span class="at">x=</span><span class="dv">682</span>, <span class="co"># #tall plants</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">n=</span><span class="dv">925</span>, <span class="co"># total number of plants</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">p=</span> <span class="fl">0.75</span>, <span class="co"># hypothesized probability</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">alternative=</span><span class="st">"t"</span> <span class="co"># two tailed test</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>          )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Exact binomial test
+
+data:  682 and 925
+number of successes = 682, number of trials = 925, p-value = 0.3825
+alternative hypothesis: true probability of success is not equal to 0.75
+95 percent confidence interval:
+ 0.7076683 0.7654066
+sample estimates:
+probability of success 
+             0.7372973 </code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="the-quantile-test--x_p--example-from-lecture-notes" class="level2">
+<h2 class="anchored" data-anchor-id="the-quantile-test--x_p--example-from-lecture-notes">The quantile Test -x_p- Example from Lecture Notes</h2>
+<section id="example-3" class="level4">
+<h4 class="anchored" data-anchor-id="example-3">Example 3:</h4>
+<p>Assume X is the score of a high school examination to go to college. Previous studies showed that the upper quartile of these scores is $X_{0.75} = $ 193.</p>
+<p>15 graduate high school students scores are given:</p>
+<p>189, 233, 195, 160, 212, 176, 231, 185, 199, 213, 202, 193, 174, 166, 248.</p>
+<p>To test whether the population upper quartile is still 193, we run a two-tailed quantile test.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># data</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span> <span class="fu">c</span>(<span class="dv">189</span>, <span class="dv">233</span>, <span class="dv">195</span>, <span class="dv">160</span>, <span class="dv">212</span>, <span class="dv">176</span>, <span class="dv">231</span>, <span class="dv">185</span>, <span class="dv">199</span>, <span class="dv">213</span>, <span class="dv">202</span>, <span class="dv">193</span>, <span class="dv">174</span>, <span class="dv">166</span>, <span class="dv">248</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Test statistics</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>T1 <span class="ot">=</span> <span class="fu">sum</span>(x<span class="sc">&lt;=</span><span class="dv">193</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>T2 <span class="ot">=</span> <span class="fu">sum</span>(x<span class="sc">&lt;</span><span class="dv">193</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># p-value</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">min</span>(<span class="fu">pbinom</span>(T1,<span class="dv">15</span>,<span class="fl">0.75</span>),<span class="fu">pbinom</span>(T2<span class="dv">-1</span>,<span class="dv">15</span>,<span class="fl">0.75</span>,<span class="at">lower.tail =</span> F))</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.03459968</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="the-sign-test---example-from-lecture-notes" class="level2">
+<h2 class="anchored" data-anchor-id="the-sign-test---example-from-lecture-notes">The sign Test - Example from Lecture Notes</h2>
+<section id="example-4" class="level4">
+<h4 class="anchored" data-anchor-id="example-4">Example 4:</h4>
+<ul>
+<li>Item A (old process) and Item B (new process)</li>
+<li>Out of 10 consumers:
+<ul>
+<li>8 preferred B over A ==&gt; +</li>
+<li>1 preferred A over B ==&gt; -</li>
+<li>1 had no preference ==&gt; 0</li>
+</ul></li>
+<li>Do consumers prefer B over A?</li>
+<li>To answer this we run an upper tailed sign test.</li>
+</ul>
+<p>Th sign test is a binomial test with p=0.5.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">binom.test</span>(<span class="at">x=</span><span class="dv">8</span>,</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">n=</span><span class="dv">9</span>,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">p=</span><span class="fl">0.5</span>,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">alternative =</span> <span class="st">"g"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Exact binomial test
+
+data:  8 and 9
+number of successes = 8, number of trials = 9, p-value = 0.01953
+alternative hypothesis: true probability of success is greater than 0.5
+95 percent confidence interval:
+ 0.5708645 1.0000000
+sample estimates:
+probability of success 
+             0.8888889 </code></pre>
+</div>
+</div>
+</section>
+<section id="example-5" class="level4">
+<h4 class="anchored" data-anchor-id="example-5">Example 5:</h4>
+<ul>
+<li>6 students went on a diet to lose weight. A Pair is (WB, WA)
+<ul>
+<li>5 lost weight (WB &gt; WA) ==&gt; -</li>
+<li>1 gained weight (WB &lt; WA) ==&gt; +</li>
+</ul></li>
+<li>Is the diet effective?</li>
+<li>To answer this we run an lower tailed sign test.</li>
+</ul>
+<p>Th sign test is a binomial test with p=0.5.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">binom.test</span>(<span class="at">x=</span><span class="dv">1</span>,</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">n=</span><span class="dv">6</span>,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">p=</span><span class="fl">0.5</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">alternative =</span> <span class="st">"l"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Exact binomial test
+
+data:  1 and 6
+number of successes = 1, number of trials = 6, p-value = 0.1094
+alternative hypothesis: true probability of success is less than 0.5
+95 percent confidence interval:
+ 0.0000000 0.5818034
+sample estimates:
+probability of success 
+             0.1666667 </code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="tolerance-limits" class="level2">
+<h2 class="anchored" data-anchor-id="tolerance-limits">Tolerance Limits</h2>
+<section id="example-6" class="level4">
+<h4 class="anchored" data-anchor-id="example-6">Example 6:</h4>
+<ul>
+<li>Electric seat adjusters.</li>
+<li>A car manufacture wants to know how much range of adjustment is needed to be 90% sure that at least 80% of the population of buyers will be able to adjust their seats.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("tolerance") # install package</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tolerance)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># How to find Q</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">distfree.est</span>(<span class="at">n =</span> <span class="dv">18</span>, <span class="co"># sample size</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">alpha =</span> <span class="fl">0.1</span>, <span class="co"># 1-alpha is the confidence</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">P=</span> <span class="cn">NULL</span>,</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">side =</span> <span class="fl">2.</span> <span class="co"># two sided interval</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>               )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        18
+0.1 0.8006</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># How to find n</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">distfree.est</span>(<span class="at">n =</span> <span class="cn">NULL</span>, <span class="co"># sample size</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">alpha =</span> <span class="fl">0.1</span>, <span class="co"># 1-alpha is the confidence</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">P=</span> <span class="fl">0.8</span>,</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">side =</span> <span class="fl">2.</span> <span class="co"># two sided interval</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>               )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    0.8
+0.1  18</code></pre>
+</div>
+</div>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
