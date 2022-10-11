@@ -15,4 +15,4 @@ show_sidebar: false
 | - Rmd Sample tile    | [.Rmd file](Sample.Rmd) | 
 | - Bootstrap CI code | [.R file](BootstrapCIExample.R) | 
 | - Assignment Bootstrap CI | [.Rmd file](HW2_boot.Rmd) | 
-| - Binomial based Tests | [.html file](qmd/BinomialTests.hmtl) | 
+| - Binomial based Tests | [.html file](qmd/BinomialTests.html) | 
