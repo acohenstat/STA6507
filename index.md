@@ -9,23 +9,23 @@ show_sidebar: false
 
 ## Tentative Schedule
 
-| **Week** | **Day** | **Date** | **Topic(s)** | **Slides/R Codes** |
+| **Week** | **Day** | **Date** | **Topic(s)** | **To Do** |
 |:-:|:---:|:--------------------:|:--|:-:|
 | 1    | M    | 08/22 | Intro to Nonparametric Statistics + Intro to R/RStudio| |
 |      | W    | 08/24 | Counting methods, discrete and continuous distributions (review) | |
-| 2    | M    | 08/29 | Qunatiles, Expected Values (review) | |
+| 2    | M    | 08/29 | Qunatiles, Expected Values (review) | HW1|
 |      | W    | 08/31 | Hypothesis testing (review) | |
 | 3    | M   | 09/05  | Labor day (no meeting) | | 
-|      | W  | 09/07   | HW1: Practice with R (no meeting) | | 
+|      | W  | 09/07   | Practice with R (no meeting) | R Practice | 
 | 4    | M   | 09/12 | Bootstrap CI | | 
 |      | W   | 09/14 | Bootstrap CI | | 
-| 5    | M   | 09/19 | Project1: Bootsrap CI Project  | |
-|      | W  | 09/21  | Project1: Bootsrap CI Project (short meeting)| |
+| 5    | M   | 09/19 | Project1: Bootsrap CI Project (short meeting)| |
+|      | W  | 09/21  | Project1: Bootsrap CI Project | |
 | 6    | M   | 09/26 | Feedback on Bootsrap CI Project | |
-|      | W  | 09/28  | Binomial and Sign Tests || 
+|      | W  | 09/28  | Binomial and Sign Tests | | 
 | 7    | M   | 10/03 | Quantile test and Tolerance Limits | |
 |      | W  | 10/05 | Quantile test and Tolerance Limits| |
-| 8    | M   | 10/10 | Midterm Exam Project | |
+| 8    | M   | 10/10 | Midterm Exam Project - review | |
 |      | W  | 10/11 | Midterm Exam Project  | |
 | 9    | M   | 10/17 | | |
 |      | W  | 10/19 | | |
