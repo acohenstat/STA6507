@@ -16,17 +16,17 @@ show_sidebar: false
 | 2    | M    | 08/29 | Qunatiles, Expected Values (review) | |
 |      | W    | 08/31 | Hypothesis testing (review) | |
 | 3    | M   | 09/05  | Labor day (no meeting) | | 
-|      | W  | 09/07   | Practice with R (no meeting) + HW1 | | 
+|      | W  | 09/07   | HW1: Practice with R (no meeting) | | 
 | 4    | M   | 09/12 | Bootstrap CI | | 
 |      | W   | 09/14 | Bootstrap CI | | 
 | 5    | M   | 09/19 | Project1: Bootsrap CI Project  | |
 |      | W  | 09/21  | Project1: Bootsrap CI Project (short meeting)| |
 | 6    | M   | 09/26 | Feedback on Bootsrap CI Project | |
-|      | W  | 09/28  | Binomial and Sign Tests |[HERE](qmd/BinomialTests.html)| 
-| 7    | M   | 10/03 | Quantile test and Tolerance Limits |[HERE](qmd/BinomialTests.html) |
-|      | W  | 10/05 | | |
-| 8    | M   | 10/10 | | |
-|      | W  | 10/11 | | |
+|      | W  | 09/28  | Binomial and Sign Tests || 
+| 7    | M   | 10/03 | Quantile test and Tolerance Limits | |
+|      | W  | 10/05 | Quantile test and Tolerance Limits| |
+| 8    | M   | 10/10 | Midterm Exam Project | |
+|      | W  | 10/11 | Midterm Exam Project  | |
 | 9    | M   | 10/17 | | |
 |      | W  | 10/19 | | |
 | 10   | M   | 10/24 | | |
