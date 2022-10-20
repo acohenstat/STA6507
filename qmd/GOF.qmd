@@ -1,0 +1,80 @@
+---
+title: "Goodness of Fit Tests"
+format: html
+editor: visual
+author: Dr. Cohen 
+---
+
+## Speed Data
+
+$H_0:$ speed data is normally distributed
+
+$H_1:$ speed data is not normally distributed
+
+```{r}
+str(cars)
+hist(cars$speed)
+mean_speed = mean(cars$speed)
+mean_speed
+sd_speed = sd(cars$speed)
+sd_speed
+
+```
+
+## Shapiro Wilk Test for Normality
+
+```{r}
+shapiro.test(cars$speed)
+```
+
+`Decision:` P-value is greater than 0.05, then we fail to reject $H_0$. There is evidence to support that speed data is normally distributed with mean = `r mean(cars$speed)` and variance = `r var(cars$speed)`.
+
+## Lilliefors Test for Normality
+
+```{r}
+library(nortest)
+lillie.test(cars$speed)
+```
+
+`Decision:` P-value is greater than 0.05, then we fail to reject $H_0$. There is evidence to support that speed data is normally distributed with mean = `r mean(cars$speed)` and variance = `r var(cars$speed)`.
+
+## Kolmogorov Smirnov Test
+
+```{r}
+# Test for N(mean_speed,sd_speed)
+ks.test(cars$speed,'pnorm',mean_speed,sd_speed)
+
+# Test for N(0,1)
+ks.test(cars$speed,'pnorm')
+```
+
+## Chi-squared Test
+
+```{r}
+h = hist(cars$speed) # hist of data
+Ob = h$counts # observed frequencies in classes
+
+
+p1 = pnorm(5,mean_speed,sd_speed)# P(X <= 5)
+p2 = pnorm(10,mean_speed,sd_speed)-pnorm(5,mean_speed,sd_speed) # P(5<=X <= 10)
+p3 = pnorm(15,mean_speed,sd_speed)-pnorm(10,mean_speed,sd_speed) # P(10<=X <= 15)
+p4 = pnorm(20,mean_speed,sd_speed)-pnorm(15,mean_speed,sd_speed) # P(15<=X <= 20)
+p5 = 1- pnorm(20,mean_speed,sd_speed) # P(X> 20)
+
+Pj = c(p1,p2,p3,p4,p5) # put everything in one array
+sum(Pj) # is it = 1?
+Ej = Pj*50 # Expected counts
+Ej
+
+# Chi-squared test for GOF
+chisq.test(x=Ob,p = Pj)
+```
+
+The degrees of freedom of the test is $df = C-1-k = 5 -1 - 2 = 2$. K=2 because we did estimate the mean and variance from the sample.
+
+Adjust for degrees of freedom:
+
+```{r}
+pvalue <- 1-pchisq(1.3267,df=2)
+pvalue
+```
