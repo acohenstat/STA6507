@@ -1,0 +1,18 @@
+---
+title: "Goodness-Of-Fit Tests"
+format: html
+editor: visual
+---
+
+## set up
+
+We will conduct a simulation study to investigate the power of the goodness-of-fit tests:
+
+- KS
+- Chi-squared
+- Lilliesfors
+- SW
+
+1. Generate samples of size $n = {5,10,20,50,100}$ from
+  - Chi-squared (df=3)
+  - Student's t-Distribution (df=4)
