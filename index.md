@@ -27,8 +27,8 @@ show_sidebar: false
 |      | W  | 10/05 | Quantile test and Tolerance Limits| |
 | 8    | M   | 10/10 | Midterm Exam Project - review | |
 |      | W  | 10/11 | Midterm Exam Project  | |
-| 9    | M   | 10/17 | | |
-|      | W  | 10/19 | | |
+| 9    | M   | 10/17 | Midterm Exam Project Keys | |
+|      | W  | 10/19 | Goodness-of-Fit Tests | |
 | 10   | M   | 10/24 | | |
 |      | W  | 10/26 | | |
 | 11   | M   | 10/31 | | |
