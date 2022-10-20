@@ -15,4 +15,5 @@ show_sidebar: false
 | - Rmd Sample tile    | [.Rmd file](Sample.Rmd) | 
 | - Bootstrap CI code | [.R file](BootstrapCIExample.R) | 
 | - Assignment Bootstrap CI | [.Rmd file](HW2_boot.Rmd) | 
-| - Binomial based Tests | [.html file](qmd/BinomialTests.html) | 
+| - Binomial based Tests | [.html file](qmd/BinomialTests.html) |
+| - Goodness-Of-Fit Tests | [.html file](qmd/GOF.html) |
