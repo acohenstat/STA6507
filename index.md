@@ -25,8 +25,8 @@ show_sidebar: false
 |      | W  | 09/28  | Binomial and Sign Tests | | 
 | 7    | M   | 10/03 | Quantile test and Tolerance Limits | |
 |      | W  | 10/05 | Quantile test and Tolerance Limits| |
-| 8    | M   | 10/10 | Midterm Exam Project - review | |
-|      | W  | 10/11 | Midterm Exam Project  | |
+| 8    | M   | 10/10 | Midterm Exam Project - review | practice problems |
+|      | W  | 10/11 | Midterm Exam Project  | Project |
 | 9    | M   | 10/17 | Midterm Exam Project Keys | |
 |      | W  | 10/19 | Goodness-of-Fit Tests | |
 | 10   | M   | 10/24 | | |
