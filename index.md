@@ -29,7 +29,7 @@ show_sidebar: false
 |      | W  | 10/11 | Midterm Exam Project  | Project |
 | 9    | M   | 10/17 | Midterm Exam Project Keys | |
 |      | W  | 10/19 | Goodness-of-Fit Tests | |
-| 10   | M   | 10/24 | | |
+| 10   | M   | 10/24 | Goodness-of-Fit Tests | [Project](qmd/GoF_Project.html)|
 |      | W  | 10/26 | | |
 | 11   | M   | 10/31 | | |
 |      | W  | 11/02 | | |
