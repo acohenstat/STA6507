@@ -60,22 +60,28 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="set-up" class="level2">
-<h2 class="anchored" data-anchor-id="set-up">set up</h2>
+<section id="simulation-study-the-statistical-power-of-normality-yests" class="level2">
+<h2 class="anchored" data-anchor-id="simulation-study-the-statistical-power-of-normality-yests">Simulation study: the statistical power of normality yests</h2>
 <p>We will conduct a simulation study to investigate the power of the goodness-of-fit tests:</p>
 <ul>
-<li>KS</li>
+<li>Kolmogorov-Smirnov</li>
 <li>Chi-squared</li>
 <li>Lilliesfors</li>
-<li>SW</li>
+<li>Shapiro-Wilk</li>
 </ul>
 <ol type="1">
-<li>Generate samples of size <span class="math inline">\(n = {5,10,20,50,100}\)</span> from</li>
+<li>Generate samples of size <span class="math inline">\(n = {5,10,20,40,80,160,320,1000}\)</span> from:</li>
 </ol>
 <ul>
-<li>Chi-squared (df=3)</li>
-<li>Student’s t-Distribution (df=4)</li>
+<li>Chi-squared distribution with df=3</li>
+<li>Student’s t-Distribution df=4</li>
+<li>Exponential distribution with scale parameter of 1</li>
+<li>Uniform distribution in (0,1)</li>
 </ul>
+<ol start="2" type="1">
+<li><p>Apply the goodness-of-fit tests above to test <code>normality</code> and find the power (probability of rejecting the null hypothesis) for each of the tests.</p></li>
+<li><p>Plot the results. The sample size (x-axis) vs the power (y-axis) for each test.</p></li>
+</ol>
 </section>
 
 </main>

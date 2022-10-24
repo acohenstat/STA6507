@@ -4,15 +4,23 @@ format: html
 editor: visual
 ---
 
-## set up
+## Simulation study: the statistical power of normality yests
 
 We will conduct a simulation study to investigate the power of the goodness-of-fit tests:
 
-- KS
-- Chi-squared
-- Lilliesfors
-- SW
+-   Kolmogorov-Smirnov
+-   Chi-squared
+-   Lilliesfors
+-   Shapiro-Wilk
 
-1. Generate samples of size $n = {5,10,20,50,100}$ from
-  - Chi-squared (df=3)
-  - Student's t-Distribution (df=4)
+1.  Generate samples of size $n = {5,10,20,40,80,160,320,1000}$ from:
+
+  -   Chi-squared distribution with df=3
+  -   Student's t-Distribution df=4
+  -   Exponential distribution with scale parameter of 1
+  -   Uniform distribution in (0,1)
+
+2.  Apply the goodness-of-fit tests above to test `normality` and find the power (probability of rejecting the null hypothesis) for each of the tests.
+
+3. Plot the results. The sample size (x-axis) vs the power (y-axis) for each test.
+
