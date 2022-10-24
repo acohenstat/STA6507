@@ -1,7 +1,6 @@
 ---
 title: "Goodness of Fit Tests"
 format: html
-editor: visual
 author: Dr. Cohen 
 ---
 
@@ -79,17 +78,15 @@ pvalue <- 1-pchisq(1.3267,df=2)
 pvalue
 ```
 
-
 ## Example with Binomial distribution
 
-Binomial Example : pp.244
-18 baseball players with 45 times at-bat. We have the number of hits.
+Binomial Example : pp.244 18 baseball players with 45 times at-bat. We have the number of hits.
 
-|  # hits   | <=7  | 8  |  9 | 10  | 11  | 12  | 13  | 14  | 15  | 16 | 17  | >=18  |
-|---        |---|---|---|---|---|---|---|---|---|---|---|
-| # players | 1  | 1  | 1  | 5  |  2 | 1  | 1  | 2  |  1 | 1  | 1  | 1  | 
+| \# hits    | \<=7 | 8   | 9   | 10  | 11  | 12  | 13  | 14  | 15  | 16  | 17  |
+|------------|------|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+| \# players | 1    | 1   | 1   | 5   | 2   | 1   | 1   | 2   | 1   | 1   | 1   |
 
-Consider X is the # hits, X $\sim$ binom(n= 45, p=? )
+Consider X is the \# hits, X $\sim$ binom(n= 45, p=? )
 
 ```{r}
 Ob=c(1,1,1,5,2,1,1,2,1,1,1,1)
@@ -126,13 +123,11 @@ Ej
 chisq.test(x=Ob,p=Pj)
 ```
 
-
 The degrees of freedom of the test is $df = C-1-k = 3 -1 - 1 = 1$. K=1 because we estimated the probability of hitting at bat from the sample.
 
 Adjust for degrees of freedom:
+
 ```{r}
 pvalue <- 1-pchisq(1.8222,df=1)
 pvalue
 ```
-
-
