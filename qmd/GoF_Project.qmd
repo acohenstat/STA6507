@@ -4,7 +4,7 @@ format: html
 editor: visual
 ---
 
-## Simulation study: the statistical power of normality yests
+## Simulation study: the statistical power of normality tests
 
 We will conduct a simulation study to investigate the power of the goodness-of-fit tests:
 
@@ -23,4 +23,8 @@ We will conduct a simulation study to investigate the power of the goodness-of-f
 2.  Apply the goodness-of-fit tests above to test `normality` and find the power (probability of rejecting the null hypothesis) for each of the tests.
 
 3. Plot the results. The sample size (x-axis) vs the power (y-axis) for each test.
+
+```{r}
+
+```
 

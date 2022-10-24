@@ -78,3 +78,61 @@ Adjust for degrees of freedom:
 pvalue <- 1-pchisq(1.3267,df=2)
 pvalue
 ```
+
+
+## Example with Binomial distribution
+
+Binomial Example : pp.244
+18 baseball players with 45 times at-bat. We have the number of hits.
+
+|  # hits   | <=7  | 8  |  9 | 10  | 11  | 12  | 13  | 14  | 15  | 16 | 17  | >=18  |
+|---        |---|---|---|---|---|---|---|---|---|---|---|
+| # players | 1  | 1  | 1  | 5  |  2 | 1  | 1  | 2  |  1 | 1  | 1  | 1  | 
+
+Consider X is the # hits, X $\sim$ binom(n= 45, p=? )
+
+```{r}
+Ob=c(1,1,1,5,2,1,1,2,1,1,1,1)
+
+# Estimate p- probability that a player will get a hit at-bat.
+# p = #hits/total #of at-bats
+p= sum((7:18)*Ob) / (18*45)
+
+p1 <- pbinom(7,45,prob = p)
+p2 <- dbinom(8:17,45,prob = p)
+p12 <- pbinom(17,45,p,lower.tail = F)
+
+Pj <- c(p1,p2,p12)
+
+Ej=Pj*18
+
+# Chi-squared test 
+chisq.test(x=Ob,p=Pj)
+```
+
+Since the expected values are less than 5. We combine classes.
+
+```{r}
+Ob=c(8,6,4)
+p1 <- pbinom(10,45,prob = p) # P(X<=10)
+p2 <- sum(dbinom(11:14,45,prob = p)) # P(11<=X<=14)
+p3 <- pbinom(14,45,p,lower.tail = F)# P(X>=15)
+Pj <- c(p1,p2,p3)
+sum(Pj)
+
+Ej=Pj*18
+Ej
+# Chi-squared test 
+chisq.test(x=Ob,p=Pj)
+```
+
+
+The degrees of freedom of the test is $df = C-1-k = 3 -1 - 1 = 1$. K=1 because we estimated the probability of hitting at bat from the sample.
+
+Adjust for degrees of freedom:
+```{r}
+pvalue <- 1-pchisq(1.8222,df=1)
+pvalue
+```
+
+

@@ -269,6 +269,127 @@ X-squared = 1.3267, df = 4, p-value = 0.8568</code></pre>
 </div>
 </div>
 </section>
+<section id="example-with-binomial-distribution" class="level2">
+<h2 class="anchored" data-anchor-id="example-with-binomial-distribution">Example with Binomial distribution</h2>
+<p>Binomial Example : pp.244 18 baseball players with 45 times at-bat. We have the number of hits.</p>
+<table class="table">
+<colgroup>
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th># hits</th>
+<th>&lt;=7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+<th>11</th>
+<th>12</th>
+<th>13</th>
+<th>14</th>
+<th>15</th>
+<th>16</th>
+<th>17</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td># players</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>5</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>Consider X is the # hits, X <span class="math inline">\(\sim\)</span> binom(n= 45, p=? )</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>Ob<span class="ot">=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate p- probability that a player will get a hit at-bat.</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co"># p = #hits/total #of at-bats</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span> <span class="fu">sum</span>((<span class="dv">7</span><span class="sc">:</span><span class="dv">18</span>)<span class="sc">*</span>Ob) <span class="sc">/</span> (<span class="dv">18</span><span class="sc">*</span><span class="dv">45</span>)</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">pbinom</span>(<span class="dv">7</span>,<span class="dv">45</span>,<span class="at">prob =</span> p)</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">dbinom</span>(<span class="dv">8</span><span class="sc">:</span><span class="dv">17</span>,<span class="dv">45</span>,<span class="at">prob =</span> p)</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>p12 <span class="ot">&lt;-</span> <span class="fu">pbinom</span>(<span class="dv">17</span>,<span class="dv">45</span>,p,<span class="at">lower.tail =</span> F)</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>Pj <span class="ot">&lt;-</span> <span class="fu">c</span>(p1,p2,p12)</span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>Ej<span class="ot">=</span>Pj<span class="sc">*</span><span class="dv">18</span></span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Chi-squared test </span></span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(<span class="at">x=</span>Ob,<span class="at">p=</span>Pj)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in chisq.test(x = Ob, p = Pj): Chi-squared approximation may be
+incorrect</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Chi-squared test for given probabilities
+
+data:  Ob
+X-squared = 6.7313, df = 11, p-value = 0.8204</code></pre>
+</div>
+</div>
+<p>Since the expected values are less than 5. We combine classes.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>Ob<span class="ot">=</span><span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">6</span>,<span class="dv">4</span>)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">pbinom</span>(<span class="dv">10</span>,<span class="dv">45</span>,<span class="at">prob =</span> p) <span class="co"># P(X&lt;=10)</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">dbinom</span>(<span class="dv">11</span><span class="sc">:</span><span class="dv">14</span>,<span class="dv">45</span>,<span class="at">prob =</span> p)) <span class="co"># P(11&lt;=X&lt;=14)</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">pbinom</span>(<span class="dv">14</span>,<span class="dv">45</span>,p,<span class="at">lower.tail =</span> F)<span class="co"># P(X&gt;=15)</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>Pj <span class="ot">&lt;-</span> <span class="fu">c</span>(p1,p2,p3)</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(Pj)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>Ej<span class="ot">=</span>Pj<span class="sc">*</span><span class="dv">18</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>Ej</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5.769286 8.770815 3.459899</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Chi-squared test </span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(<span class="at">x=</span>Ob,<span class="at">p=</span>Pj)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in chisq.test(x = Ob, p = Pj): Chi-squared approximation may be
+incorrect</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Chi-squared test for given probabilities
+
+data:  Ob
+X-squared = 1.8222, df = 2, p-value = 0.4021</code></pre>
+</div>
+</div>
+<p>The degrees of freedom of the test is <span class="math inline">\(df = C-1-k = 3 -1 - 1 = 1\)</span>. K=1 because we estimated the probability of hitting at bat from the sample.</p>
+<p>Adjust for degrees of freedom:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>pvalue <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">-</span><span class="fu">pchisq</span>(<span class="fl">1.8222</span>,<span class="at">df=</span><span class="dv">1</span>)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>pvalue</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1770516</code></pre>
+</div>
+</div>
+</section>
 
 </main>
 <!-- /main column -->

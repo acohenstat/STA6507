@@ -1,0 +1,40 @@
+---
+title: "GoF Test"
+format: html
+editor: visual
+---
+
+
+## Power analysis
+We consider data from a gamma distribution with shape = 1.5 and scale = 1.5.
+
+```{r}
+library(nortest)
+library(tidyverse)
+
+find_pvalues =function(n){
+x = rgamma(n,shape = 1.5,scale = 1.5)
+
+sw = shapiro.test(x)
+ks = ks.test(x,'pnorm',mean(x),sd(x))
+lf = lillie.test(x)
+
+pvalues = c(SW = sw$p.value, KS = ks$p.value, LF=lf$p.value)
+return(pvalues)
+}
+
+# n values : sample sizes
+n_values= c(5)
+# find p_values for different sample sizes
+p_val = map_df(n_values,find_pvalues)
+
+# repeat 1000 times
+results = replicate(1000,map(n_values,find_pvalues))
+
+# better results format
+df.results = bind_rows(results)
+
+power_tests = colMeans(df.results<0.05)
+power_tests
+```
+
