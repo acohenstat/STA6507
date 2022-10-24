@@ -4,8 +4,8 @@ format: html
 editor: visual
 ---
 
-
 ## Power analysis
+
 We consider data from a gamma distribution with shape = 1.5 and scale = 1.5.
 
 ```{r}
@@ -37,4 +37,3 @@ df.results = bind_rows(results)
 power_tests = colMeans(df.results<0.05)
 power_tests
 ```
-
