@@ -131,3 +131,66 @@ Adjust for degrees of freedom:
 pvalue <- 1-pchisq(1.8222,df=1)
 pvalue
 ```
+
+
+
+## Simulation Power Analysis - Example Code
+
+We consider data from a gamma distribution with shape = 1.5 and scale = 1.5.
+
+```{r}
+#| warning: false
+library(nortest)
+library(tidyverse)
+
+
+# function that runs the tests 
+find_pvalues =function(n){
+  
+x = rgamma(n,shape = 1.5,scale = 1.5) # gamma data
+
+sw = shapiro.test(x) # shapiro-wilk test
+ks = ks.test(x,'pnorm',mean(x),sd(x)) # k-s test
+lf = lillie.test(x) # lilliefors test
+
+h=hist(x,nclass = sqrt(n),plot=FALSE)
+ob=h$counts
+xv=h$breaks
+pj = c(pnorm(xv[2],mean(x),sd(x)),
+       diff(pnorm(xv[2:(length(xv)-1)],mean(x),sd(x))),
+       pnorm(xv[length(xv)-1],mean(x),sd(x),lower.tail = F))
+chi = chisq.test(ob,p = pj) # chi-square test
+# need to adjust df
+
+pvalues = c(SW = sw$p.value < 0.05, 
+            KS = ks$p.value< 0.05, 
+            LF=lf$p.value < 0.05, 
+            Chi = chi$p.value < 0.05)
+return(pvalues)
+}
+
+# n values : sample sizes
+n_values= c(5,10,50,100)
+# find p_values for different sample sizes
+p_val = map_df(n_values,find_pvalues)
+
+# repeat 1000 times
+results = replicate(1000,map(n_values,find_pvalues))
+
+# better results format
+df.results = bind_rows(results) %>% 
+  mutate(n=gl(n = length(n_values),k=1,length = length(results),labels = n_values))
+
+# compute the power
+power_tests = df.results %>% 
+  group_by(n) %>% 
+  summarise_all(mean)
+power_tests
+
+# plot the power
+power_tests %>% 
+  pivot_longer(cols = -n, names_to = "test", values_to = "power") %>%
+  ggplot(aes(x=n,y=power,group=test,col=test)) +
+  geom_point()+
+  geom_line()
+```
