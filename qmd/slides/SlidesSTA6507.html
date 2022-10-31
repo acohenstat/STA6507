@@ -1,0 +1,1980 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="SlidesSTA6507_files/libs/clipboard/clipboard.min.js"></script>
+<script src="SlidesSTA6507_files/libs/quarto-html/tabby.min.js"></script>
+<script src="SlidesSTA6507_files/libs/quarto-html/popper.min.js"></script>
+<script src="SlidesSTA6507_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="SlidesSTA6507_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="SlidesSTA6507_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="SlidesSTA6507_files/libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.1.189">
+
+  <title>Nonparametric Statistics</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="SlidesSTA6507_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="SlidesSTA6507_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #f8f8f2;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #f8f8f2; } /* Normal */
+    code span.al { color: #f07178; background-color: #2a0f15; font-weight: bold; } /* Alert */
+    code span.an { color: #d4d0ab; } /* Annotation */
+    code span.at { color: #00e0e0; } /* Attribute */
+    code span.bn { color: #d4d0ab; } /* BaseN */
+    code span.bu { color: #abe338; } /* BuiltIn */
+    code span.cf { color: #ffa07a; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #abe338; } /* Char */
+    code span.cn { color: #ffd700; } /* Constant */
+    code span.co { color: #f8f8f2; font-style: italic; } /* Comment */
+    code span.cv { color: #ffd700; } /* CommentVar */
+    code span.do { color: #f8f8f2; } /* Documentation */
+    code span.dt { color: #ffa07a; } /* DataType */
+    code span.dv { color: #d4d0ab; } /* DecVal */
+    code span.er { color: #f07178; text-decoration: underline; } /* Error */
+    code span.ex { color: #00e0e0; font-weight: bold; } /* Extension */
+    code span.fl { color: #d4d0ab; } /* Float */
+    code span.fu { color: #ffa07a; } /* Function */
+    code span.im { color: #abe338; } /* Import */
+    code span.in { color: #d4d0ab; } /* Information */
+    code span.kw { color: #ffa07a; font-weight: bold; } /* Keyword */
+    code span.op { color: #ffa07a; } /* Operator */
+    code span.ot { color: #00e0e0; } /* Other */
+    code span.pp { color: #dcc6e0; } /* Preprocessor */
+    code span.re { color: #00e0e0; background-color: #f8f8f2; } /* RegionMarker */
+    code span.sc { color: #abe338; } /* SpecialChar */
+    code span.ss { color: #abe338; } /* SpecialString */
+    code span.st { color: #abe338; } /* String */
+    code span.va { color: #00e0e0; } /* Variable */
+    code span.vs { color: #abe338; } /* VerbatimString */
+    code span.wa { color: #dcc6e0; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="SlidesSTA6507_files/libs/revealjs/dist/theme/quarto.css" id="theme">
+  <link href="SlidesSTA6507_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="SlidesSTA6507_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="SlidesSTA6507_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="SlidesSTA6507_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="SlidesSTA6507_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="SlidesSTA6507_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-captioned.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-captioned) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-captioned.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-captioned .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-captioned .callout-caption  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-captioned.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-captioned.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-caption {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-caption {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-caption {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-captioned .callout-body > .callout-content > :last-child {
+    margin-bottom: 0.5rem;
+  }
+
+  .callout.callout-captioned .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-captioned) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-caption {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-caption {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-caption {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-caption {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-caption {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-dark">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="center">
+  <h1 class="title">Nonparametric Statistics</h1>
+  <p class="subtitle">Dr.&nbsp;Cohen</p>
+</section>
+
+<section id="welcome-to-sta-6507" class="slide level2">
+<h2>Welcome to STA 6507</h2>
+<p>This course covers an introduction to nonparametric statistics methods as follows:</p>
+<ul>
+<li>Binomial based Tests</li>
+<li>Bootstrapping for CIs</li>
+<li>Goodness of fit Test</li>
+<li>Contingency Tables</li>
+<li>Ranks based Test</li>
+<li>Kernel smoothing</li>
+</ul>
+</section>
+<section id="what-is-statistics" class="slide level2">
+<h2>What is Statistics?</h2>
+<ul>
+<li>Statistics deals with 4 subtopics:
+<ul>
+<li>Data Collection</li>
+<li>Data Analysis</li>
+<li>Interpretation of Results</li>
+<li>Visualization</li>
+</ul></li>
+<li>Descriptive vs Inferential</li>
+<li>Parametric vs Nonparametric</li>
+</ul>
+</section>
+<section id="nonparamertic-methods" class="slide level2">
+<h2>Nonparamertic Methods?</h2>
+<ul>
+<li>Nonparametric methods require few assumptions about the underlying population (e.g.&nbsp;normal)</li>
+<li>Exact p-values for tests and exact coverage probabilities for confidence intervals.</li>
+<li>Nonparametric methods are relatively insensitive to outliers</li>
+<li>Nonparametric methods are only slightly less efficient than their normal theory competitors</li>
+<li>Nonparametric methods apply to data that are nominal, ordinal or ranks</li>
+<li>If a small sample size is used n=3.</li>
+</ul>
+</section>
+<section id="definitions-review" class="slide level2">
+<h2>Definitions (review)</h2>
+<ul>
+<li><strong>Population</strong>: is the large body of data that is the target of our interest.</li>
+<li><strong>Sample</strong>: is a subset of the population.</li>
+<li><strong>Sample space</strong>: is the collection of all possible outcomes of an experiment.</li>
+<li><strong>Event</strong>: is any subset of the sample space.</li>
+</ul>
+</section>
+<section id="what-is-probability-review" class="slide level2">
+<h2>What is Probability? (review)</h2>
+<ul>
+<li>Intuitive: A probability is a measure of one’s believe in the occurrence of an event.</li>
+<li>Axiomatic: Consider A is an event in the sample space S then:
+<ul>
+<li><span class="math inline">\(0 \leq P(A) \leq 1\)</span></li>
+<li><span class="math inline">\(P(S)=1\)</span></li>
+<li>The probability of the union of mutually exclusive events is the sum of the probabilities of the individual events.</li>
+</ul></li>
+</ul>
+</section>
+<section id="random-variables-review" class="slide level2">
+<h2>Random Variables? (review)</h2>
+<ul>
+<li>Definition: A function that assigns real numbers to the points in a sample space.</li>
+<li>Discrete: values are finite or countably infinite</li>
+<li>Continuous: values in an interval</li>
+<li>Probability distributions:
+<ul>
+<li><em>Discrete</em>: binomial(<span class="math inline">\(n\)</span>,<span class="math inline">\(p\)</span>), geometric(<span class="math inline">\(p\)</span>), Poisson(<span class="math inline">\(\lambda\)</span>), etc.</li>
+<li><em>Continuous</em>: N(<span class="math inline">\(\mu\)</span>,<span class="math inline">\(\sigma^2\)</span>), Gamma(<span class="math inline">\(\alpha\)</span>,<span class="math inline">\(\beta\)</span>), etc.</li>
+<li><em>Sampling distributions</em>: <span class="math inline">\(\chi^2_{df}\)</span>, <span class="math inline">\(F_{u,v}\)</span>, <span class="math inline">\(t_{n}\)</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="expected-values-review" class="slide level2">
+<h2>Expected Values? (review)</h2>
+<p>Let’s <span class="math inline">\(X \sim p(x)\)</span> be a discrete r.v., then the expected value:</p>
+<p><span class="math display">\[E(X) = \sum_{\forall x} x p(x)\]</span></p>
+<p>Let’s <span class="math inline">\(X \sim f(x)\)</span> be a continuous r.v., then the expected value:</p>
+<p><span class="math display">\[E(X) = \int_{\forall x} x f(x) dx \]</span></p>
+<ul>
+<li>Variance: <span class="math inline">\(Var(X) = E(X^2) - E(X)^2\)</span></li>
+<li>Properties:
+<ul>
+<li><span class="math inline">\(E(a) = a\)</span>; <span class="math inline">\(E(aX+b) = aE(X)+b\)</span></li>
+<li><span class="math inline">\(Var(a) = 0\)</span>; <span class="math inline">\(V(aX+b) = a^2 Var(X)\)</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="introduction-to-rrstudio" class="slide level2">
+<h2>Introduction to R/RStudio</h2>
+<ul>
+<li><p><a href="https://www.r-project.org/"><strong>R</strong></a> is a free software environment for statistical computing and graphics.</p></li>
+<li><p><a href="https://www.rstudio.org"><strong>RStudio</strong></a> is an integrated development environment (IDE) for R and Python, with a console, syntax-highlighting editor, and other features.</p></li>
+<li><p><a href="https://quarto.org/"><strong>Quarto</strong></a> is an open-source scientific and technical publishing system.</p></li>
+<li><p>In this class, we will use the UWF RStudio Server. Log in using your <strong>UWF account.</strong> Go to <a href="https://rstudio.hmcse.uwf.edu/">UWF RStudio Server</a></p></li>
+</ul>
+</section>
+<section id="quantiles" class="slide level2">
+<h2>Quantiles</h2>
+<blockquote>
+<p>The number <span class="math inline">\(x_p\)</span> (<span class="math inline">\(0 \leq p \leq 1\)</span>) is called the <span class="math inline">\(p^{th}\)</span> quantile of a random variable <span class="math inline">\(X\)</span> if: <br> - Continuous: <span class="math inline">\(P(X\leq x_p) = p\)</span><br> - Discrete: <span class="math inline">\(P(X &lt; x_p) \leq p\)</span> AND <span class="math inline">\(P(X\leq x_p) \geq p\)</span></p>
+</blockquote>
+<p>We can think of quantiles as points that split the distribution (values of <span class="math inline">\(X\)</span>) into equal intervals.</p>
+<p><strong>Examples</strong>:</p>
+<ul>
+<li>2-quantile <span class="math inline">\(\equiv\)</span> Median (<span class="math inline">\(Q_2=x_{0.5}\)</span>)</li>
+<li>4-quantile <span class="math inline">\(\equiv\)</span> quartiles (<span class="math inline">\(Q_1=x_{0.25}\)</span>,<span class="math inline">\(Q_2\)</span>,<span class="math inline">\(Q_3=x_{0.75}\)</span>)</li>
+<li>100-quantile <span class="math inline">\(\equiv\)</span> percentile (<span class="math inline">\(x_{0.01},x_{0.02},\ldots,x_{0.99}\)</span>)</li>
+<li>10-quantiles <span class="math inline">\(\equiv\)</span> decile (<span class="math inline">\(x_{0.1},x_{0.2},\ldots,x_{0.9}\)</span>)</li>
+</ul>
+</section>
+<section id="quantiles---examples" class="slide level2">
+<h2>Quantiles - Examples</h2>
+<p>Let’s <span class="math inline">\(X\)</span> be a r.v. with PMF:</p>
+<table>
+<thead>
+<tr class="header">
+<th>x</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>P(X=x)</td>
+<td>1/4</td>
+<td>1/4</td>
+<td>1/3</td>
+<td>1/6</td>
+</tr>
+</tbody>
+</table>
+<p>What is <span class="math inline">\(x_{0.75}\)</span> the upper-quartile?</p>
+<p><code>Solution</code>: Find <span class="math inline">\(x_{0.75}\)</span> that satisfies <span class="math inline">\(P(X &lt; x_{0.75}) \leq 0.75\)</span> AND <span class="math inline">\(P(X\leq x_{0.75}) \geq 0.75\)</span>; if more than one value satisfy this then the average of all values is the answer. (<span class="math inline">\(x_{0.75}\)</span>=2)</p>
+<p>What is <span class="math inline">\(x_{0.5}\)</span> the median?</p>
+<p><code>Solution</code>: Find <span class="math inline">\(x_{0.5}\)</span> that satisfies <span class="math inline">\(P(X &lt; x_{0.5}) \leq 0.5\)</span> AND <span class="math inline">\(P(X\leq x_{0.5}) \geq 0.5\)</span>; if more than one value satisfy this then the average of all values is the answer.(<span class="math inline">\(x_{0.5}\)</span>=1.5)</p>
+</section>
+<section id="quantiles---example-in-r" class="slide level2">
+<h2>Quantiles - Example in R</h2>
+<p>Example 1:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>x <span class="ot">=</span> (<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>) <span class="co">#a vector from 1 to 12</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  1  2  3  4  5  6  7  8  9 10 11 12</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>median<span class="ot">=</span> <span class="fu">quantile</span>(x,<span class="at">p=</span><span class="fu">c</span>(<span class="fl">0.5</span>)) <span class="co"># Median of x</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>median</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>50% 
+6.5 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>quartiles<span class="ot">=</span> <span class="fu">quantile</span>(x,<span class="at">p=</span><span class="fu">c</span>(<span class="fl">0.25</span>,<span class="fl">0.5</span>,<span class="fl">0.75</span>)) <span class="co"># quartiles of x</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>quartiles</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> 25%  50%  75% 
+3.75 6.50 9.25 </code></pre>
+</div>
+</div>
+<p>Example 2:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">summary</span>(mtcars<span class="sc">$</span>mpg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  10.40   15.43   19.20   20.09   22.80   33.90 </code></pre>
+</div>
+</div>
+</section>
+<section id="hypothesis-testing" class="slide level2">
+<h2>Hypothesis Testing</h2>
+<blockquote>
+<p>Hypothesis Testing is the process of inferring from a sample whether or not a given statement about the population appears to be true.</p>
+</blockquote>
+<ul>
+<li><p><strong>Null hypothesis</strong> - <span class="math inline">\(H_0\)</span>: it is usually formulated for the express purpose of being rejected. No differences. Example: “The process is in-control” in quality control.</p></li>
+<li><p><strong>Alternative Hypothesis</strong> - <span class="math inline">\(H_1\)</span>: <span class="math inline">\(H_0\)</span> is rejected. It is the statement that the experimenter would like to prove. There are differences. For example, the alternative hypothesis could be “the quality of the product or service is unsatis- factory” or process is out of control”.</p></li>
+</ul>
+</section>
+<section id="hypothesis-testing-1" class="slide level2">
+<h2>Hypothesis Testing</h2>
+<ul>
+<li><p><strong>The Test Statistic</strong> is chosen to be sensitive to the difference between the null hypothesis and the alternative hypothesis.</p></li>
+<li><p><strong>Level of significance (<span class="math inline">\(\alpha\)</span>)</strong>: When the null hypothesis and the alternative hypothesis have been stated, and when the appropriate statistical test has been selected, the next step is to specify a level of significance <span class="math inline">\(\alpha\)</span> and a sample size. Since the level of significance goes into the determination of whether <span class="math inline">\(H_0\)</span> is or is not rejected, the requirement of objectivity demands that <span class="math inline">\(\alpha\)</span> be set in advance. This is also called Type I Error.</p></li>
+</ul>
+<p><span class="math display">\[
+\alpha = P(Reject~H_0~|~ H_0~is~True)
+\]</span></p>
+</section>
+<section id="hypothesis-testing-2" class="slide level2">
+<h2>Hypothesis Testing</h2>
+<ul>
+<li><p><strong>The Null distribution</strong> is the distribution of the test statistic when <span class="math inline">\(H_0\)</span> is <code>TRUE</code>. This defines the rejection region along with the level of significance.</p></li>
+<li><p><strong>The Power</strong>: The probability of rejecting <span class="math inline">\(H_0\)</span> when it is in fact <code>FALSE</code>. <span class="math display">\[Power = 1 - \beta = P(Rejecting~ H_0 | H_0 ~is~FALSE)\]</span></p></li>
+<li><p><strong>P-value</strong> is the probability, computed assuming that <span class="math inline">\(H_0\)</span> is <code>TRUE</code>, that the test statistic would take a value as extreme or more extreme than that actually observed.</p></li>
+<li><p>Accepting or Failing to Reject <span class="math inline">\(H_0\)</span> does not mean that the data prove the null hypothesis to be true. Read the <a href="https://www.tandfonline.com/doi/pdf/10.1080/00031305.2016.1154108?needAccess=true">ASA statement on p-values</a></p></li>
+</ul>
+</section>
+<section id="binomial-test-estimation-of-p" class="slide level2">
+<h2>Binomial Test (Estimation of <span class="math inline">\(p\)</span>)</h2>
+<h4 id="binomial-distribution">Binomial distribution</h4>
+<p>A binomial experiment has the following properties:</p>
+<ul>
+<li>The experiment consists of <span class="math inline">\(n\)</span> identical independent trials.</li>
+<li>Each trial results in one of two possible outcomes, <span class="math inline">\(yes\)</span> or <span class="math inline">\(no\)</span>.</li>
+<li>The probability of success (<span class="math inline">\(yes\)</span>) in each trial is the same, denoted as <span class="math inline">\(p\)</span>.</li>
+<li>The <code>random variable</code> <span class="math inline">\(Y\)</span> is the number of successes (<span class="math inline">\(yesS\)</span>) observed during the <span class="math inline">\(n\)</span> trials.</li>
+</ul>
+</section>
+<section id="binomial-test-estimation-of-p-1" class="slide level2">
+<h2>Binomial Test (Estimation of <span class="math inline">\(p\)</span>)</h2>
+<h4 id="binomial-distribution-1">Binomial distribution</h4>
+<p>Consider <span class="math inline">\(Y \sim binom(n,p)\)</span>, then <span class="math inline">\(Y\)</span> can take on values <span class="math inline">\(0, 1, 2, 3,\ldots, n\)</span>. The probability mass function is given by <span class="math display">\[\begin{align}
+p(y)=&amp;P(Y=y)=\binom{n}{y}p^y q^{n-y}, \\
+y=&amp;0,1,2,\ldots,n ; \qquad 0\leq p \leq 1 ; \quad q=1-p
+\end{align}\]</span> The expected value of <span class="math inline">\(Y\)</span> is: <span class="math display">\[\begin{align}E(Y)=np\end{align}\]</span> The Variance <span class="math inline">\(Y\)</span> is: <span class="math display">\[\begin{align}
+V(Y)=npq
+\end{align}\]</span></p>
+</section>
+<section id="binomial-test-estimation-of-p-2" class="slide level2">
+<h2>Binomial Test (Estimation of <span class="math inline">\(p\)</span>)</h2>
+<p>There are some populations which are conceived as consisting of only two classes:</p>
+<ul>
+<li>member and nonmember,</li>
+<li>married and single,</li>
+<li>male and female.</li>
+</ul>
+<p>For such cases all the population observations will fall into either one or the other of the two classes. If we know that the proportion of cases in one class is <span class="math inline">\(p\)</span>, sometimes we are interested to estimate/test the population proportion <span class="math inline">\(p\)</span>.</p>
+</section>
+<section id="binomial-test-estimation-of-p-3" class="slide level2">
+<h2>Binomial Test (Estimation of <span class="math inline">\(p\)</span>)</h2>
+<p><code>1.DATA:</code> The sample consists of outcomes of <span class="math inline">\(n\)</span> independent trails. Each trail has two outcomes (mutually exclusive= they cannot both occur at same time). Let consider <span class="math inline">\(O_1\)</span> to be <span class="math inline">\(\#\)</span> of observations in class1 and <span class="math inline">\(O_2\)</span> to be the <span class="math inline">\(\#\)</span> of observations in class2. We have <span class="math inline">\(n=O_1+O_2\)</span>.</p>
+<p><code>2.Assumptions:</code> - <span class="math inline">\(n\)</span> observation are independent. - Each trial has probability <span class="math inline">\(p\)</span> of resulting in the outcome <span class="math inline">\(O_1\)</span>, where <span class="math inline">\(p\)</span> is the same for all <span class="math inline">\(n\)</span> trials.</p>
+<p><code>3.Test Statistic:</code> Since we are interested in the probability of an outcome to be in class1, we will let the test statistic <span class="math inline">\(T\)</span> be <code>the number of times the outcomes is in class1</code>. Therefore, the test statistic follows the binomial distribution (null distribution) with <span class="math inline">\(n\)</span> and <span class="math inline">\(\hat{p}\)</span> (the hypothesized proportion) parameters.</p>
+</section>
+<section id="binomial-test-estimation-of-p-4" class="slide level2">
+<h2>Binomial Test (Estimation of <span class="math inline">\(p\)</span>)</h2>
+<p><code>4.Hypothesis: Two-tailed test</code> <span class="math display">\[ H_0: p=p^* \]</span> <span class="math display">\[H_1: p \neq p^* \]</span><br>
+- The rejection region is defined by <span class="math inline">\(t_1\)</span> and <span class="math inline">\(t_2\)</span> as follows: <span class="math display">\[ P( T \leq t_1) \approx \alpha/2 \]</span> <span class="math display">\[ P( T \leq t_2) \approx 1- \alpha/2 \]</span></p>
+<ul>
+<li><code>P-value</code><span class="math inline">\(= 2\times \min\{ P( Y \leq T_{Obs}), P(Y \geq T_{Obs}) \}\)</span>; If greater than 1 then <span class="math inline">\(P-value=1\)</span>.</li>
+</ul>
+</section>
+<section id="binomial-test-estimation-of-p-5" class="slide level2">
+<h2>Binomial Test (Estimation of <span class="math inline">\(p\)</span>)</h2>
+<p><code>4.Hypothesis: Upper-tailed test</code> <span class="math display">\[ H_0: p \leq p^* \]</span> <span class="math display">\[H_1: p &gt; p^* \]</span> The rejection region is defined by <span class="math inline">\(t\)</span> as follows:</p>
+<p><span class="math display">\[P( T \leq t_2) \approx 1-\alpha \]</span></p>
+<ul>
+<li><code>P-value</code> <span class="math inline">\(=P(Y \geq T_{Obs})\)</span></li>
+</ul>
+</section>
+<section id="binomial-test-estimation-of-p-6" class="slide level2">
+<h2>Binomial Test (Estimation of <span class="math inline">\(p\)</span>)</h2>
+<p><code>4.Hypothesis: Lower-tailed test</code> <span class="math display">\[ H_0: p \geq p^* \]</span> <span class="math display">\[H_1: p &lt; p^* \]</span></p>
+<ul>
+<li><p>The rejection region is defined by <span class="math inline">\(t\)</span> as follows: <span class="math display">\[P( T \leq t_1) \approx \alpha \]</span></p></li>
+<li><p><code>P-value</code> <span class="math inline">\(=P(Y \leq T_{Obs})\)</span></p></li>
+</ul>
+</section>
+<section id="binomial-test---example" class="slide level2">
+<h2>Binomial Test - Example</h2>
+<div class="r-fit-text">
+<p>We would like to know whether the passing rate for a course is <span class="math inline">\(75\%\)</span>. We have a sample of <span class="math inline">\(n=15\)</span> students taking the course and only 8 passed. Level of significance is <span class="math inline">\(5\%\)</span>. Test the appropriate hypothesis as follows:</p>
+<ol type="1">
+<li>Define the null and alternative hypotheses <br> <code>Answer:</code> <span class="math display">\[ H_0: p=0.75 \]</span> <span class="math display">\[H_1: p \neq 0.75 \]</span></li>
+<li>Find the Test statistic observed and null distribution<br> <code>Answer:</code> <span class="math inline">\(T_{obs}=8\)</span> and <span class="math inline">\(T\sim bin(15,0.75)\)</span></li>
+<li>Determine critical values (rejection region) <br> <code>Answer:</code> t_1=8 and t_2=14</li>
+<li>Find P-value<br> <code>Answer:</code> p-value=0.1132406</li>
+<li>Decision and Interpretation <br> <code>Answer:</code> Since P-value &gt; 0.05 then Fail to Reject <span class="math inline">\(H_0\)</span>.</li>
+</ol>
+</div>
+</section>
+<section id="binomial-test---example-in-r" class="slide level2">
+<h2>Binomial Test - Example in R</h2>
+<p><code>Solution</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a> <span class="fu">binom.test</span>(<span class="at">x =</span> <span class="dv">8</span>, <span class="co"># number of successes (#students pass)</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a> <span class="at">n =</span> <span class="dv">15</span>, <span class="co"># sample size</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a> <span class="at">p =</span> <span class="fl">0.75</span>, <span class="co"># hypothesized p</span></span>
+<span id="cb9-4"><a href="#cb9-4"></a> <span class="at">alternative =</span> <span class="st">'two.sided'</span>, <span class="co"># two-tailed test</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a> <span class="at">conf.level =</span> <span class="fl">0.95</span>) <span class="co"># Confidence Interval</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Exact binomial test
+
+data:  8 and 15
+number of successes = 8, number of trials = 15, p-value = 0.06998
+alternative hypothesis: true probability of success is not equal to 0.75
+95 percent confidence interval:
+ 0.2658613 0.7873333
+sample estimates:
+probability of success 
+             0.5333333 </code></pre>
+</div>
+</div>
+<ul>
+<li><code>Interpretation</code>: Fail to Reject <span class="math inline">\(H_0\)</span>. There is evidence to support that the passing rate of the course is not significantly different from <span class="math inline">\(75\%\)</span> <span class="math inline">\(p-value=0.787\)</span>; <span class="math inline">\(95\%CI (0.27,0.79)\)</span>.</li>
+</ul>
+</section>
+<section id="sign-test" class="slide level2">
+<h2>Sign Test</h2>
+<ul>
+<li><p>The sign test is a binomial test with <span class="math inline">\(p=0.5\)</span>.</p></li>
+<li><p>It is useful for testing whether one random variable in a pair <span class="math inline">\((X, Y)\)</span> tends to be larger than the other random variable in the pair.</p></li>
+<li><p><code>Example</code>: Consider a clinical investigation to assess the effectiveness of a new drug designed to reduce repetitive behavior, we can compare time before and after taking the new drug.</p></li>
+<li><p><code>This test can be use as alternative to the parametric t-paired test</code>.</p></li>
+</ul>
+</section>
+<section id="sign-test-1" class="slide level2">
+<h2>Sign Test</h2>
+<p><code>1.DATA:</code> The data consist of observations on a bivariate random sample <span class="math inline">\((X_i, Y_i)\)</span>, where <span class="math inline">\(n'\)</span> is the number of the <code>pairs</code>. If the X’s and Y’s are independent, then the more powerful Mann-Whitney test is more appropriate.</p>
+<p>Within each pair <span class="math inline">\((X_i, Y_i)\)</span> a comparison is made and the pair is classified as:</p>
+<ul>
+<li><code>"+"</code> if <span class="math inline">\(X_i &lt; Y_i\)</span></li>
+<li><code>"-"</code> if <span class="math inline">\(X_i &gt; Y_i\)</span></li>
+<li><code>"0"</code> if <span class="math inline">\(X_i = Y_i\)</span> (tie)</li>
+</ul>
+<p><code>2.Assumptions:</code> - The bivariate random variables <span class="math inline">\((X_i, Y_i)\)</span> are mutually independent . - The measurement scale is at least ordinal.</p>
+</section>
+<section id="sign-test-2" class="slide level2">
+<h2>Sign Test</h2>
+<p><code>3.Test Statistic:</code> The test statistic is defined as follows:</p>
+<p><span class="math display">\[T = \text{Total number of +'s}\]</span></p>
+<p>The null distribution is the binomial distribution with <span class="math inline">\(p=0.5\)</span> and <span class="math inline">\(n=\text{the number of non-tied pairs}\)</span>.</p>
+</section>
+<section id="sign-test-3" class="slide level2">
+<h2>Sign Test</h2>
+<p><code>4.Hypothesis: Two-tailed test</code> <span class="math display">\[ H_0:E(X_i) = E(Y_i) \text{ or } P(+) = P(-) \]</span> <span class="math display">\[H_1: E(X_i) \neq E(Y_i) \text{ or } P(+) \neq P(-) \]</span> - The rejection region is defined by <span class="math inline">\(t\)</span> and <span class="math inline">\(n-t\)</span> where: <span class="math display">\[ P( Y \leq t) \approx \alpha/2 \]</span></p>
+<ul>
+<li><p><code>Decision</code>: IF <span class="math inline">\((T_{Obs} \leq t\)</span> or $T_{Obs} n-t) $ REJECT <span class="math inline">\(H_0\)</span></p></li>
+<li><p><code>P-value</code><span class="math inline">\(= 2\times \min\{ P( Y \leq T_{Obs}), P(Y \geq T_{Obs}) \}\)</span></p></li>
+</ul>
+</section>
+<section id="sign-test-4" class="slide level2">
+<h2>Sign Test</h2>
+<p><code>4.Hypothesis: Upper-tailed test</code></p>
+<p><span class="math display">\[ H_0:E(X_i) \geq E(Y_i) \text{ or } P(+) \leq P(-) \]</span> <span class="math display">\[H_1: E(X_i) &lt; E(Y_i) \text{ or } P(+) &gt; P(-) \]</span> - The rejection region is defined by <span class="math inline">\(n-t\)</span> as follows: <span class="math display">\[P( Y \leq t) \approx \alpha \]</span> - <code>Decision</code>: IF <span class="math inline">\(T_{Obs} \geq n-t\)</span> REJECT <span class="math inline">\(H_0\)</span></p>
+<ul>
+<li><code>P-value</code><span class="math inline">\(= P( Y \geq T_{Obs})\)</span></li>
+</ul>
+</section>
+<section id="sign-test-5" class="slide level2">
+<h2>Sign Test</h2>
+<p><code>4.Hypothesis: Lower-tailed test</code></p>
+<p><span class="math display">\[ H_0:E(X_i) \leq E(Y_i) \text{ or } P(+) \geq P(-) \]</span> <span class="math display">\[H_1: E(X_i) &gt; E(Y_i)  \text{ or } P(+) &lt; P(-)\]</span> - The rejection region is defined by <span class="math inline">\(t\)</span> where: <span class="math display">\[P( Y \leq t) \approx \alpha \]</span> - <code>Decision</code>: IF <span class="math inline">\(T_{Obs} \leq t\)</span> REJECT <span class="math inline">\(H_0\)</span></p>
+<ul>
+<li><code>P-value</code><span class="math inline">\(= P( Y \leq T_{Obs})\)</span></li>
+</ul>
+</section>
+<section id="sign-test---example" class="slide level2">
+<h2>Sign Test - Example</h2>
+<ul>
+<li>We are interested in comparing the reaction time before lunch (RTBL) vs the reaction time after lunch (RTAL) using a sample of 18 office workers.</li>
+<li>12 found their RTBL was shorter</li>
+<li>1 could not detect a difference</li>
+</ul>
+<p><code>Is the RTAL significantly longer than RTBL?</code></p>
+<p><code>Solution:</code> <span class="math inline">\(n'=18\)</span> pairs, each is (RTBL,RTAL) = (X,Y)</p>
+<ul>
+<li><code>"+"</code> if <span class="math inline">\(RTBL &lt; RTAL\)</span> (#12)</li>
+<li><code>"-"</code> if <span class="math inline">\(RTBL &gt; RTAL\)</span> (#5)</li>
+<li><code>"0"</code> if <span class="math inline">\(RTBL = RTAL\)</span> (tie) (#1)</li>
+</ul>
+<p>then <span class="math inline">\(n=17\)</span></p>
+</section>
+<section id="sign-test---example-1" class="slide level2">
+<h2>Sign Test - Example</h2>
+<p><code>Solution</code></p>
+<ol type="1">
+<li>Define the null and alternative hypotheses</li>
+</ol>
+<p><span class="math display">\[ H_0: E(RTBL) \leq E(RTAL) \text{ OR } P(+) \leq P(-) \]</span> <span class="math display">\[H_1: E(RTBL) &lt; E(RTAL) \text{ OR } P(+) &gt; P(-) \]</span></p>
+<p>This is an upper-tailed test.</p>
+<ol start="2" type="1">
+<li><p>Test statistic: <span class="math inline">\(T_{obs}=12\)</span> and <span class="math inline">\(T\sim bin(17,0.5)\)</span></p></li>
+<li><p>Determine critical values (rejection region): t = 12</p></li>
+<li><p>p-value=0.0717316</p></li>
+<li><p>Decision: P-value &lt; 0.05 then Reject <span class="math inline">\(H_0\)</span>.</p></li>
+</ol>
+</section>
+<section id="sign-test---example-r" class="slide level2">
+<h2>Sign Test - Example R</h2>
+<p><code>Solution</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a> <span class="fu">binom.test</span>(<span class="at">x =</span> <span class="dv">12</span>,</span>
+<span id="cb11-2"><a href="#cb11-2"></a> <span class="at">n =</span> <span class="dv">17</span>, </span>
+<span id="cb11-3"><a href="#cb11-3"></a> <span class="at">p =</span> <span class="fl">0.5</span>,</span>
+<span id="cb11-4"><a href="#cb11-4"></a> <span class="at">alternative =</span> <span class="st">'g'</span>,</span>
+<span id="cb11-5"><a href="#cb11-5"></a> <span class="at">conf.level =</span> <span class="fl">0.95</span>) <span class="co"># Confidence Interval</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Exact binomial test
+
+data:  12 and 17
+number of successes = 12, number of trials = 17, p-value = 0.07173
+alternative hypothesis: true probability of success is greater than 0.5
+95 percent confidence interval:
+ 0.4780823 1.0000000
+sample estimates:
+probability of success 
+             0.7058824 </code></pre>
+</div>
+</div>
+<ul>
+<li><code>Interpretation</code>: Fail to Reject <span class="math inline">\(H_0\)</span>. There is evidence to support that the data is compatible with the null hypothesis <span class="math inline">\(p-value=0.071\)</span>; <span class="math inline">\(95\%CI (0.48,1)\)</span>.</li>
+</ul>
+</section>
+<section id="tolerance-limits" class="slide level2">
+<h2>Tolerance limits</h2>
+<ul>
+<li>Confidence limits are limits within which we expect a given population parameter, such as the mean, to lie.</li>
+<li>Tolerance limits are limits within which we expect a stated proportion of the population to lie with a certain probability. Formally:</li>
+</ul>
+<p><span class="math display">\[
+P(X_{(r)} \leq \text{a fraction q of the pop.} \leq X_{(n+m-1)}) \geq 1-\alpha
+\]</span></p>
+</section>
+<section id="tolerance-limits-1" class="slide level2">
+<h2>Tolerance limits</h2>
+<p>The tolerance limits can be use to find <strong>A sample size <span class="math inline">\(n\)</span></strong> needed to have at least <span class="math inline">\(q\)</span> proportion of the population between the tolerance limits with <span class="math inline">\(1-\alpha\)</span> probability.</p>
+<p><span class="math display">\[ n \approx  \frac{1}{4} \chi^2_{1-\alpha;2(r+m)}  \frac{1+q}{1-q} + \frac{1}{2} (r+m-1)\]</span></p>
+<p>where <span class="math inline">\(\chi^2_{1-\alpha;2(r+m)}\)</span> is the quantile of a chi-squared random variable.</p>
+</section>
+<section id="tolerance-limits-2" class="slide level2">
+<h2>Tolerance limits</h2>
+<p>We can find The percent <span class="math inline">\(q\)</span> of the population that is within the tolerance limits, given n, <span class="math inline">\(1-\alpha\)</span>, <span class="math inline">\(r\)</span>, and <span class="math inline">\(m\)</span>:</p>
+<p><span class="math display">\[q=\frac{4n-2(r+m-1)-\chi^2_{1-\alpha;2(r+m)}}{4n-2(r+m-1) + \chi^2_{1-\alpha;2(r+m)}}\]</span></p>
+</section>
+<section id="tolerance-limits---example" class="slide level2">
+<h2>Tolerance limits - Example</h2>
+<p>Electric seat adjusters for a luxury car manufacturer wants to know what <code>range</code> of vertical adjustment is needed to be <span class="math inline">\(90\%\)</span> sure that at least <span class="math inline">\(80\%\)</span> of population of potential buyers will be able to adjust their seat.</p>
+<ul>
+<li>Range: r=1, m=1; <span class="math inline">\(1-\alpha\)</span> = 0.9; <span class="math inline">\(q\)</span> = 0.8</li>
+</ul>
+<p>To answer the question we need to find <span class="math inline">\(n\)</span></p>
+<h4 id="r-code-implementing-the-formula">R code implementing the formula</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>n<span class="ot">=</span> <span class="fl">0.25</span><span class="sc">*</span><span class="fu">qchisq</span>(<span class="fl">0.9</span>,<span class="dv">2</span><span class="sc">*</span>(<span class="dv">1</span><span class="sc">+</span><span class="dv">1</span>))<span class="sc">*</span>(<span class="dv">1</span><span class="fl">+0.8</span>)<span class="sc">/</span>(<span class="dv">1</span><span class="fl">-0.8</span>) <span class="sc">+</span> <span class="fl">0.5</span><span class="sc">*</span>(<span class="dv">1</span><span class="sc">+</span><span class="dv">1-1</span>)</span>
+<span id="cb13-2"><a href="#cb13-2"></a>n</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 18.00374</code></pre>
+</div>
+</div>
+<p>Next, we need to randomly pick 18 people from the population of potential buyers and collect their adjustments.</p>
+</section>
+<section id="tolerance-limits---example-in-r" class="slide level2">
+<h2>Tolerance limits - Example in R</h2>
+<h4 id="r-code-with-tolerance-package">R code with tolerance package</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co">#install.packages("tolerance") # install package</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="fu">library</span>(tolerance)</span>
+<span id="cb15-3"><a href="#cb15-3"></a></span>
+<span id="cb15-4"><a href="#cb15-4"></a><span class="co"># How to find Q</span></span>
+<span id="cb15-5"><a href="#cb15-5"></a><span class="fu">distfree.est</span>(<span class="at">n =</span> <span class="cn">NULL</span>, <span class="co"># to find sample size</span></span>
+<span id="cb15-6"><a href="#cb15-6"></a>             <span class="at">alpha =</span> <span class="fl">0.1</span>, <span class="co"># 1-alpha is the confidence</span></span>
+<span id="cb15-7"><a href="#cb15-7"></a>             <span class="at">P=</span> <span class="fl">0.8</span>, <span class="co"># fraction of the population </span></span>
+<span id="cb15-8"><a href="#cb15-8"></a>             <span class="at">side =</span> <span class="dv">2</span> <span class="co"># two sided interval</span></span>
+<span id="cb15-9"><a href="#cb15-9"></a>               )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    0.8
+0.1  18</code></pre>
+</div>
+</div>
+</section>
+<section id="contingency-tables" class="slide level2">
+<h2>Contingency Tables</h2>
+<p><code>Definition</code> A contingency table is an array of natural numbers in matrix form where those numbers represent counts / frequencies</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: center;">Col 1</th>
+<th style="text-align: center;">Col2</th>
+<th style="text-align: center;">Totals</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>row 1</strong></td>
+<td style="text-align: center;">a</td>
+<td style="text-align: center;">b</td>
+<td style="text-align: center;">a+b</td>
+</tr>
+<tr class="even">
+<td><strong>row 2</strong></td>
+<td style="text-align: center;">c</td>
+<td style="text-align: center;">d</td>
+<td style="text-align: center;">c+d</td>
+</tr>
+<tr class="odd">
+<td><strong>Totals</strong></td>
+<td style="text-align: center;">a+c</td>
+<td style="text-align: center;">b+d</td>
+<td style="text-align: center;">a+b+c+d</td>
+</tr>
+</tbody>
+</table>
+<p>2 x 2 contingency table</p>
+</section>
+<section id="contingency-tables-1" class="slide level2">
+<h2>Contingency Tables</h2>
+<h3 id="chi-squared-test-for-differences-in-probabilities">Chi-squared Test for differences in Probabilities</h3>
+<p><code>Data</code></p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: center;">Class 1</th>
+<th style="text-align: center;">Class2</th>
+<th style="text-align: center;"><code>Totals</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Population 1</strong></td>
+<td style="text-align: center;">a (<span class="math inline">\(p_1\)</span>)</td>
+<td style="text-align: center;">b</td>
+<td style="text-align: center;"><span class="math inline">\(n_1\)</span> = a+b</td>
+</tr>
+<tr class="even">
+<td><strong>Population 2</strong></td>
+<td style="text-align: center;">c (<span class="math inline">\(p_2\)</span>)</td>
+<td style="text-align: center;">d</td>
+<td style="text-align: center;"><span class="math inline">\(n_2\)</span> = c+d</td>
+</tr>
+<tr class="odd">
+<td><strong><code>Totals</code></strong></td>
+<td style="text-align: center;"><span class="math inline">\(c_1\)</span> = a+c</td>
+<td style="text-align: center;"><span class="math inline">\(c_2\)</span>= b+d</td>
+<td style="text-align: center;">N = a+b+c+d</td>
+</tr>
+</tbody>
+</table>
+<p>2 x 2 contingency table</p>
+<p><code>Assumption</code></p>
+<ul>
+<li>Each sample is Random Sample</li>
+<li>The 2 samples are independent</li>
+<li>Each observation can be classified into class 1 and class 2</li>
+</ul>
+</section>
+<section id="contingency-tables-2" class="slide level2">
+<h2>Contingency Tables</h2>
+<h3 id="chi-squared-test-for-differences-in-probabilities-1">Chi-squared Test for differences in Probabilities</h3>
+<p><code>Test Statistic</code></p>
+<p><span class="math display">\[ T= \frac{\sqrt{N} (ad - bc)}{\sqrt{n_1n_2c_1c_1}}\]</span> <code>Null distirbution</code>: <span class="math inline">\(T \sim N(0,1)\)</span></p>
+</section>
+<section id="contingency-tables-3" class="slide level2">
+<h2>Contingency Tables</h2>
+<h3 id="chi-squared-test-for-differences-in-probabilities-2">Chi-squared Test for differences in Probabilities</h3>
+<p><code>Hypothesis: Two-tailed test</code> <span class="math display">\[ H_0:p_1 = p_2 \]</span> <span class="math display">\[H_1: p_1 \neq p_2 \]</span> - <span class="math inline">\(p_1\)</span> the probability that a randomly selected obs from the population 1 will be in class 1.</p>
+<ul>
+<li><p><code>P-value</code><span class="math inline">\(= 2\times \min\{ P( T \leq T_{Obs}), P(T \geq T_{Obs}) \}\)</span></p></li>
+<li><p><code>Decision</code>: IF p_value &lt; <span class="math inline">\(\alpha\)</span> then REJECT <span class="math inline">\(H_0\)</span></p></li>
+</ul>
+</section>
+<section id="contingency-tables-4" class="slide level2">
+<h2>Contingency Tables</h2>
+<h3 id="chi-squared-test-for-differences-in-probabilities-3">Chi-squared Test for differences in Probabilities</h3>
+<p><code>Hypothesis: Lower-tailed test</code> <span class="math display">\[ H_0:p_1 = p_2 \]</span> <span class="math display">\[H_1: p_1 &lt; p_2 \]</span> - <span class="math inline">\(p_1\)</span> the probability that a randomly selected obs from the population 1 will be in class 1.</p>
+<ul>
+<li><p><code>P-value</code><span class="math inline">\(= P( T \leq T_{Obs})\)</span></p></li>
+<li><p><code>Decision</code>: IF p_value &lt; <span class="math inline">\(\alpha\)</span> then REJECT <span class="math inline">\(H_0\)</span></p></li>
+</ul>
+</section>
+<section id="contingency-tables-5" class="slide level2">
+<h2>Contingency Tables</h2>
+<h3 id="chi-squared-test-for-differences-in-probabilities-4">Chi-squared Test for differences in Probabilities</h3>
+<p><code>Hypothesis: Upper-tailed test</code> <span class="math display">\[ H_0:p_1 = p_2 \]</span> <span class="math display">\[H_1: p_1 &gt; p_2 \]</span> - <span class="math inline">\(p_1\)</span> the probability that a randomly selected obs from the population 1 will be in class 1.</p>
+<ul>
+<li><p><code>P-value</code><span class="math inline">\(= P( T \geq T_{Obs})\)</span></p></li>
+<li><p><code>Decision</code>: IF p_value &lt; <span class="math inline">\(\alpha\)</span> then REJECT <span class="math inline">\(H_0\)</span></p></li>
+</ul>
+</section>
+<section id="chi-squared-test---example-1" class="slide level2">
+<h2>Chi-squared Test - Example 1</h2>
+<p>The number of items in two car loads.</p>
+<p><code>Data</code></p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: center;">Defective</th>
+<th style="text-align: center;">Non defective</th>
+<th style="text-align: center;"><code>Totals</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Carload 1</strong></td>
+<td style="text-align: center;">a =13</td>
+<td style="text-align: center;">b=73</td>
+<td style="text-align: center;"><span class="math inline">\(n_1\)</span> = 86</td>
+</tr>
+<tr class="even">
+<td><strong>Carload 2</strong></td>
+<td style="text-align: center;">c = 17</td>
+<td style="text-align: center;">d=57</td>
+<td style="text-align: center;"><span class="math inline">\(n_2\)</span> = 74</td>
+</tr>
+<tr class="odd">
+<td><strong><code>Totals</code></strong></td>
+<td style="text-align: center;"><span class="math inline">\(c_1\)</span> = 30</td>
+<td style="text-align: center;"><span class="math inline">\(c_2\)</span>= 130</td>
+<td style="text-align: center;">N = 160</td>
+</tr>
+</tbody>
+</table>
+<p>2 x 2 contingency table</p>
+<p><code>Question</code>: Test whether there are differences in proportions of defective items between the two carloads.</p>
+</section>
+<section id="chi-squared-test---example-1-1" class="slide level2">
+<h2>Chi-squared Test - Example 1</h2>
+<div class="r-fit-text">
+<ol type="1">
+<li>Define the null and alternative hypotheses <br> <code>Answer:</code> <span class="math display">\[ H_0: p_1 = p_2 \]</span> <span class="math display">\[H_1: p_1 \neq p_2 \]</span> This is an two-tailed test.</li>
+<li>Find the Test statistic observed and null distribution<br> <code>Answer:</code> <span class="math inline">\(T_{obs}=-1.2695\)</span> and <span class="math inline">\(T\sim N(0,1)\)</span></li>
+<li>Determine critical values (rejection region) <br> <code>Answer:</code> +/- -1.959964</li>
+<li>Find P-value<br> <code>Answer:</code> p-value=0.2042628</li>
+<li>Decision <br> <code>Answer:</code> Since P-value &gt; 0.05 then Fail to Reject <span class="math inline">\(H_0\)</span>.</li>
+</ol>
+</div>
+</section>
+<section id="chi-squared-test---example-1-with-r" class="slide level2">
+<h2>Chi-squared Test - Example 1 with R</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>data <span class="ot">=</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">13</span>,<span class="dv">17</span>),<span class="fu">c</span>(<span class="dv">73</span>,<span class="dv">57</span>)) <span class="co"># create data</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a><span class="fu">chisq.test</span>(data, <span class="co"># table data</span></span>
+<span id="cb17-3"><a href="#cb17-3"></a>           <span class="at">correct =</span> <span class="cn">FALSE</span> <span class="co"># find p-value without Yates' correction</span></span>
+<span id="cb17-4"><a href="#cb17-4"></a>           ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's Chi-squared test
+
+data:  data
+X-squared = 1.6116, df = 1, p-value = 0.2043</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">chisq.test</span>(data, <span class="co"># table data</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a>           <span class="at">correct =</span> <span class="cn">TRUE</span> <span class="co"># find p-value with Yates' correction</span></span>
+<span id="cb19-3"><a href="#cb19-3"></a>           ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's Chi-squared test with Yates' continuity correction
+
+data:  data
+X-squared = 1.1372, df = 1, p-value = 0.2863</code></pre>
+</div>
+</div>
+<ul>
+<li><code>Interpretation</code>: Fail to Reject <span class="math inline">\(H_0\)</span>. There is evidence to support that the data is compatible with equal proportions <span class="math inline">\(p-value=0.2\)</span>.</li>
+<li>Note: <span class="math inline">\(T_{obs}^2 = (-1.2695)^2\)</span> = 1.6116303</li>
+</ul>
+</section>
+<section id="chi-squared-test---example-2" class="slide level2">
+<h2>Chi-squared Test - Example 2</h2>
+<p>A new toothpaste is tested for men and women preferences.</p>
+<p><code>Data</code></p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: center;">Like</th>
+<th style="text-align: center;">Do not like</th>
+<th style="text-align: center;"><code>Totals</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Men</strong></td>
+<td style="text-align: center;">a =64</td>
+<td style="text-align: center;">b=36</td>
+<td style="text-align: center;"><span class="math inline">\(n_1\)</span> = 100</td>
+</tr>
+<tr class="even">
+<td><strong>Women</strong></td>
+<td style="text-align: center;">c = 74</td>
+<td style="text-align: center;">d=26</td>
+<td style="text-align: center;"><span class="math inline">\(n_2\)</span> = 100</td>
+</tr>
+<tr class="odd">
+<td><strong><code>Totals</code></strong></td>
+<td style="text-align: center;"><span class="math inline">\(c_1\)</span> = 138</td>
+<td style="text-align: center;"><span class="math inline">\(c_2\)</span>= 62</td>
+<td style="text-align: center;">N = 200</td>
+</tr>
+</tbody>
+</table>
+<p>2 x 2 contingency table</p>
+<p><code>Question</code>: Do men and women differ in their preferences regarding the new toothpaste?</p>
+</section>
+<section id="chi-squared-test---example-2-1" class="slide level2">
+<h2>Chi-squared Test - Example 2</h2>
+<div class="r-fit-text">
+<ol type="1">
+<li>Define the null and alternative hypotheses <br> <code>Answer:</code> <span class="math display">\[ H_0: p_1 = p_2 \]</span> <span class="math display">\[H_1: p_1 \neq p_2 \]</span> This is an two-tailed test.</li>
+<li>Find the Test statistic observed and null distribution<br> <code>Answer:</code> <span class="math inline">\(T_{obs}=-1.53\)</span> and <span class="math inline">\(T\sim N(0,1)\)</span></li>
+<li>Determine critical values (rejection region) <br> <code>Answer:</code> +/- -1.959964</li>
+<li>Find P-value<br> <code>Answer:</code> p-value=0.1260167</li>
+<li>Decision and Interpretation <br> <code>Answer:</code> Since P-value &gt; 0.05 then Fail to Reject <span class="math inline">\(H_0\)</span>.</li>
+</ol>
+<p>There is insufficient evidence to support that men and women differ in their preferences regarding the new toothpaste.</p>
+</div>
+</section>
+<section id="contingency-tables-6" class="slide level2">
+<h2>Contingency Tables</h2>
+<h3 id="fishers-exact-test">Fisher’s Exact Test</h3>
+<p><code>Data</code></p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: center;">col 1</th>
+<th style="text-align: center;">col 2</th>
+<th style="text-align: center;"><code>Totals</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>row 1</strong></td>
+<td style="text-align: center;">X (<span class="math inline">\(p_1\)</span>)</td>
+<td style="text-align: center;">r-X</td>
+<td style="text-align: center;">r</td>
+</tr>
+<tr class="even">
+<td><strong>row 2</strong></td>
+<td style="text-align: center;">c-X (<span class="math inline">\(p_2\)</span>)</td>
+<td style="text-align: center;">N-r-c+X</td>
+<td style="text-align: center;">N-r</td>
+</tr>
+<tr class="odd">
+<td><strong><code>Totals</code></strong></td>
+<td style="text-align: center;">c</td>
+<td style="text-align: center;">N-c</td>
+<td style="text-align: center;">N</td>
+</tr>
+</tbody>
+</table>
+<p>2 x 2 contingency table</p>
+<p><code>Assumption</code></p>
+<ul>
+<li>Each observation can be in one cell</li>
+<li>The row and column totals are fixed.</li>
+</ul>
+</section>
+<section id="contingency-tables-7" class="slide level2">
+<h2>Contingency Tables</h2>
+<h3 id="fishers-exact-test-1">Fisher’s Exact Test</h3>
+<p><code>Test Statistic</code></p>
+<p>T = X = number of obs. in row 1 and col 1.</p>
+<p><span class="math display">\[ T (H_0) \sim hypergeometric(N,r,C) \]</span> The PMF is:</p>
+<p><span class="math display">\[ P(T=x) = \frac{\binom{r}{x}\binom{N-r}{c-x}}{\binom{N}{c}} \]</span> x=0,1,2,…,min(r,m)</p>
+</section>
+<section id="contingency-tables-8" class="slide level2">
+<h2>Contingency Tables</h2>
+<h3 id="fishers-exact-test-2">Fisher’s Exact Test</h3>
+<p><code>Hypothesis: Two-tailed test</code> <span class="math display">\[ H_0:p_1 = p_2 \]</span> <span class="math display">\[H_1: p_1 \neq p_2 \]</span> - <span class="math inline">\(p_1\)</span> the probability that a randomly selected obs from the row 1 will be in col 1.</p>
+<ul>
+<li><p><code>P-value</code><span class="math inline">\(= 2\times \min\{ P( T \leq T_{Obs}), P(T \geq T_{Obs}) \}\)</span></p></li>
+<li><p><code>Decision</code>: IF p_value &lt; <span class="math inline">\(\alpha\)</span> then REJECT <span class="math inline">\(H_0\)</span></p></li>
+</ul>
+</section>
+<section id="contingency-tables-9" class="slide level2">
+<h2>Contingency Tables</h2>
+<h3 id="fishers-exact-test-3">Fisher’s Exact Test</h3>
+<p><code>Hypothesis: Lower-tailed test</code> <span class="math display">\[ H_0:p_1 = p_2 \]</span> <span class="math display">\[H_1: p_1 &lt; p_2 \]</span> - <span class="math inline">\(p_1\)</span> the probability that a randomly selected obs from the row 1 will be in col 1.</p>
+<ul>
+<li><p><code>P-value</code><span class="math inline">\(= P( T \leq T_{Obs})\)</span></p></li>
+<li><p><code>Decision</code>: IF p_value &lt; <span class="math inline">\(\alpha\)</span> then REJECT <span class="math inline">\(H_0\)</span></p></li>
+</ul>
+</section>
+<section id="contingency-tables-10" class="slide level2">
+<h2>Contingency Tables</h2>
+<h3 id="fishers-exact-test-4">Fisher’s Exact Test</h3>
+<p><code>Hypothesis: Upper-tailed test</code> <span class="math display">\[ H_0:p_1 = p_2 \]</span> <span class="math display">\[H_1: p_1 &gt; p_2 \]</span> - <span class="math inline">\(p_1\)</span> the probability that a randomly selected obs from the row 1 will be in col 1.</p>
+<ul>
+<li><p><code>P-value</code><span class="math inline">\(= P( T \geq T_{Obs})\)</span></p></li>
+<li><p><code>Decision</code>: IF p_value &lt; <span class="math inline">\(\alpha\)</span> then REJECT <span class="math inline">\(H_0\)</span></p></li>
+</ul>
+</section>
+<section id="fishers-exact-test---example" class="slide level2">
+<h2>Fisher’s Exact Test - Example</h2>
+<p>14 newly hired business majors. - 10 males and 4 females - 2 Jobs are needed: 10 Tellers and 4 Account Rep.</p>
+<p><code>Data</code></p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: center;">Account Rep.</th>
+<th style="text-align: center;">Tellers</th>
+<th style="text-align: center;"><code>Totals</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Males </strong></td>
+<td style="text-align: center;">X=1</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">r = 10</td>
+</tr>
+<tr class="even">
+<td><strong>Females </strong></td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr class="odd">
+<td><strong><code>Totals</code></strong></td>
+<td style="text-align: center;">c= 4</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">N = 14</td>
+</tr>
+</tbody>
+</table>
+<p>2 x 2 contingency table</p>
+<p><code>Question</code>: Test if females are more likely than males to get the account Rep.&nbsp;job.</p>
+</section>
+<section id="fishers-exact-test---example-1" class="slide level2">
+<h2>Fisher’s Exact Test - Example</h2>
+<div class="r-fit-text">
+<ol type="1">
+<li>Define the null and alternative hypotheses <br> <code>Answer:</code> <span class="math display">\[ H_0: p_1 \geq p_2 \]</span> <span class="math display">\[H_1: p_1 &lt; p_2 \]</span> This is an lower-tailed test.</li>
+<li>Find the Test statistic observed and null distribution<br> <code>Answer:</code> <span class="math inline">\(T_{obs}=X=1\)</span> and <span class="math inline">\(T\sim hypergeometric(14,10,4)\)</span>`</li>
+<li>Find P-value<br> <code>Answer:</code> p-value=0.040959</li>
+<li>Decision and Interpretation <br> <code>Answer:</code> Since P-value &lt; 0.05 then Reject <span class="math inline">\(H_0\)</span>.</li>
+</ol>
+</div>
+</section>
+<section id="fishers-exact-test---example-with-r" class="slide level2">
+<h2>Fisher’s Exact Test - Example with R</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>data <span class="ot">=</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>),<span class="fu">c</span>(<span class="dv">9</span>,<span class="dv">1</span>)) <span class="co"># create data</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a><span class="fu">fisher.test</span>(data,<span class="at">alternative =</span> <span class="st">"l"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Fisher's Exact Test for Count Data
+
+data:  data
+p-value = 0.04096
+alternative hypothesis: true odds ratio is less than 1
+95 percent confidence interval:
+ 0.000000 0.897734
+sample estimates:
+odds ratio 
+0.05545513 </code></pre>
+</div>
+</div>
+<ul>
+<li><code>Interpretation</code>: Reject <span class="math inline">\(H_0\)</span>. There is evidence to support that the data is compatible with the assumption that females are more likely than males to get the account Rep.&nbsp;job.</li>
+</ul>
+</section>
+<section id="the-median-test" class="slide level2">
+<h2>The Median Test</h2>
+<div class="r-fit-text">
+<p>Test for equal medians.</p>
+<p><span class="math display">\[H_0:  \text{All C populations have the same median} \]</span> <span class="math display">\[H_1:  \text{At least two populations have different medians} \]</span></p>
+<p><code>Data</code></p>
+<ul>
+<li>C random samples are independent</li>
+<li>Arrange the data as follows:
+<ul>
+<li>Find the Grand Median (GM), that is the median of the combined samples.</li>
+<li>Set up a 2 by C contingency table as follows:</li>
+</ul></li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: center;">Sample 1</th>
+<th style="text-align: center;">Sample 2</th>
+<th style="text-align: center;">…</th>
+<th style="text-align: center;">Sample C</th>
+<th style="text-align: center;"><strong><code>Totals</code></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(&gt;\)</span> GM</td>
+<td style="text-align: center;"><span class="math inline">\(O_{11}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(O_{12}\)</span></td>
+<td style="text-align: center;">…</td>
+<td style="text-align: center;"><span class="math inline">\(O_{1C}\)</span></td>
+<td style="text-align: center;">a</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\leq\)</span> GM</td>
+<td style="text-align: center;"><span class="math inline">\(O_{21}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(O_{22}\)</span></td>
+<td style="text-align: center;">…</td>
+<td style="text-align: center;"><span class="math inline">\(O_{2C}\)</span></td>
+<td style="text-align: center;">b</td>
+</tr>
+<tr class="odd">
+<td><strong><code>Totals</code></strong></td>
+<td style="text-align: center;"><span class="math inline">\(n_{1}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n_{1}\)</span></td>
+<td style="text-align: center;">…</td>
+<td style="text-align: center;"><span class="math inline">\(n_{C}\)</span></td>
+<td style="text-align: center;">N</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="the-median-test-1" class="slide level2">
+<h2>The Median Test</h2>
+<ul>
+<li><code>Test Statistic</code></li>
+</ul>
+<p><span class="math display">\[ T = \frac{N^2}{ab} \sum_{i=1}^{C} \frac{O^2_{1i}}{n_i}  - \frac{Na}{b} \]</span></p>
+<p>Under Null hypothesis: <span class="math inline">\(T \sim \chi^2_{C-1}\)</span>; a chi-square distribution with C-1 degrees of freedom.</p>
+<ul>
+<li><p><code>P-value</code> <span class="math inline">\(=P(T \geq T_{obs})\)</span></p></li>
+<li><p><code>Decision</code>: IF p_value &lt; <span class="math inline">\(\alpha\)</span> then REJECT <span class="math inline">\(H_0\)</span></p></li>
+</ul>
+</section>
+<section id="the-median-test---example" class="slide level2">
+<h2>The Median Test - Example</h2>
+<ul>
+<li>4 methods of growing corn is used.</li>
+<li>The yield per acre is measured and compared across the 4 methods.</li>
+</ul>
+<p><code>Question</code>: Do the medians yield per acre differ across the 4 methods.</p>
+</section>
+<section id="the-median-test---example-1" class="slide level2">
+<h2>The Median Test - Example</h2>
+<div class="r-fit-text">
+<ol type="1">
+<li><p>Define the null and alternative hypotheses <span class="math display">\[H_0:  \text{All methods have the same median yield per acre} \]</span> <span class="math display">\[H_1:  \text{At least two of the methods medians differ} \]</span></p></li>
+<li><p>Set up data: See lecture notes</p></li>
+<li><p><code>Test statistic</code>:</p></li>
+</ol>
+<p><span class="math display">\[T_{obs} = 17.6\]</span></p>
+<p>Under Null hypothesis: <span class="math inline">\(T \sim \chi^2_{3}\)</span></p>
+</div>
+</section>
+<section id="the-median-test---example-r" class="slide level2">
+<h2>The Median Test - Example R</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="co"># install.packages("agricolae")</span></span>
+<span id="cb23-2"><a href="#cb23-2"></a><span class="fu">library</span>(agricolae) <span class="co"># package</span></span>
+<span id="cb23-3"><a href="#cb23-3"></a></span>
+<span id="cb23-4"><a href="#cb23-4"></a><span class="fu">data</span>(corn) <span class="co"># data</span></span>
+<span id="cb23-5"><a href="#cb23-5"></a></span>
+<span id="cb23-6"><a href="#cb23-6"></a><span class="co"># The Median Test</span></span>
+<span id="cb23-7"><a href="#cb23-7"></a>median_test_out<span class="ot">=</span> <span class="fu">Median.test</span>(corn<span class="sc">$</span>observation,corn<span class="sc">$</span>method)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+The Median Test for corn$observation ~ corn$method 
+
+Chi Square = 17.54306   DF = 3   P.Value 0.00054637
+Median = 89 
+
+  Median  r Min Max   Q25   Q75
+1   91.0  9  83  96 89.00 92.00
+2   86.0 10  81  91 83.25 89.75
+3   95.0  7  91 101 93.50 98.00
+4   80.5  8  77  82 78.75 81.00
+
+Post Hoc Analysis
+
+Groups according to probability of treatment differences and alpha level.
+
+Treatments with the same letter are not significantly different.
+
+  corn$observation groups
+3             95.0      a
+1             91.0      b
+2             86.0      b
+4             80.5      c</code></pre>
+</div>
+</div>
+</section>
+<section id="the-median-test---example-r-1" class="slide level2">
+<h2>The Median Test - Example R</h2>
+<p>Multiple Comparison</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="co"># Visualization</span></span>
+<span id="cb25-2"><a href="#cb25-2"></a><span class="fu">plot</span>(median_test_out)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="SlidesSTA6507_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" class="r-stretch"></section>
+<section id="goodness-of-fit-tests---gof" class="slide level2">
+<h2>Goodness-of-Fit Tests - GOF</h2>
+<p>Test whether a sample is coming from a known distribution. For example, test the normality assumption.</p>
+<ul>
+<li>Kolmogorov-Smirnov Test (KS)</li>
+<li>Shapiro-Wilk Test (SW)</li>
+<li>Chi-squared Test</li>
+</ul>
+</section>
+<section id="goodness-of-fit-tests---gof-1" class="slide level2">
+<h2>Goodness-of-Fit Tests - GOF</h2>
+<p>Test if <code>speed</code> data is normally distributed.</p>
+<p><code>Data</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">hist</span>(cars<span class="sc">$</span>speed) <span class="co"># histogram of speed</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>mean_speed <span class="ot">=</span> <span class="fu">mean</span>(cars<span class="sc">$</span>speed) <span class="co"># mean speed</span></span>
+<span id="cb27-2"><a href="#cb27-2"></a>mean_speed</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 15.4</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>sd_speed <span class="ot">=</span> <span class="fu">sd</span>(cars<span class="sc">$</span>speed) <span class="co"># standard deviation speed</span></span>
+<span id="cb29-2"><a href="#cb29-2"></a>sd_speed</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5.287644</code></pre>
+</div>
+</div>
+<img data-src="SlidesSTA6507_files/figure-revealjs/unnamed-chunk-11-1.png" width="960" class="r-stretch"></section>
+<section id="normality-test" class="slide level2">
+<h2>Normality Test</h2>
+<h4 id="shapiro-wilk-test">Shapiro Wilk Test</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="fu">shapiro.test</span>(cars<span class="sc">$</span>speed)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  cars$speed
+W = 0.97765, p-value = 0.4576</code></pre>
+</div>
+</div>
+<p><code>Interpretation</code>: Fail to reject H0. There is evidence to support that data is normally distributed.</p>
+<h4 id="kolmogorov-smirnov-test">Kolmogorov Smirnov Test</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="fu">ks.test</span>(cars<span class="sc">$</span>speed,<span class="st">'pnorm'</span>,mean_speed,sd_speed)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Asymptotic one-sample Kolmogorov-Smirnov test
+
+data:  cars$speed
+D = 0.068539, p-value = 0.9729
+alternative hypothesis: two-sided</code></pre>
+</div>
+</div>
+<p><code>Interpretation</code>: Fail to reject H0. There is evidence to support that data is normally distributed.</p>
+</section>
+<section id="normality-test-1" class="slide level2">
+<h2>Normality Test</h2>
+<h4 id="chi-squared-test">Chi-squared Test</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a>h <span class="ot">=</span> <span class="fu">hist</span>(cars<span class="sc">$</span>speed,<span class="at">plot =</span> <span class="cn">FALSE</span>) <span class="co"># hist of data</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a>Ob <span class="ot">=</span> h<span class="sc">$</span>counts <span class="co"># observed frequencies in classes</span></span>
+<span id="cb36-2"><a href="#cb36-2"></a>Ob</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  2  7 17 17  7</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a>p1 <span class="ot">=</span> <span class="fu">pnorm</span>(<span class="dv">5</span>,mean_speed,sd_speed)<span class="co"># P(X &lt;= 5)</span></span>
+<span id="cb38-2"><a href="#cb38-2"></a>p2 <span class="ot">=</span> <span class="fu">pnorm</span>(<span class="dv">10</span>,mean_speed,sd_speed)<span class="sc">-</span><span class="fu">pnorm</span>(<span class="dv">5</span>,mean_speed,sd_speed) <span class="co"># P(5&lt;=X &lt;= 10)</span></span>
+<span id="cb38-3"><a href="#cb38-3"></a>p3 <span class="ot">=</span> <span class="fu">pnorm</span>(<span class="dv">15</span>,mean_speed,sd_speed)<span class="sc">-</span><span class="fu">pnorm</span>(<span class="dv">10</span>,mean_speed,sd_speed) <span class="co"># P(10&lt;=X &lt;= 15)</span></span>
+<span id="cb38-4"><a href="#cb38-4"></a>p4 <span class="ot">=</span> <span class="fu">pnorm</span>(<span class="dv">20</span>,mean_speed,sd_speed)<span class="sc">-</span><span class="fu">pnorm</span>(<span class="dv">15</span>,mean_speed,sd_speed) <span class="co"># P(15&lt;=X &lt;= 20)</span></span>
+<span id="cb38-5"><a href="#cb38-5"></a>p5 <span class="ot">=</span> <span class="dv">1</span><span class="sc">-</span> <span class="fu">pnorm</span>(<span class="dv">20</span>,mean_speed,sd_speed) <span class="co"># P(X&gt; 20)</span></span>
+<span id="cb38-6"><a href="#cb38-6"></a></span>
+<span id="cb38-7"><a href="#cb38-7"></a>Pj <span class="ot">=</span> <span class="fu">c</span>(p1,p2,p3,p4,p5) <span class="co"># put everything in one array</span></span>
+<span id="cb38-8"><a href="#cb38-8"></a>Pj</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.02460029 0.12896802 0.31628124 0.33798729 0.19216316</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a><span class="fu">sum</span>(Pj) <span class="co"># should be equal to 1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a>Ej <span class="ot">=</span> Pj<span class="sc">*</span><span class="dv">50</span> <span class="co"># Expected counts</span></span>
+<span id="cb42-2"><a href="#cb42-2"></a>Ej</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  1.230015  6.448401 15.814062 16.899365  9.608158</code></pre>
+</div>
+</div>
+</section>
+<section id="normality-test-2" class="slide level2">
+<h2>Normality Test</h2>
+<h4 id="chi-squared-test-1">Chi-squared Test</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a><span class="co"># Chi-squared test for GOF</span></span>
+<span id="cb44-2"><a href="#cb44-2"></a><span class="fu">chisq.test</span>(<span class="at">x=</span>Ob,<span class="at">p =</span> Pj)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Chi-squared test for given probabilities
+
+data:  Ob
+X-squared = 1.3267, df = 4, p-value = 0.8568</code></pre>
+</div>
+</div>
+<p>The degrees of freedom of the test is df=C-1-k=5-1-2=2. k=2 because we did estimate the mean and variance from the sample. We need to <code>recompute</code> the p-value.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a>pvalue <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">-</span><span class="fu">pchisq</span>(<span class="fl">1.3267</span>,<span class="at">df=</span><span class="dv">2</span>) <span class="co"># pvalue adjusted for the df</span></span>
+<span id="cb46-2"><a href="#cb46-2"></a>pvalue</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5151228</code></pre>
+</div>
+</div>
+</section>
+<section id="tests-based-on-the-ranks" class="slide level2">
+<h2>Tests Based on the Ranks</h2>
+<h3 id="mann-whitney-test-wilcoxon-rank-sum-test">Mann-Whitney Test (Wilcoxon Rank Sum Test)</h3>
+<p>Comparing two independent samples.</p>
+<p><code>Data</code></p>
+<ul>
+<li><p>Two random samples are of interest here. Let <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> be a random sample of size <span class="math inline">\(n\)</span> from population 1. And Let <span class="math inline">\(Y_1, Y_2, \ldots, Y_m\)</span> be a random sample of size <span class="math inline">\(m\)</span> from population 2.</p></li>
+<li><p>Assign ranks 1 to <span class="math inline">\(n+m\)</span> to the all observations and let <span class="math inline">\(R(X_i)\)</span> be the rank assigned to <span class="math inline">\(X_i\)</span>. The same let <span class="math inline">\(R(Y_i)\)</span> be the rank assigned to <span class="math inline">\(Y_i\)</span>. <span class="math inline">\(N=n+m\)</span>.</p></li>
+<li><p>If several samples values are exactly equal to each other (tied), assign to each their average of the ranks that would have been used to them if there had been no ties.</p></li>
+</ul>
+</section>
+<section id="mann-whitney-test-wilcoxon-rank-sum-test-1" class="slide level2">
+<h2>Mann-Whitney Test (Wilcoxon Rank Sum Test)</h2>
+<p><code>Assumptions</code></p>
+<ul>
+<li>Both samples are random samples.</li>
+<li>Mutual independence between the two samples</li>
+<li>At least ordinal</li>
+</ul>
+<p><code>Test Statistic</code></p>
+<ul>
+<li><p>If no ties: <span class="math inline">\(T = \sum_{i=1}^n R(X_i)\)</span></p></li>
+<li><p>If there are ties: <span class="math inline">\(T_1 = \frac{T - \frac{n(N+1)}{2}}{\sqrt{\frac{nm}{N(N-1)} \sum_{i=1}^N R^2_i -\frac{nm(N+1)^2}{4(N-1)}}}\)</span>, where <span class="math inline">\(\sum_{i=1}^N R^2_i\)</span> is the sum of the squares of all Ranks.</p></li>
+</ul>
+</section>
+<section id="mann-whitney-test-wilcoxon-rank-sum-test-2" class="slide level2">
+<h2>Mann-Whitney Test (Wilcoxon Rank Sum Test)</h2>
+<p><code>The null distribution</code> is approximated with the standard normal distribution for <span class="math inline">\(T_1\)</span>. However, <span class="math inline">\(T\)</span> has the exact distribution for small sample sizes <span class="math inline">\(&lt;20\)</span>.</p>
+<p><code>Hypotheses</code></p>
+<p>Let <span class="math inline">\(F(x)\)</span> be the distribution function corresponding to <span class="math inline">\(X\)</span>.</p>
+<p>Let <span class="math inline">\(G(x)\)</span> be the distribution function corresponding to <span class="math inline">\(Y\)</span>.</p>
+<ul>
+<li><code>Two-tailed test</code> <span class="math display">\[ H_0: F(x) = G(x) \quad \text{for all x} \]</span> <span class="math display">\[H_1: F(x) \neq G(x) \quad \text{for some x} \]</span></li>
+</ul>
+<p>The rejection region is defined by the quantiles <span class="math inline">\(T_{\alpha/2} (T_1)\)</span> and <span class="math inline">\(T_{1-\alpha/2} (T_1)\)</span>. <span class="math inline">\(\alpha\)</span> is the significance level.</p>
+</section>
+<section id="mann-whitney-test-wilcoxon-rank-sum-test-3" class="slide level2">
+<h2>Mann-Whitney Test (Wilcoxon Rank Sum Test)</h2>
+<ul>
+<li><code>Upper-tailed test</code></li>
+</ul>
+<p><span class="math display">\[ H_0: F(x) = G(x)\]</span> <span class="math display">\[H_1: E(X) &gt; E(Y)  \]</span> Here <span class="math inline">\(X\)</span> tends to be greater than <span class="math inline">\(Y\)</span>.</p>
+<ul>
+<li><code>Lower-tailed test</code> <span class="math display">\[ H_0: F(x) = G(x)\]</span> <span class="math display">\[H_1: E(X) &lt; E(Y)  \]</span> Here <span class="math inline">\(X\)</span> tends to be smaller than <span class="math inline">\(Y\)</span>.</li>
+</ul>
+</section>
+<section id="mann-whitney-test-wilcoxon-rank-sum-test---example-r" class="slide level2">
+<h2>Mann-Whitney Test (Wilcoxon Rank Sum Test) - Example R</h2>
+<p>High temperatures are randomly selected from days in a summer in 2 cities.</p>
+<p><code>Question</code>: Test if the mean high temperature in city1 is higher than the mean high temperature in city2.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a>temp_city1 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">83</span>,<span class="dv">91</span>,<span class="dv">89</span>,<span class="dv">89</span>,<span class="dv">94</span>,<span class="dv">96</span>,<span class="dv">91</span>,<span class="dv">92</span>,<span class="dv">90</span>)</span>
+<span id="cb48-2"><a href="#cb48-2"></a>temp_city2 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">78</span>,<span class="dv">82</span>,<span class="dv">81</span>,<span class="dv">77</span>,<span class="dv">79</span>,<span class="dv">81</span>,<span class="dv">80</span>,<span class="dv">81</span>)</span>
+<span id="cb48-3"><a href="#cb48-3"></a><span class="fu">wilcox.test</span>(temp_city1,temp_city2,<span class="at">alternative =</span> <span class="st">"g"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Wilcoxon rank sum test with continuity correction
+
+data:  temp_city1 and temp_city2
+W = 72, p-value = 0.0003033
+alternative hypothesis: true location shift is greater than 0</code></pre>
+</div>
+</div>
+</section>
+<section id="tests-based-on-the-ranks-1" class="slide level2">
+<h2>Tests Based on the Ranks</h2>
+<h3 id="wilcoxon-signed-ranks-test-paired-data">Wilcoxon Signed Ranks Test (paired data)</h3>
+<p>Comparing two dependent samples. This test can be used as an alternative to the paired t-test when the assumptions are not met.</p>
+<p><code>Data</code></p>
+<ul>
+<li>The data consists of observations on a bivariate random sample <span class="math inline">\((X_i, Y_i)\)</span>, where <span class="math inline">\(n'\)</span> is the number of the pairs observed. Find the differences <span class="math inline">\(D_i=Y_i - X_i\)</span>. The absolute differences are:</li>
+</ul>
+<p><span class="math display">\[
+\mid D_i\mid = \mid Y_i - X_i \mid, \qquad i=1,2\ldots,n'
+\]</span></p>
+<ul>
+<li><p>Omit the pairs where the difference is zero. Let <span class="math inline">\(n\)</span> be the remaining pairs. Ranks from 1 to <span class="math inline">\(n\)</span> are assigned to the <span class="math inline">\(n\)</span> pairs according to <span class="math inline">\(\mid D_i\mid\)</span>.</p></li>
+<li><p>If several samples values are exactly equal to each other (tied), assign to each their average of the ranks that would have been used to them if there had been no ties.</p></li>
+</ul>
+</section>
+<section id="wilcoxon-signed-ranks-test-paired-data-1" class="slide level2">
+<h2>Wilcoxon Signed Ranks Test (paired data)</h2>
+<p><code>Test Statistic</code></p>
+<p>Let <span class="math inline">\(R_i\)</span> called the signed rank be defined for each pair <span class="math inline">\((X_i, Y_i)\)</span> as follows: the rank is positive if the D is positive, and negative if the difference D is negative.</p>
+<ul>
+<li><p>If no ties: $ T^+ = (R_i D_i ) $. Tables for exact lower quantiles, under <span class="math inline">\(H_0\)</span>, exist. The upper quantile is given: <span class="math inline">\(w_p = n(n+1)/2 - w_{1-p}\)</span>. We will use R.</p></li>
+<li><p>If there are ties or <span class="math inline">\(n&gt;50\)</span>: $ T = $ Standard normal distribution, under <span class="math inline">\(H_0\)</span>.</p></li>
+</ul>
+</section>
+<section id="wilcoxon-signed-ranks-test-paired-data-2" class="slide level2">
+<h2>Wilcoxon Signed Ranks Test (paired data)</h2>
+<p><code>Hypotheses</code></p>
+<ul>
+<li><code>Two-tailed test</code> <span class="math display">\[ H_0: E(D) = 0 \]</span> <span class="math display">\[H_1: E(D) \neq 0 \]</span></li>
+</ul>
+<p>The rejection region is defined by the quantiles <span class="math inline">\(T^+_{\alpha/2} (or T)\)</span> and <span class="math inline">\(T^+_{1-\alpha/2} (or T)\)</span>. <span class="math inline">\(\alpha\)</span> is the significance level.</p>
+</section>
+<section id="wilcoxon-signed-ranks-test-paired-data-3" class="slide level2">
+<h2>Wilcoxon Signed Ranks Test (paired data)</h2>
+<ul>
+<li><code>Upper-tailed test</code></li>
+</ul>
+<p><span class="math display">\[ H_0: E(D) \leq 0\]</span> <span class="math display">\[H_1: E(D) &gt; 0 \]</span></p>
+<p>The rejection region is defined by the quantiles <span class="math inline">\(T^+_{1-\alpha} ( or T)\)</span>. <span class="math inline">\(\alpha\)</span> is the significance level.</p>
+<ul>
+<li><code>Lower-tailed test</code> <span class="math display">\[ H_0:  E(D) \geq 0 \]</span> <span class="math display">\[H_1: E(D) &lt;0  \]</span></li>
+</ul>
+<p>The rejection region is defined by the quantiles <span class="math inline">\(T^+_{\alpha} (or T)\)</span>. <span class="math inline">\(\alpha\)</span> is the significance level.</p>
+</section>
+<section id="wilcoxon-signed-ranks-test---example-r" class="slide level2">
+<h2>Wilcoxon Signed Ranks Test - Example R</h2>
+<p>High temperatures are randomly selected from days in a summer in 2 cities.</p>
+<p><code>Question</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a>temp_city1 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">83</span>,<span class="dv">91</span>,<span class="dv">89</span>,<span class="dv">89</span>,<span class="dv">94</span>,<span class="dv">96</span>,<span class="dv">91</span>,<span class="dv">92</span>,<span class="dv">90</span>)</span>
+<span id="cb50-2"><a href="#cb50-2"></a>temp_city2 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">78</span>,<span class="dv">82</span>,<span class="dv">81</span>,<span class="dv">77</span>,<span class="dv">79</span>,<span class="dv">81</span>,<span class="dv">80</span>,<span class="dv">81</span>)</span>
+<span id="cb50-3"><a href="#cb50-3"></a><span class="fu">wilcox.test</span>(temp_city1,temp_city2,<span class="at">alternative =</span> <span class="st">"g"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Wilcoxon rank sum test with continuity correction
+
+data:  temp_city1 and temp_city2
+W = 72, p-value = 0.0003033
+alternative hypothesis: true location shift is greater than 0</code></pre>
+</div>
+</div>
+<p>From the test above W=72. The relationship between W and T is given by <span class="math display">\[W= T-n(n+1)/2\]</span> For this example: <span class="math inline">\(W=117-9\times10/2=117-45=72\)</span>.</p>
+<div class="footer footer-default">
+<p>STA 6507 Nonparametric Statistics</p>
+</div>
+</section>
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="SlidesSTA6507_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="SlidesSTA6507_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="SlidesSTA6507_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="SlidesSTA6507_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="SlidesSTA6507_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="SlidesSTA6507_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="SlidesSTA6507_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="SlidesSTA6507_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="SlidesSTA6507_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="SlidesSTA6507_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="SlidesSTA6507_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': true,
+'smaller': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true,"boardmarkerWidth":5},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          // dispatch for htmlwidgets
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for reveal
+        if (window.Reveal) {
+          window.Reveal.addEventListener("slidechanged", function(event) {
+            fireSlideChanged(event.previousSlide, event.currentSlide);
+          });
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        target: function(trigger) {
+          return trigger.previousElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        setTimeout(function() {
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      });
+      function tippyHover(el, contentFn) {
+        const config = {
+          allowHTML: true,
+          content: contentFn,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'quarto-reveal',
+          placement: 'bottom-start'
+        };
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          return note.innerHTML;
+        });
+      }
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+        tippyHover(ref, function() {
+          var popup = window.document.createElement('div');
+          cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    });
+    </script>
+    
+
+</body></html>
