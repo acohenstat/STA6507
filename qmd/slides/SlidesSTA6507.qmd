@@ -690,28 +690,24 @@ There is insufficient evidence to support that men and women differ in their pre
 
 
 
-## Contingency Tables 
-### Fisher's Exact Test
+## Fisher's Exact Test  
 
 `Data` 
 
-
 |         | col 1 | col 2 | `Totals`
 |---------|:-----:|:------:|:------:|
-| **row 1**   | X ($p_1$)   |    r-X |   r   |
+| **row 1**   | X ($p_1$)   |    r-X |   `r`   |
 | **row 2**   | c-X  ($p_2$)   |   N-r-c+X|  N-r  |
-| **`Totals`**  | c |   N-c | N    |
+| **`Totals`**  | `c` |   N-c | `N`    |
 
  2 x 2 contingency table
- 
  
  `Assumption` 
  
 - Each observation can be in one cell
 - The row and column totals are fixed.
 
-## Contingency Tables 
-### Fisher's Exact Test
+## Fisher's Exact Test  
 
 `Test Statistic`
 
@@ -724,8 +720,7 @@ $$ P(T=x) = \frac{\binom{r}{x}\binom{N-r}{c-x}}{\binom{N}{c}} $$
 x=0,1,2,...,min(r,m)
 
 
-## Contingency Tables 
-### Fisher's Exact Test
+## Fisher's Exact Test  
 
 `Hypothesis: Two-tailed test`
 $$ H_0:p_1 = p_2 $$ 
@@ -738,8 +733,7 @@ $$H_1: p_1 \neq p_2 $$
 
 
 
-## Contingency Tables 
-### Fisher's Exact Test
+## Fisher's Exact Test  
 
 `Hypothesis: Lower-tailed test`
 $$ H_0:p_1 = p_2 $$ 
@@ -750,8 +744,7 @@ $$H_1: p_1 < p_2 $$
 
 - `Decision`: IF p_value < $\alpha$ then REJECT $H_0$
 
-## Contingency Tables 
-### Fisher's Exact Test
+## Fisher's Exact Test  
 
 `Hypothesis: Upper-tailed test`
 $$ H_0:p_1 = p_2 $$ 

@@ -1096,9 +1096,8 @@ X-squared = 1.1372, df = 1, p-value = 0.2863</code></pre>
 <p>There is insufficient evidence to support that men and women differ in their preferences regarding the new toothpaste.</p>
 </div>
 </section>
-<section id="contingency-tables-6" class="slide level2">
-<h2>Contingency Tables</h2>
-<h3 id="fishers-exact-test">Fisher’s Exact Test</h3>
+<section id="fishers-exact-test" class="slide level2">
+<h2>Fisher’s Exact Test</h2>
 <p><code>Data</code></p>
 <table>
 <thead>
@@ -1114,7 +1113,7 @@ X-squared = 1.1372, df = 1, p-value = 0.2863</code></pre>
 <td><strong>row 1</strong></td>
 <td style="text-align: center;">X (<span class="math inline">\(p_1\)</span>)</td>
 <td style="text-align: center;">r-X</td>
-<td style="text-align: center;">r</td>
+<td style="text-align: center;"><code>r</code></td>
 </tr>
 <tr class="even">
 <td><strong>row 2</strong></td>
@@ -1124,9 +1123,9 @@ X-squared = 1.1372, df = 1, p-value = 0.2863</code></pre>
 </tr>
 <tr class="odd">
 <td><strong><code>Totals</code></strong></td>
-<td style="text-align: center;">c</td>
+<td style="text-align: center;"><code>c</code></td>
 <td style="text-align: center;">N-c</td>
-<td style="text-align: center;">N</td>
+<td style="text-align: center;"><code>N</code></td>
 </tr>
 </tbody>
 </table>
@@ -1137,35 +1136,31 @@ X-squared = 1.1372, df = 1, p-value = 0.2863</code></pre>
 <li>The row and column totals are fixed.</li>
 </ul>
 </section>
-<section id="contingency-tables-7" class="slide level2">
-<h2>Contingency Tables</h2>
-<h3 id="fishers-exact-test-1">Fisher’s Exact Test</h3>
+<section id="fishers-exact-test-1" class="slide level2">
+<h2>Fisher’s Exact Test</h2>
 <p><code>Test Statistic</code></p>
 <p>T = X = number of obs. in row 1 and col 1.</p>
 <p><span class="math display">\[ T (H_0) \sim hypergeometric(N,r,C) \]</span> The PMF is:</p>
 <p><span class="math display">\[ P(T=x) = \frac{\binom{r}{x}\binom{N-r}{c-x}}{\binom{N}{c}} \]</span> x=0,1,2,…,min(r,m)</p>
 </section>
-<section id="contingency-tables-8" class="slide level2">
-<h2>Contingency Tables</h2>
-<h3 id="fishers-exact-test-2">Fisher’s Exact Test</h3>
+<section id="fishers-exact-test-2" class="slide level2">
+<h2>Fisher’s Exact Test</h2>
 <p><code>Hypothesis: Two-tailed test</code> <span class="math display">\[ H_0:p_1 = p_2 \]</span> <span class="math display">\[H_1: p_1 \neq p_2 \]</span> - <span class="math inline">\(p_1\)</span> the probability that a randomly selected obs from the row 1 will be in col 1.</p>
 <ul>
 <li><p><code>P-value</code><span class="math inline">\(= 2\times \min\{ P( T \leq T_{Obs}), P(T \geq T_{Obs}) \}\)</span></p></li>
 <li><p><code>Decision</code>: IF p_value &lt; <span class="math inline">\(\alpha\)</span> then REJECT <span class="math inline">\(H_0\)</span></p></li>
 </ul>
 </section>
-<section id="contingency-tables-9" class="slide level2">
-<h2>Contingency Tables</h2>
-<h3 id="fishers-exact-test-3">Fisher’s Exact Test</h3>
+<section id="fishers-exact-test-3" class="slide level2">
+<h2>Fisher’s Exact Test</h2>
 <p><code>Hypothesis: Lower-tailed test</code> <span class="math display">\[ H_0:p_1 = p_2 \]</span> <span class="math display">\[H_1: p_1 &lt; p_2 \]</span> - <span class="math inline">\(p_1\)</span> the probability that a randomly selected obs from the row 1 will be in col 1.</p>
 <ul>
 <li><p><code>P-value</code><span class="math inline">\(= P( T \leq T_{Obs})\)</span></p></li>
 <li><p><code>Decision</code>: IF p_value &lt; <span class="math inline">\(\alpha\)</span> then REJECT <span class="math inline">\(H_0\)</span></p></li>
 </ul>
 </section>
-<section id="contingency-tables-10" class="slide level2">
-<h2>Contingency Tables</h2>
-<h3 id="fishers-exact-test-4">Fisher’s Exact Test</h3>
+<section id="fishers-exact-test-4" class="slide level2">
+<h2>Fisher’s Exact Test</h2>
 <p><code>Hypothesis: Upper-tailed test</code> <span class="math display">\[ H_0:p_1 = p_2 \]</span> <span class="math display">\[H_1: p_1 &gt; p_2 \]</span> - <span class="math inline">\(p_1\)</span> the probability that a randomly selected obs from the row 1 will be in col 1.</p>
 <ul>
 <li><p><code>P-value</code><span class="math inline">\(= P( T \geq T_{Obs})\)</span></p></li>
