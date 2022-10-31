@@ -11,9 +11,9 @@ show_sidebar: false
 | **Topic** | **R Code**  |
 |:-----------------------|:---:|
 | - Introduction to R    | [.R file](R_Basics.R) | 
-| - Introduction to Tidyverse    | [.R file](R_Tidyverse.R) | 
-| - Rmd Sample tile    | [.Rmd file](Sample.Rmd) | 
-| - Bootstrap CI code | [.R file](BootstrapCIExample.R) | 
-| - Assignment Bootstrap CI | [.Rmd file](HW2_boot.Rmd) | 
-| - Binomial based Tests | [.html file](qmd/BinomialTests.html) |
-| - Goodness-Of-Fit Tests | [.html file](qmd/GOF.html) |
+| - Introduction to Tidyverse    | [.R file](r_codes/R_Tidyverse.R) | 
+| - Rmd Sample tile    | [.Rmd file](r_codes/Sample.Rmd) | 
+| - Bootstrap CI code | [.R file](r_codes/BootstrapCIExample.R) | 
+| - Assignment Bootstrap CI | [.Rmd file](r_codes/HW2_boot.Rmd) | 
+| - Binomial based Tests | [.html file](qmd/exercises/BinomialTests.html) |
+| - Goodness-Of-Fit Tests | [.html file](qmd/exercises/GOF.html) |
