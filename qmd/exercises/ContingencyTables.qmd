@@ -291,11 +291,30 @@ mantelhaen.test(mydata,alternative = "g")
 ```
 
 
+## Chi-squared test rxc Table Difference in Probabilities
+
+```{r}
+M =  rbind("PrivateS"=c(6,14,17,9), "PublicS"=c(30,32,17,3))
+M
+chisq.test(M)
+```
+
+P-value < 0.001. The conclusion is that test scores are distributed differently among public and private high school students
+
+
+## Chi-squared test rxc Table Test for Independence
+
+```{r}
+M = rbind("InState"=c(16,14,13,13), "OutState"=c(14,6,10,8))
+M
+chisq.test(M)
+```
+
+The conclusion is that the college in which a student is enrolled 
+is independent of whether high school training was in state or out of state
 
 
 ## The Median Test
-
-
 
 Test for equal medians.
 
@@ -379,3 +398,17 @@ Multiple Comparison
 # Visualization
 plot(median_test_out)
 ```
+
+
+## Cramer's Contingency Coefficient
+Measures row x column association. Similar to a correlation coefficient between two continuous variables.
+
+### The high school state vs College Example
+```{r}
+#install.packages("lsr")
+library(lsr)
+M = rbind("InState"=c(16,14,13,13), "OutState"=c(14,6,10,8))
+cramersV(M)
+```
+
+

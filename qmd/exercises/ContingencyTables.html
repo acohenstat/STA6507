@@ -522,6 +522,51 @@ common odds ratio
 </div>
 </div>
 </section>
+<section id="chi-squared-test-rxc-table-difference-in-probabilities" class="level2">
+<h2 class="anchored" data-anchor-id="chi-squared-test-rxc-table-difference-in-probabilities">Chi-squared test rxc Table Difference in Probabilities</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>M <span class="ot">=</span>  <span class="fu">rbind</span>(<span class="st">"PrivateS"</span><span class="ot">=</span><span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">14</span>,<span class="dv">17</span>,<span class="dv">9</span>), <span class="st">"PublicS"</span><span class="ot">=</span><span class="fu">c</span>(<span class="dv">30</span>,<span class="dv">32</span>,<span class="dv">17</span>,<span class="dv">3</span>))</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>M</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         [,1] [,2] [,3] [,4]
+PrivateS    6   14   17    9
+PublicS    30   32   17    3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(M)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in chisq.test(M): Chi-squared approximation may be incorrect</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's Chi-squared test
+
+data:  M
+X-squared = 17.286, df = 3, p-value = 0.0006172</code></pre>
+</div>
+</div>
+<p>P-value &lt; 0.001. The conclusion is that test scores are distributed differently among public and private high school students</p>
+</section>
+<section id="chi-squared-test-rxc-table-test-for-independence" class="level2">
+<h2 class="anchored" data-anchor-id="chi-squared-test-rxc-table-test-for-independence">Chi-squared test rxc Table Test for Independence</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>M <span class="ot">=</span> <span class="fu">rbind</span>(<span class="st">"InState"</span><span class="ot">=</span><span class="fu">c</span>(<span class="dv">16</span>,<span class="dv">14</span>,<span class="dv">13</span>,<span class="dv">13</span>), <span class="st">"OutState"</span><span class="ot">=</span><span class="fu">c</span>(<span class="dv">14</span>,<span class="dv">6</span>,<span class="dv">10</span>,<span class="dv">8</span>))</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>M</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         [,1] [,2] [,3] [,4]
+InState    16   14   13   13
+OutState   14    6   10    8</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(M)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's Chi-squared test
+
+data:  M
+X-squared = 1.5242, df = 3, p-value = 0.6767</code></pre>
+</div>
+</div>
+<p>The conclusion is that the college in which a student is enrolled is independent of whether high school training was in state or out of state</p>
+</section>
 <section id="the-median-test" class="level2">
 <h2 class="anchored" data-anchor-id="the-median-test">The Median Test</h2>
 <p>Test for equal medians.</p>
@@ -601,13 +646,13 @@ common odds ratio
 <section id="the-median-test---example-r" class="level2">
 <h2 class="anchored" data-anchor-id="the-median-test---example-r">The Median Test - Example R</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("agricolae")</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(agricolae) <span class="co"># package</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(corn) <span class="co"># data</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co"># The Median Test</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>median_test_out<span class="ot">=</span> <span class="fu">Median.test</span>(corn<span class="sc">$</span>observation,corn<span class="sc">$</span>method)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("agricolae")</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(agricolae) <span class="co"># package</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(corn) <span class="co"># data</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co"># The Median Test</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>median_test_out<span class="ot">=</span> <span class="fu">Median.test</span>(corn<span class="sc">$</span>observation,corn<span class="sc">$</span>method)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 The Median Test for corn$observation ~ corn$method 
@@ -636,12 +681,28 @@ Treatments with the same letter are not significantly different.
 </div>
 <p>Multiple Comparison</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualization</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(median_test_out)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualization</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(median_test_out)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="ContingencyTables_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+<p><img src="ContingencyTables_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+</section>
+<section id="cramers-contingency-coefficient" class="level2">
+<h2 class="anchored" data-anchor-id="cramers-contingency-coefficient">Cramer’s Contingency Coefficient</h2>
+<p>Measures row x column association. Similar to a correlation coefficient between two continuous variables.</p>
+<section id="the-high-school-state-vs-college-example" class="level3">
+<h3 class="anchored" data-anchor-id="the-high-school-state-vs-college-example">The high school state vs College Example</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("lsr")</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lsr)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>M <span class="ot">=</span> <span class="fu">rbind</span>(<span class="st">"InState"</span><span class="ot">=</span><span class="fu">c</span>(<span class="dv">16</span>,<span class="dv">14</span>,<span class="dv">13</span>,<span class="dv">13</span>), <span class="st">"OutState"</span><span class="ot">=</span><span class="fu">c</span>(<span class="dv">14</span>,<span class="dv">6</span>,<span class="dv">10</span>,<span class="dv">8</span>))</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cramersV</span>(M)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1273375</code></pre>
+</div>
+</div>
+</section>
 </section>
 
 </main>
