@@ -17,5 +17,5 @@ show_sidebar: false
 | - Assignment Bootstrap CI | [.Rmd file](r_codes/HW2_boot.Rmd) | 
 | - Binomial based Tests | [.html file](qmd/exercises/BinomialTests.html) |
 | - Goodness-Of-Fit Tests | [.html file](qmd/exercises/GOF.html) |
-| - Contingency Tables | [.html file](qmd/exercises/ContingencyTable.html) |
+| - Contingency Tables | [.html file](qmd/exercises/ContingencyTables.html) |
 
