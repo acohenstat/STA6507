@@ -287,7 +287,7 @@ mydata =array(c(10,12,1,1,9,11,0,1,8,7,0,3),
                dim=c(2,2,3),
                dimnames=list(c("Treat.","Control"),c("Success","Failure"),c("Group 1","Group2","Group 3")))
 mydata
-mantelhaen.test(dataexp4,alternative = "g")
+mantelhaen.test(mydata,alternative = "g")
 ```
 
 

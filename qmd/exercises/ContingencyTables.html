@@ -479,6 +479,49 @@ odds ratio
 <li><code>Interpretation</code>: Reject <span class="math inline">\(H_0\)</span>. There is evidence to support that the data is compatible with the assumption that females are more likely than males to get the account Rep.&nbsp;job.</li>
 </ul>
 </section>
+<section id="mantel-haenszel-test-2x2xk" class="level2">
+<h2 class="anchored" data-anchor-id="mantel-haenszel-test-2x2xk">Mantel-Haenszel Test 2x2xk</h2>
+<p>An extension of Fisher’s exact to several 2x2 tables.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>mydata <span class="ot">=</span><span class="fu">array</span>(<span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">12</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">9</span>,<span class="dv">11</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">8</span>,<span class="dv">7</span>,<span class="dv">0</span>,<span class="dv">3</span>),</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>               <span class="at">dim=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>),</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">dimnames=</span><span class="fu">list</span>(<span class="fu">c</span>(<span class="st">"Treat."</span>,<span class="st">"Control"</span>),<span class="fu">c</span>(<span class="st">"Success"</span>,<span class="st">"Failure"</span>),<span class="fu">c</span>(<span class="st">"Group 1"</span>,<span class="st">"Group2"</span>,<span class="st">"Group 3"</span>)))</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>mydata</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>, , Group 1
+
+        Success Failure
+Treat.       10       1
+Control      12       1
+
+, , Group2
+
+        Success Failure
+Treat.        9       0
+Control      11       1
+
+, , Group 3
+
+        Success Failure
+Treat.        8       0
+Control       7       3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mantelhaen.test</span>(mydata,<span class="at">alternative =</span> <span class="st">"g"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Mantel-Haenszel chi-squared test with continuity correction
+
+data:  mydata
+Mantel-Haenszel X-squared = 1.0114, df = 1, p-value = 0.1573
+alternative hypothesis: true common odds ratio is greater than 1
+95 percent confidence interval:
+ 0.7087777       Inf
+sample estimates:
+common odds ratio 
+         4.357143 </code></pre>
+</div>
+</div>
+</section>
 <section id="the-median-test" class="level2">
 <h2 class="anchored" data-anchor-id="the-median-test">The Median Test</h2>
 <p>Test for equal medians.</p>
@@ -558,13 +601,13 @@ odds ratio
 <section id="the-median-test---example-r" class="level2">
 <h2 class="anchored" data-anchor-id="the-median-test---example-r">The Median Test - Example R</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("agricolae")</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(agricolae) <span class="co"># package</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(corn) <span class="co"># data</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># The Median Test</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>median_test_out<span class="ot">=</span> <span class="fu">Median.test</span>(corn<span class="sc">$</span>observation,corn<span class="sc">$</span>method)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("agricolae")</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(agricolae) <span class="co"># package</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(corn) <span class="co"># data</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co"># The Median Test</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>median_test_out<span class="ot">=</span> <span class="fu">Median.test</span>(corn<span class="sc">$</span>observation,corn<span class="sc">$</span>method)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 The Median Test for corn$observation ~ corn$method 
@@ -593,10 +636,10 @@ Treatments with the same letter are not significantly different.
 </div>
 <p>Multiple Comparison</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualization</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(median_test_out)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualization</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(median_test_out)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="ContingencyTables_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+<p><img src="ContingencyTables_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
