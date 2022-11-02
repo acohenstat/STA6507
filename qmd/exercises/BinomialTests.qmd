@@ -1,20 +1,20 @@
 ---
-title: "R Code for Binomial based Tests"
+title: "Binomial based Tests"
 format: html
 editor: visual
 self-contained: true
+author: Dr. Cohen
 ---
 
 ## The binomial Test -p- Example from Lecture Notes
 
 #### Example 1:
 
-- From studies 50% of men suffer from side effects of a surgery.
-- New method of performing the surgery is tested.
-- Out of 19 operations only 3 men suffered from the side effects.
+-   From studies 50% of men suffer from side effects of a surgery.
+-   New method of performing the surgery is tested.
+-   Out of 19 operations only 3 men suffered from the side effects.
 
 Question: is it safe to conclude that the new method is effective?
-
 
 To answer the question we run a lower tailed binomial test.
 
@@ -38,12 +38,11 @@ binom.test(x=682, # #tall plants
           )
 ```
 
-
-
 ## The quantile Test -x_p- Example from Lecture Notes
 
 #### Example 3:
-Assume X is the score of a high school examination to go to college. Previous studies showed that the upper quartile of these scores is $X_{0.75} = $ 193.
+
+Assume X is the score of a high school examination to go to college. Previous studies showed that the upper quartile of these scores is \$X\_{0.75} = \$ 193.
 
 15 graduate high school students scores are given:
 
@@ -64,18 +63,17 @@ p = 2*min(pbinom(T1,15,0.75),pbinom(T2-1,15,0.75,lower.tail = F))
 p
 ```
 
-
-
 ## The sign Test - Example from Lecture Notes
 
 #### Example 4:
-- Item A (old process) and Item B (new process)
-- Out of 10 consumers:
-  -   8 preferred B over A ==> +
-  -   1 preferred A over B ==> -
-  -   1 had no preference ==> 0
-- Do consumers prefer B over A?
-- To answer this we run an upper tailed sign test.
+
+-   Item A (old process) and Item B (new process)
+-   Out of 10 consumers:
+    -   8 preferred B over A ==\> +
+    -   1 preferred A over B ==\> -
+    -   1 had no preference ==\> 0
+-   Do consumers prefer B over A?
+-   To answer this we run an upper tailed sign test.
 
 Th sign test is a binomial test with p=0.5.
 
@@ -86,15 +84,13 @@ binom.test(x=8,
            alternative = "g")
 ```
 
-
-
-
 #### Example 5:
-- 6 students went on a diet to lose weight. A Pair is (WB, WA)
-  -   5 lost weight (WB > WA) ==> -
-  -   1 gained weight (WB < WA) ==> +
-- Is the diet effective?
-- To answer this we run an lower tailed sign test.
+
+-   6 students went on a diet to lose weight. A Pair is (WB, WA)
+    -   5 lost weight (WB \> WA) ==\> -
+    -   1 gained weight (WB \< WA) ==\> +
+-   Is the diet effective?
+-   To answer this we run an lower tailed sign test.
 
 Th sign test is a binomial test with p=0.5.
 
@@ -105,13 +101,12 @@ binom.test(x=1,
            alternative = "l")
 ```
 
-
-
 ## Tolerance Limits
 
 #### Example 6:
-- Electric seat adjusters.
-- A car manufacture wants to know how much range of adjustment is needed to be 90% sure that at least 80% of the population of buyers will be able to adjust their seats.
+
+-   Electric seat adjusters.
+-   A car manufacture wants to know how much range of adjustment is needed to be 90% sure that at least 80% of the population of buyers will be able to adjust their seats.
 
 ```{r}
 #install.packages("tolerance") # install package
@@ -131,4 +126,3 @@ distfree.est(n = NULL, # sample size
              side = 2. # two sided interval
                )
 ```
-

@@ -40,7 +40,7 @@ return(pvalues)
 }
 
 # n values : sample sizes
-n_values= c(5,10,50,100)
+n_values= c(5,100)
 # find p_values for different sample sizes
 p_val = map_df(n_values,find_pvalues)
 

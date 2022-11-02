@@ -162,8 +162,8 @@ There is insufficient evidence to support that men and women differ in their pre
 
 
 
-## Contingency Tables 
-### Fisher's Exact Test
+ 
+## Fisher's Exact Test
 
 `Data` 
 
@@ -182,8 +182,8 @@ There is insufficient evidence to support that men and women differ in their pre
 - Each observation can be in one cell
 - The row and column totals are fixed.
 
-## Contingency Tables 
-### Fisher's Exact Test
+
+## Fisher's Exact Test
 
 `Test Statistic`
 
@@ -196,8 +196,8 @@ $$ P(T=x) = \frac{\binom{r}{x}\binom{N-r}{c-x}}{\binom{N}{c}} $$
 x=0,1,2,...,min(r,m)
 
 
-## Contingency Tables 
-### Fisher's Exact Test
+
+## Fisher's Exact Test
 
 `Hypothesis: Two-tailed test`
 $$ H_0:p_1 = p_2 $$ 
@@ -275,6 +275,22 @@ fisher.test(data,alternative = "l")
 ```
 
 - `Interpretation`: Reject $H_0$. There is evidence to support that the data is compatible with the assumption that females are more likely than males to get the account Rep. job.
+
+
+
+## Mantel-Haenszel Test 2x2xk
+An extension of Fisher's exact to several 2x2 tables.
+
+
+```{r}
+mydata =array(c(10,12,1,1,9,11,0,1,8,7,0,3),
+               dim=c(2,2,3),
+               dimnames=list(c("Treat.","Control"),c("Success","Failure"),c("Group 1","Group2","Group 3")))
+mydata
+mantelhaen.test(dataexp4,alternative = "g")
+```
+
+
 
 
 ## The Median Test
