@@ -29,16 +29,16 @@ show_sidebar: false
 |      | W  | 10/11 | Midterm Exam Project  | Project |
 | 9    | M   | 10/17 | Midterm Exam Project Keys | |
 |      | W  | 10/19 | Goodness-of-Fit Tests | |
-| 10   | M   | 10/24 | Goodness-of-Fit Tests | [.html](qmd/exercises/GoF_Project.html), [.qmd](qmd/exercises/GoF_Project.qmd),|
-|      | W  | 10/26 | | |
-| 11   | M   | 10/31 | | |
-|      | W  | 11/02 | | |
-| 12   | M   | 11/07 | | |
-|      | W  | 11/09| | |
-| 13   | M   | 11/14 | | |
-|      | W  | 11/16 | | |
-| 14   | M   | 11/21 | | |
-|      | W  | 11/23 | | |
-| 15   | M   | 11/28 | | |
-|      | W   | 12/30 | | |
-| 16   | M-W   |       | Final Week| | 
+| 10   | M   | 10/24 | Goodness-of-Fit Tests | [.html](qmd/exercises/GoF_Project.html), [.qmd](qmd/exercises/GoF_Project.qmd)|
+|      | W  | 10/26 | Contingency Tables | |
+| 11   | M   | 10/31 | Contingency Tables | |
+|      | W  | 11/02 | Contingency Tables | |
+| 12   | M   | 11/07 | Feedback on Goodness-of-Fit Tests Project | |
+|      | W  | 11/09| | Tests based on the Ranks |
+| 13   | M   | 11/14 | Tests based on the Ranks | |
+|      | W  | 11/16    | Tests based on the Ranks | |
+| 14   | M   | 11/21   | Nonparametric Regression | |
+|      | W  | 11/23    | Nonparametric Regression | |
+| 15   | M   | 11/28   | Final Exam Project - Review | |
+|      | W   | 12/30   | Final Exam Project | |
+| 16   | M-W   |       | Final Exam Project | | 
