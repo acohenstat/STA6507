@@ -703,6 +703,21 @@ Treatments with the same letter are not significantly different.
 </div>
 </div>
 </section>
+<section id="the-high-school-type-vs-score-example" class="level3">
+<h3 class="anchored" data-anchor-id="the-high-school-type-vs-score-example">The high school type vs score Example</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("lsr")</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lsr)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>M <span class="ot">=</span>  <span class="fu">rbind</span>(<span class="st">"PrivateS"</span><span class="ot">=</span><span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">14</span>,<span class="dv">17</span>,<span class="dv">9</span>), <span class="st">"PublicS"</span><span class="ot">=</span><span class="fu">c</span>(<span class="dv">30</span>,<span class="dv">32</span>,<span class="dv">17</span>,<span class="dv">3</span>))</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cramersV</span>(M)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in stats::chisq.test(...): Chi-squared approximation may be incorrect</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3674853</code></pre>
+</div>
+</div>
+</section>
 </section>
 
 </main>

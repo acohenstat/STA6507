@@ -411,4 +411,10 @@ M = rbind("InState"=c(16,14,13,13), "OutState"=c(14,6,10,8))
 cramersV(M)
 ```
 
-
+### The high school type vs score Example
+```{r}
+#install.packages("lsr")
+library(lsr)
+M =  rbind("PrivateS"=c(6,14,17,9), "PublicS"=c(30,32,17,3))
+cramersV(M)
+```
