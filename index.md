@@ -34,7 +34,7 @@ show_sidebar: false
 | 11   | M   | 10/31 | Contingency Tables | |
 |      | W  | 11/02 | Contingency Tables | |
 | 12   | M   | 11/07 | Feedback on Goodness-of-Fit Tests Project | |
-|      | W  | 11/09| | Tests based on the Ranks | [.html](qmd/exercises/Assignment4.html), [.qmd](qmd/exercises/Assignment4.qmd)|
+|      | W  | 11/09 | Tests based on the Ranks | [.html](qmd/exercises/Assignment4.html), [.qmd](qmd/exercises/Assignment4.qmd)|
 | 13   | M   | 11/14 | Tests based on the Ranks | [.html](qmd/exercises/Assignment4.html), [.qmd](qmd/exercises/Assignment4.qmd)|
 |      | W  | 11/16    | Tests based on the Ranks | [.html](qmd/exercises/Assignment4.html), [.qmd](qmd/exercises/Assignment4.qmd)|
 | 14   | M   | 11/21   | Nonparametric Regression (if time allows) | |
