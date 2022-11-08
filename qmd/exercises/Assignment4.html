@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.189">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Assignment 4</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="Assignment4_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Assignment4_files/libs/quarto-html/quarto.js"></script>
+<script src="Assignment4_files/libs/quarto-html/popper.min.js"></script>
+<script src="Assignment4_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Assignment4_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Assignment4_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Assignment4_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Assignment4_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Assignment4_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Assignment4_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Assignment 4</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<p>In this assignment, we will practice using tests for contingency tables and rank-based tests; submit the HTML file. <strong>Solve all problems but only two will be graded.</strong></p>
+<p>All problems should be solved as follows, if applicable:</p>
+<ol type="1">
+<li>State the hypothesis</li>
+<li>Test Statistic and Null Distribution</li>
+<li>P-value and CI</li>
+<li>Decision and Interpretation</li>
+</ol>
+<section id="problem-1" class="level2">
+<h2 class="anchored" data-anchor-id="problem-1">Problem 1</h2>
+<p>One hundred men and 100 women were asked to try a new toothpaste and to state whether they liked or did not like the new taste. 32 men and 26 women said they did not like the new taste. Does this indicate a difference in preferences between men and women in general?</p>
+</section>
+<section id="problem-2" class="level2">
+<h2 class="anchored" data-anchor-id="problem-2">Problem 2</h2>
+<p>A quick test for correlation between two variables X and Y, each of which has at least an ordinal scale of measurement, can be performed using the Fisher’s exact test. The procedure is as follows:</p>
+<ul>
+<li><p>Divide the scatter plot of the N values of (X,Y) with a vertical line at the median of X.</p></li>
+<li><p>Divide the scatter plot of the N values of (X,Y) with a horizontal line at the median of Y.</p></li>
+<li><p>Count the number of observations in each of the four quadrants. Note that the row and column totals are N/2, and are not random.</p></li>
+</ul>
+<p>Suppose that 16 observations pairs of X = age of marriage of a husband, and Y=age of marriage of his father, resulted on 7 pairs where both ages were above the median.</p>
+<p>Are the two variables positively correlated?</p>
+</section>
+<section id="problem-3" class="level2">
+<h2 class="anchored" data-anchor-id="problem-3">Problem 3</h2>
+<p>A random sample of stocks from the American Stock Exchange (ASE) is compared with a random sample of stocks from the New York Stock Exchange to see if any difference in the rating percentages of the two exchanges. Of the 23 stocks from the ASE there were 11 As, 11 Bs, and 1 C. Of the 35 stocks from the NYSE there were 24 As, 11 Bs, and no Cs.</p>
+<p>What does your analysis look like?</p>
+</section>
+<section id="problem-4" class="level2">
+<h2 class="anchored" data-anchor-id="problem-4">Problem 4</h2>
+<p>A television-marketing firm would like to determine if the time of the ad appeared in television is related to the product being sold. The number of responses to the product’s firm is as follows:</p>
+<table class="table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 17%">
+<col style="width: 18%">
+<col style="width: 15%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Products -&gt;<br>
+</th>
+<th>Fishing Rod</th>
+<th>Kitchen Tool</th>
+<th>Music CD</th>
+<th>Exercise Machine</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Daytime</td>
+<td>6</td>
+<td>73</td>
+<td>55</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td>Nighttime</td>
+<td>14</td>
+<td>65</td>
+<td>82</td>
+<td>8</td>
+</tr>
+<tr class="odd">
+<td>Weekend</td>
+<td>21</td>
+<td>58</td>
+<td>48</td>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+<ol type="1">
+<li>What does your analysis look like?</li>
+</ol>
+<!-- -->
+<ol start="2" type="1">
+<li>Calculate and comment the Cramer’s Contingency Coefficient.</li>
+</ol>
+</section>
+<section id="problem-5" class="level2">
+<h2 class="anchored" data-anchor-id="problem-5">Problem 5</h2>
+<p>Test the hypothesis that the following samples were obtained from populations having the same medians.</p>
+<p>Sample1: 35, 42, 42, 30, 15, 31, 29, 29, 17</p>
+<p>Sample2: 34, 38, 26, 17, 42, 28, 35, 33, 16</p>
+<p>Sample3: 17, 29, 30, 36, 41, 30, 31, 23, 38</p>
+</section>
+<section id="problem-6" class="level2">
+<h2 class="anchored" data-anchor-id="problem-6">Problem 6</h2>
+<p>Random samples from each of three different types of light bulbs were tested to see how long the light bulbs lasted, with the following results:</p>
+<table class="table">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 19%">
+<col style="width: 19%">
+<col style="width: 19%">
+<col style="width: 19%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>A</td>
+<td>73</td>
+<td>64</td>
+<td>67</td>
+<td>62</td>
+</tr>
+<tr class="even">
+<td>B</td>
+<td>84</td>
+<td>80</td>
+<td>81</td>
+<td>77</td>
+</tr>
+<tr class="odd">
+<td>C</td>
+<td>82</td>
+<td>79</td>
+<td>71</td>
+<td>75</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="problem-7" class="level2">
+<h2 class="anchored" data-anchor-id="problem-7">Problem 7</h2>
+<p>A blood bank kept a record of the rate of heartbeats for several blood donors. The data is given as follows:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>Men <span class="ot">=</span><span class="fu">c</span>(<span class="dv">58</span>,<span class="dv">65</span>,<span class="dv">74</span>,<span class="dv">74</span>,<span class="dv">76</span>,<span class="dv">79</span>,<span class="dv">82</span>,<span class="dv">86</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>Women <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">66</span>,<span class="dv">68</span>,<span class="dv">67</span>,<span class="dv">69</span>,<span class="dv">72</span>,<span class="dv">73</span>,<span class="dv">74</span>,<span class="dv">75</span>,<span class="dv">76</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol type="1">
+<li>Is the average of the rate of heartbeats the same for men and women?</li>
+<li>Is the variation among the men significantly greater than the variation among the women?</li>
+</ol>
+</section>
+<section id="problem-8" class="level2">
+<h2 class="anchored" data-anchor-id="problem-8">Problem 8</h2>
+<p>7 married couples were selected at random, and each husband and each wife was asked how much money they spent on their spouse’s Christmas present year. The responses were as follows:</p>
+<table class="table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 10%">
+<col style="width: 12%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td>Husband</td>
+<td>25</td>
+<td>21</td>
+<td>38</td>
+<td>64</td>
+<td>52</td>
+<td>16</td>
+<td>26</td>
+</tr>
+<tr class="odd">
+<td>Wife</td>
+<td>16</td>
+<td>42</td>
+<td>56</td>
+<td>41</td>
+<td>19</td>
+<td>26</td>
+<td>24</td>
+</tr>
+</tbody>
+</table>
+<p>1. Does the husband tend to spend more than the wife?</p>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
