@@ -41,21 +41,17 @@ What does your analysis look like?
 
 A television-marketing firm would like to determine if the time of the ad appeared in television is related to the product being sold. The number of responses to the product's firm is as follows:
 
-+-----------------+-------------+--------------+------------+------------------+
-| Products -\>\   | Fishing Rod | Kitchen Tool | Music CD   | Exercise Machine |
-+=================+=============+==============+============+==================+
-| Daytime         | 6           | 73           | 55         | 7                |
-+-----------------+-------------+--------------+------------+------------------+
-| Nighttime       | 14          | 65           | 82         | 8                |
-+-----------------+-------------+--------------+------------+------------------+
-| Weekend         | 21          | 58           | 48         | 8                |
-+-----------------+-------------+--------------+------------+------------------+
++---------------+-------------+--------------+------------+------------------+
+| Products -\>\ | Fishing Rod | Kitchen Tool | Music CD   | Exercise Machine |
++===============+=============+==============+============+==================+
+| Daytime       | 6           | 73           | 55         | 7                |
++---------------+-------------+--------------+------------+------------------+
+| Nighttime     | 14          | 65           | 82         | 8                |
++---------------+-------------+--------------+------------+------------------+
+| Weekend       | 21          | 58           | 48         | 8                |
++---------------+-------------+--------------+------------+------------------+
 
 1.  What does your analysis look like?
-
-```{=html}
-<!-- -->
-```
 2.  Calculate and comment the Cramer's Contingency Coefficient.
 
 ## Problem 5
@@ -72,13 +68,18 @@ Sample3: 17, 29, 30, 36, 41, 30, 31, 23, 38
 
 Random samples from each of three different types of light bulbs were tested to see how long the light bulbs lasted, with the following results:
 
-+-------------+-------------+-------------+-------------+-------------+
-| A           | 73          | 64          | 67          | 62          |
-+-------------+-------------+-------------+-------------+-------------+
-| B           | 84          | 80          | 81          | 77          |
-+-------------+-------------+-------------+-------------+-------------+
-| C           | 82          | 79          | 71          | 75          |
-+-------------+-------------+-------------+-------------+-------------+
++------------+------------+------------+------------+------------+
+| A          | 73         | 64         | 67         | 62         |
++------------+------------+------------+------------+------------+
+| B          | 84         | 80         | 81         | 77         |
++------------+------------+------------+------------+------------+
+| C          | 82         | 79         | 71         | 75         |
++------------+------------+------------+------------+------------+
+
+Are there differences among the reliability of the different types of light bulbs? if yes, which ones are different from each other (post hoc analysis). Solve this problem using:
+
+1.  Median Test
+2.  Kruskal-Wallis Test
 
 ## Problem 7
 
@@ -90,18 +91,17 @@ Women = c(66,68,67,69,72,73,74,75,76)
 ```
 
 1.  Is the average of the rate of heartbeats the same for men and women?
-2.  Is the variation among the men significantly greater than the variation among the women?
 
 ## Problem 8
 
 7 married couples were selected at random, and each husband and each wife was asked how much money they spent on their spouse's Christmas present year. The responses were as follows:
 
-+------------+-------+---------+-------+-------+-------+-------+-------+
-|            | 1     | 2       | 3     | 4     | 5     | 6     | 7     |
-+------------+-------+---------+-------+-------+-------+-------+-------+
-| Husband    | 25    | 21      | 38    | 64    | 52    | 16    | 26    |
-+------------+-------+---------+-------+-------+-------+-------+-------+
-| Wife       | 16    | 42      | 56    | 41    | 19    | 26    | 24    |
-+------------+-------+---------+-------+-------+-------+-------+-------+
++---------+-------+-------+-------+-------+-------+-------+-------+
+|         | 1     | 2     | 3     | 4     | 5     | 6     | 7     |
++---------+-------+-------+-------+-------+-------+-------+-------+
+| Husband | 25    | 21    | 38    | 64    | 52    | 16    | 26    |
++---------+-------+-------+-------+-------+-------+-------+-------+
+| Wife    | 16    | 42    | 56    | 41    | 19    | 26    | 24    |
++---------+-------+-------+-------+-------+-------+-------+-------+
 
 1\. Does the husband tend to spend more than the wife?
