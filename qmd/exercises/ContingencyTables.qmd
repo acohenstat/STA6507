@@ -41,7 +41,7 @@ author: Dr. Cohen
 
 `Test Statistic`
 
-$$ T= \frac{\sqrt{N} (O_{12}O_{22} - O_{12}O_{21})}{\sqrt{n_1n_2c_1c_1}}$$
+$$ T= \frac{\sqrt{N} (O_{11}O_{22} - O_{12}O_{21})}{\sqrt{n_1n_2c_1c_1}}$$
 `Null distirbution`: $T \sim N(0,1)$
 
 
