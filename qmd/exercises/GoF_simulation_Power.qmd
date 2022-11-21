@@ -17,12 +17,12 @@ library(tidyverse)
 # function that runs the tests 
 find_pvalues =function(n,typedist,...){
   
-x = typedist(n,...) # gamma data
+x = typedist(n,...) # data
 
 sw = shapiro.test(x) # shapiro-wilk test
 ks = ks.test(x,'pnorm',mean(x),sd(x)) # k-s test
 lf = lillie.test(x) # lilliefors test
-pr = pearson.test(x)
+pr = pearson.test(x,adjust = TRUE)
 
 h=hist(x,nclass = ceiling(2 * (n^(2/5))),plot=FALSE)
 ob=h$counts
@@ -36,44 +36,70 @@ p_val = pchisq(chi$statistic,ceiling(2 * (n^(2/5)))-3,lower.tail = F)
 
 pvalues = c(SW = sw$p.value < 0.05, 
             KS = ks$p.value< 0.05, 
-            LF=lf$p.value < 0.05, 
+            LF = lf$p.value < 0.05, 
             Chi = p_val < 0.05,
             Pear = pr$p.value < 0.05)
 return(pvalues)
 }
 
 # n values : sample sizes
-n_values= c(5,20,100)
+n_values= c(5,10,20,40,80,160,320,1000)
 # find p_values for different sample sizes
 p_val = map_df(n_values,find_pvalues,rt,4)
 
 # repeat 1000 times
 results_t = replicate(1000,map(n_values,find_pvalues,rt,4))
-results_exp = replicate(1000,map(n_values,find_pvalues,rexp,0.2))
+results_exp = replicate(1000,map(n_values,find_pvalues,rexp,1))
 results_chi = replicate(1000,map(n_values,find_pvalues,rchisq,3))
 results_unif = replicate(1000,map(n_values,find_pvalues,runif,0,1))
 
 # better results format
-df.results = bind_rows(results) %>% 
-  mutate(n=gl(n = length(n_values),k=1,length = length(results),labels = n_values))
-df.results = bind_rows(results) %>% 
-  mutate(n=gl(n = length(n_values),k=1,length = length(results),labels = n_values))
-df.results = bind_rows(results) %>% 
-  mutate(n=gl(n = length(n_values),k=1,length = length(results),labels = n_values))
-df.results = bind_rows(results) %>% 
-  mutate(n=gl(n = length(n_values),k=1,length = length(results),labels = n_values))
+df.results_t = bind_rows(results_t) %>% 
+  mutate(n=gl(n = length(n_values),k=1,length = length(results_t),labels = n_values),dist="t4")
+df.results_exp = bind_rows(results_exp) %>% 
+  mutate(n=gl(n = length(n_values),k=1,length = length(results_exp),labels = n_values),dist="exp1")
+df.results_unif = bind_rows(results_unif) %>% 
+  mutate(n=gl(n = length(n_values),k=1,length = length(results_unif),labels = n_values),dist="unif01")
+df.results_chi = bind_rows(results_chi) %>% 
+  mutate(n=gl(n = length(n_values),k=1,length = length(results_chi),labels = n_values),dist="chi3")
+
+df_power_sim = rbind(df.results_t,df.results_exp,df.results_chi,df.results_unif)
 
 # compute the power
-power_tests = df.results %>% 
-  group_by(n) %>% 
+power_tests = df_power_sim %>% 
+  group_by(dist,n) %>% 
   summarise_all(mean,na.rm=TRUE)
 power_tests
 
 # plot the power
 power_tests %>% 
-  pivot_longer(cols = -n, names_to = "test", values_to = "power") %>%
+  pivot_longer(cols = -c("n","dist"), names_to = "test", values_to = "power") %>%
   ggplot(aes(x=n,y=power,group=test,col=test)) +
   geom_point()+
-  geom_line()
+  geom_line()+
+  geom_hline(yintercept = 0.8,col="red")+
+  facet_wrap(~dist)+
+  labs(x="Sample size",y="Power")+
+  scale_color_discrete(name="Tests")
 ```
+
+
+Power analysis using all data
+
+```{r}
+# compute the power
+df_power_sim %>% 
+  select(-dist) %>%
+  group_by(n) %>% 
+  summarise_all(mean,na.rm=TRUE) %>% 
+  pivot_longer(cols = -c("n"), names_to = "test", values_to = "power") %>%
+  ggplot(aes(x=n,y=power,group=test,col=test)) +
+  geom_point()+
+  geom_line()+
+  geom_hline(yintercept = 0.8,col="red")+
+  labs(x="Sample size",y="Power")+
+  scale_color_discrete(name="Tests")
+
+```
+
 

@@ -130,64 +130,108 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># function that runs the tests </span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>find_pvalues <span class="ot">=</span><span class="cf">function</span>(n){</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>find_pvalues <span class="ot">=</span><span class="cf">function</span>(n,typedist,...){</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">rgamma</span>(n,<span class="at">shape =</span> <span class="fl">1.5</span>,<span class="at">scale =</span> <span class="fl">1.5</span>) <span class="co"># gamma data</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">typedist</span>(n,...) <span class="co"># data</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>sw <span class="ot">=</span> <span class="fu">shapiro.test</span>(x) <span class="co"># shapiro-wilk test</span></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>ks <span class="ot">=</span> <span class="fu">ks.test</span>(x,<span class="st">'pnorm'</span>,<span class="fu">mean</span>(x),<span class="fu">sd</span>(x)) <span class="co"># k-s test</span></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>lf <span class="ot">=</span> <span class="fu">lillie.test</span>(x) <span class="co"># lilliefors test</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>h<span class="ot">=</span><span class="fu">hist</span>(x,<span class="at">nclass =</span> <span class="fu">sqrt</span>(n),<span class="at">plot=</span><span class="cn">FALSE</span>)</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>ob<span class="ot">=</span>h<span class="sc">$</span>counts</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>xv<span class="ot">=</span>h<span class="sc">$</span>breaks</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>pj <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">pnorm</span>(xv[<span class="dv">2</span>],<span class="fu">mean</span>(x),<span class="fu">sd</span>(x)),</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>       <span class="fu">diff</span>(<span class="fu">pnorm</span>(xv[<span class="dv">2</span><span class="sc">:</span>(<span class="fu">length</span>(xv)<span class="sc">-</span><span class="dv">1</span>)],<span class="fu">mean</span>(x),<span class="fu">sd</span>(x))),</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>       <span class="fu">pnorm</span>(xv[<span class="fu">length</span>(xv)<span class="sc">-</span><span class="dv">1</span>],<span class="fu">mean</span>(x),<span class="fu">sd</span>(x),<span class="at">lower.tail =</span> F))</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>chi <span class="ot">=</span> <span class="fu">chisq.test</span>(ob,<span class="at">p =</span> pj) <span class="co"># chi-square test</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co"># need to adjust df</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>pvalues <span class="ot">=</span> <span class="fu">c</span>(<span class="at">SW =</span> sw<span class="sc">$</span>p.value <span class="sc">&lt;</span> <span class="fl">0.05</span>, </span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>            <span class="at">KS =</span> ks<span class="sc">$</span>p.value<span class="sc">&lt;</span> <span class="fl">0.05</span>, </span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>            <span class="at">LF=</span>lf<span class="sc">$</span>p.value <span class="sc">&lt;</span> <span class="fl">0.05</span>, </span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>            <span class="at">Chi =</span> chi<span class="sc">$</span>p.value <span class="sc">&lt;</span> <span class="fl">0.05</span>)</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="fu">return</span>(pvalues)</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="co"># n values : sample sizes</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>n_values<span class="ot">=</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">10</span>,<span class="dv">50</span>,<span class="dv">100</span>)</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="co"># find p_values for different sample sizes</span></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>p_val <span class="ot">=</span> <span class="fu">map_df</span>(n_values,find_pvalues)</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="co"># repeat 1000 times</span></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>results <span class="ot">=</span> <span class="fu">replicate</span>(<span class="dv">1000</span>,<span class="fu">map</span>(n_values,find_pvalues))</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>pr <span class="ot">=</span> <span class="fu">pearson.test</span>(x,<span class="at">adjust =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>h<span class="ot">=</span><span class="fu">hist</span>(x,<span class="at">nclass =</span> <span class="fu">ceiling</span>(<span class="dv">2</span> <span class="sc">*</span> (n<span class="sc">^</span>(<span class="dv">2</span><span class="sc">/</span><span class="dv">5</span>))),<span class="at">plot=</span><span class="cn">FALSE</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>ob<span class="ot">=</span>h<span class="sc">$</span>counts</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>xv<span class="ot">=</span>h<span class="sc">$</span>breaks</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>pj <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">pnorm</span>(xv[<span class="dv">2</span>],<span class="fu">mean</span>(x),<span class="fu">sd</span>(x)),</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>       <span class="fu">diff</span>(<span class="fu">pnorm</span>(xv[<span class="dv">2</span><span class="sc">:</span>(<span class="fu">length</span>(xv)<span class="sc">-</span><span class="dv">1</span>)],<span class="fu">mean</span>(x),<span class="fu">sd</span>(x))),</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>       <span class="fu">pnorm</span>(xv[<span class="fu">length</span>(xv)<span class="sc">-</span><span class="dv">1</span>],<span class="fu">mean</span>(x),<span class="fu">sd</span>(x),<span class="at">lower.tail =</span> F))</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>chi <span class="ot">=</span> <span class="fu">chisq.test</span>(ob,<span class="at">p =</span> pj) <span class="co"># chi-square test</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co"># need to adjust df</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>p_val <span class="ot">=</span> <span class="fu">pchisq</span>(chi<span class="sc">$</span>statistic,<span class="fu">ceiling</span>(<span class="dv">2</span> <span class="sc">*</span> (n<span class="sc">^</span>(<span class="dv">2</span><span class="sc">/</span><span class="dv">5</span>)))<span class="sc">-</span><span class="dv">3</span>,<span class="at">lower.tail =</span> F)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>pvalues <span class="ot">=</span> <span class="fu">c</span>(<span class="at">SW =</span> sw<span class="sc">$</span>p.value <span class="sc">&lt;</span> <span class="fl">0.05</span>, </span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>            <span class="at">KS =</span> ks<span class="sc">$</span>p.value<span class="sc">&lt;</span> <span class="fl">0.05</span>, </span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>            <span class="at">LF =</span> lf<span class="sc">$</span>p.value <span class="sc">&lt;</span> <span class="fl">0.05</span>, </span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>            <span class="at">Chi =</span> p_val <span class="sc">&lt;</span> <span class="fl">0.05</span>,</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>            <span class="at">Pear =</span> pr<span class="sc">$</span>p.value <span class="sc">&lt;</span> <span class="fl">0.05</span>)</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="fu">return</span>(pvalues)</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="co"># n values : sample sizes</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>n_values<span class="ot">=</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">40</span>,<span class="dv">80</span>,<span class="dv">160</span>,<span class="dv">320</span>,<span class="dv">1000</span>)</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="co"># find p_values for different sample sizes</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>p_val <span class="ot">=</span> <span class="fu">map_df</span>(n_values,find_pvalues,rt,<span class="dv">4</span>)</span>
 <span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="co"># better results format</span></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>df.results <span class="ot">=</span> <span class="fu">bind_rows</span>(results) <span class="sc">%&gt;%</span> </span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">n=</span><span class="fu">gl</span>(<span class="at">n =</span> <span class="fu">length</span>(n_values),<span class="at">k=</span><span class="dv">1</span>,<span class="at">length =</span> <span class="fu">length</span>(results),<span class="at">labels =</span> n_values))</span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="co"># compute the power</span></span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>power_tests <span class="ot">=</span> df.results <span class="sc">%&gt;%</span> </span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(n) <span class="sc">%&gt;%</span> </span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise_all</span>(mean)</span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>power_tests</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="co"># repeat 1000 times</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>results_t <span class="ot">=</span> <span class="fu">replicate</span>(<span class="dv">1000</span>,<span class="fu">map</span>(n_values,find_pvalues,rt,<span class="dv">4</span>))</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>results_exp <span class="ot">=</span> <span class="fu">replicate</span>(<span class="dv">1000</span>,<span class="fu">map</span>(n_values,find_pvalues,rexp,<span class="dv">1</span>))</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>results_chi <span class="ot">=</span> <span class="fu">replicate</span>(<span class="dv">1000</span>,<span class="fu">map</span>(n_values,find_pvalues,rchisq,<span class="dv">3</span>))</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>results_unif <span class="ot">=</span> <span class="fu">replicate</span>(<span class="dv">1000</span>,<span class="fu">map</span>(n_values,find_pvalues,runif,<span class="dv">0</span>,<span class="dv">1</span>))</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="co"># better results format</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>df.results_t <span class="ot">=</span> <span class="fu">bind_rows</span>(results_t) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">n=</span><span class="fu">gl</span>(<span class="at">n =</span> <span class="fu">length</span>(n_values),<span class="at">k=</span><span class="dv">1</span>,<span class="at">length =</span> <span class="fu">length</span>(results_t),<span class="at">labels =</span> n_values),<span class="at">dist=</span><span class="st">"t4"</span>)</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>df.results_exp <span class="ot">=</span> <span class="fu">bind_rows</span>(results_exp) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">n=</span><span class="fu">gl</span>(<span class="at">n =</span> <span class="fu">length</span>(n_values),<span class="at">k=</span><span class="dv">1</span>,<span class="at">length =</span> <span class="fu">length</span>(results_exp),<span class="at">labels =</span> n_values),<span class="at">dist=</span><span class="st">"exp1"</span>)</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>df.results_unif <span class="ot">=</span> <span class="fu">bind_rows</span>(results_unif) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">n=</span><span class="fu">gl</span>(<span class="at">n =</span> <span class="fu">length</span>(n_values),<span class="at">k=</span><span class="dv">1</span>,<span class="at">length =</span> <span class="fu">length</span>(results_unif),<span class="at">labels =</span> n_values),<span class="at">dist=</span><span class="st">"unif01"</span>)</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>df.results_chi <span class="ot">=</span> <span class="fu">bind_rows</span>(results_chi) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">n=</span><span class="fu">gl</span>(<span class="at">n =</span> <span class="fu">length</span>(n_values),<span class="at">k=</span><span class="dv">1</span>,<span class="at">length =</span> <span class="fu">length</span>(results_chi),<span class="at">labels =</span> n_values),<span class="at">dist=</span><span class="st">"chi3"</span>)</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>df_power_sim <span class="ot">=</span> <span class="fu">rbind</span>(df.results_t,df.results_exp,df.results_chi,df.results_unif)</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="co"># compute the power</span></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>power_tests <span class="ot">=</span> df_power_sim <span class="sc">%&gt;%</span> </span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(dist,n) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise_all</span>(mean,<span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>power_tests</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 4 × 5
-  n        SW    KS    LF   Chi
-  &lt;fct&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-1 5     0.121 0     0.101 0    
-2 10    0.308 0.002 0.221 0.085
-3 50    0.986 0.165 0.815 0.721
-4 100   1     0.575 0.992 0.966</code></pre>
+<pre><code># A tibble: 32 × 7
+# Groups:   dist [4]
+   dist  n        SW    KS    LF `Chi.X-squared`  Pear
+   &lt;chr&gt; &lt;fct&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;           &lt;dbl&gt; &lt;dbl&gt;
+ 1 chi3  5     0.108 0     0.088           0.191 0.058
+ 2 chi3  10    0.314 0.003 0.21            0.264 0.294
+ 3 chi3  20    0.646 0.009 0.384           0.478 0.412
+ 4 chi3  40    0.944 0.086 0.718           0.748 0.732
+ 5 chi3  80    1     0.395 0.978           0.944 0.985
+ 6 chi3  160   1     0.915 1               1     1    
+ 7 chi3  320   1     1     1               1     1    
+ 8 chi3  1000  1     1     1               1     1    
+ 9 exp1  5     0.168 0     0.135           0.191 0.097
+10 exp1  10    0.431 0.001 0.263           0.237 0.375
+# … with 22 more rows</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the power</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>power_tests <span class="sc">%&gt;%</span> </span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>n, <span class="at">names_to =</span> <span class="st">"test"</span>, <span class="at">values_to =</span> <span class="st">"power"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span><span class="fu">c</span>(<span class="st">"n"</span>,<span class="st">"dist"</span>), <span class="at">names_to =</span> <span class="st">"test"</span>, <span class="at">values_to =</span> <span class="st">"power"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>n,<span class="at">y=</span>power,<span class="at">group=</span>test,<span class="at">col=</span>test)) <span class="sc">+</span></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fl">0.8</span>,<span class="at">col=</span><span class="st">"red"</span>)<span class="sc">+</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>dist)<span class="sc">+</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Sample size"</span>,<span class="at">y=</span><span class="st">"Power"</span>)<span class="sc">+</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_discrete</span>(<span class="at">name=</span><span class="st">"Tests"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="GoF_simulation_Power_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+<p>Power analysis using all data</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compute the power</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>df_power_sim <span class="sc">%&gt;%</span> </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>dist) <span class="sc">%&gt;%</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(n) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise_all</span>(mean,<span class="at">na.rm=</span><span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span><span class="fu">c</span>(<span class="st">"n"</span>), <span class="at">names_to =</span> <span class="st">"test"</span>, <span class="at">values_to =</span> <span class="st">"power"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>n,<span class="at">y=</span>power,<span class="at">group=</span>test,<span class="at">col=</span>test)) <span class="sc">+</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fl">0.8</span>,<span class="at">col=</span><span class="st">"red"</span>)<span class="sc">+</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Sample size"</span>,<span class="at">y=</span><span class="st">"Power"</span>)<span class="sc">+</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_discrete</span>(<span class="at">name=</span><span class="st">"Tests"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="GoF_simulation_Power_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="768"></p>
 </div>
 </div>
 </section>
