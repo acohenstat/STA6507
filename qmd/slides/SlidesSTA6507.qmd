@@ -846,15 +846,16 @@ fisher.test(data,alternative = "l")
     likely than males to get the account Rep. job; pvalue=0.041; OR=0.055 [95\%CI 0.00 to 1.29]
 :::
 
-## The Median Test
+## The Median Test {.smaller}
 
-::: r-fit-text
-Test for equal medians.
+::: {.panel-tabset}
+
+### Data
+
+- Test for equal medians.
 
 $$H_0:  \text{All C populations have the same median} $$
 $$H_1:  \text{At least two populations have different medians} $$
-
-`Data`
 
 -   C random samples are independent
 -   Arrange the data as follows:
@@ -867,11 +868,9 @@ $$H_1:  \text{At least two populations have different medians} $$
 | $>$ GM       | $O_{11}$ | $O_{12}$ | ... | $O_{1C}$ |      a       |
 | $\leq$ GM    | $O_{21}$ | $O_{22}$ | ... | $O_{2C}$ |      b       |
 | **`Totals`** | $n_{1}$  | $n_{1}$  | ... | $n_{C}$  |      N       |
-:::
 
-## The Median Test
 
--   `Test Statistic`
+### Test Statistic
 
 $$ T = \frac{N^2}{ab} \sum_{i=1}^{C} \frac{O^2_{1i}}{n_i}  - \frac{Na}{b} $$
 
@@ -882,16 +881,34 @@ with C-1 degrees of freedom.
 
 -   `Decision`: IF p_value \< $\alpha$ then REJECT $H_0$
 
-## The Median Test - Example
+:::
+
+
+## The Median Test - Example {.smaller}
+
+::: {.panel-tabset}
+
+### Question
 
 -   4 methods of growing corn is used.
 -   The yield per acre is measured and compared across the 4 methods.
 
 `Question`: Do the medians yield per acre differ across the 4 methods.
 
-## The Median Test - Example
+`Data`:
+```{r}
+#| echo: false
+#| fig-width: 5.5
+#| fig-height: 4
+#| fig-align: center
+library(agricolae)
+data(corn)
+boxplot(observation~method, data=corn)
+```
 
-::: r-fit-text
+
+### Solution
+
 1.  Define the null and alternative hypotheses
     $$H_0:  \text{All methods have the same median yield per acre} $$
     $$H_1:  \text{At least two of the methods medians differ} $$
@@ -903,13 +920,12 @@ with C-1 degrees of freedom.
 $$T_{obs} = 17.6$$
 
 Under Null hypothesis: $T \sim \chi^2_{3}$
-:::
 
-## The Median Test - Example R
+### R Code
+
 
 ```{r}
 #| echo: true
-  
 # install.packages("agricolae")
 library(agricolae) # package
 
@@ -920,35 +936,48 @@ median_test_out= Median.test(corn$observation,corn$method)
 
 ```
 
-## The Median Test - Example R
 
-Multiple Comparison
+### Multiple Comparison
 
 ```{r}
-#| echo: true
-
 # Visualization
 plot(median_test_out)
 ```
 
-## Goodness-of-Fit Tests - GOF
+### Interpretation
+
+Reject the null hypothesis. There is evidence that supports that at least two methods give different median yield per acre. 
+
+Multiple comparison shows that all methods are significantly different except 1 and 2. Method 3 has the higher median yield per acre and is significantly different from all other methods.
+
+
+:::
+
+## Goodness-of-Fit Tests - GOF {.smaller}
 
 Test whether a sample is coming from a known distribution. For example,
 test the normality assumption.
 
--   Kolmogorov-Smirnov Test (KS)
--   Shapiro-Wilk Test (SW)
+-   Kolmogorov-Smirnov Test 
+-   Shapiro-Wilk Test (Normality)
 -   Chi-squared Test
+-   Lilliefors Test (Normality)
 
-## Goodness-of-Fit Tests - GOF
+See lecture notes for more details.
+
+## Goodness-of-Fit Tests - Example {.smaller}
 
 Test if `speed` data is normally distributed.
 
-`Data`
+:::  {.panel-tabset}
+
+### Data
 
 ```{r}
 #| echo: true
-
+#| fig-width: 5
+#| fig-height: 3
+#| fig-align: center
 hist(cars$speed) # histogram of speed
 mean_speed = mean(cars$speed) # mean speed
 mean_speed
@@ -956,19 +985,16 @@ sd_speed = sd(cars$speed) # standard deviation speed
 sd_speed
 ```
 
-## Normality Test
-
-#### Shapiro Wilk Test
+### Shapiro Wilk
 
 ```{r}
 #| echo: true
 shapiro.test(cars$speed)
 ```
 
-`Interpretation`: Fail to reject H0. There is evidence to support that
-data is normally distributed.
+`Interpretation`: Fail to reject H0. There is evidence to support that data is normally distributed.
 
-#### Kolmogorov Smirnov Test
+### Kolmogorov Smirnov Test
 
 ```{r}
 #| echo: true
@@ -978,59 +1004,43 @@ ks.test(cars$speed,'pnorm',mean_speed,sd_speed)
 `Interpretation`: Fail to reject H0. There is evidence to support that
 data is normally distributed.
 
-## Normality Test
-
-#### Chi-squared Test
+### Chi-squared Test
 
 ```{r}
 #| echo: true
 h = hist(cars$speed,plot = FALSE) # hist of data
-```
-
-```{r}
-#| echo: true
 Ob = h$counts # observed frequencies in classes
-Ob
-```
-
-```{r}
-#| echo: true
+## Probabilities
 p1 = pnorm(5,mean_speed,sd_speed)# P(X <= 5)
 p2 = pnorm(10,mean_speed,sd_speed)-pnorm(5,mean_speed,sd_speed) # P(5<=X <= 10)
 p3 = pnorm(15,mean_speed,sd_speed)-pnorm(10,mean_speed,sd_speed) # P(10<=X <= 15)
 p4 = pnorm(20,mean_speed,sd_speed)-pnorm(15,mean_speed,sd_speed) # P(15<=X <= 20)
 p5 = 1- pnorm(20,mean_speed,sd_speed) # P(X> 20)
-
 Pj = c(p1,p2,p3,p4,p5) # put everything in one array
-Pj
-sum(Pj) # should be equal to 1
-```
-
-```{r}
-#| echo: true
+#sum(Pj) # should be equal to 1
 Ej = Pj*50 # Expected counts
-Ej
-```
+#Ej # Ej should be greater than 5
 
-## Normality Test
-
-#### Chi-squared Test
-
-```{r}
-#| echo: true
 # Chi-squared test for GOF
 chisq.test(x=Ob,p = Pj)
 ```
 
-The degrees of freedom of the test is df=C-1-k=5-1-2=2. k=2 because we
-did estimate the mean and variance from the sample. We need to
-`recompute` the p-value.
+The degrees of freedom of the test is df=C-1-k=5-1-2=2. k=2 because we did estimate the mean and variance from the sample. We need to `recompute` the p-value.
 
 ```{r}
 #| echo: true
 pvalue <- 1-pchisq(1.3267,df=2) # pvalue adjusted for the df
 pvalue
 ```
+
+### Lilliefors
+
+```{r}
+library(nortest)
+lillie.test(cars$speed)
+```
+
+:::
 
 ## Tests Based on the Ranks
 
