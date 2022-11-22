@@ -18,4 +18,5 @@ show_sidebar: false
 | - Binomial based Tests | [.html file](qmd/exercises/BinomialTests.html) |
 | - Goodness-Of-Fit Tests | [.html file](qmd/exercises/GOF.html) |
 | - Contingency Tables | [.html file](qmd/exercises/ContingencyTables.html) |
+| - Ranks based Tests | [.html file](qmd/exercises/RanksBasedTest.html) |
 
