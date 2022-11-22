@@ -127,29 +127,41 @@ At the end of the experiment, each homeowner was asked to rank the grass types i
 The hypothesis was that there is no difference in preferences of the grass types. 
 
 ```{r}
-hw = (1:12)
-grass1 = c(4,4,3,3,4,2,1,2,3.5,4,4,3.5)
-grass2 = c(3,2,1.5,1,2,2,3,4,1,1,2,1)
-grass3 = c(2,3,1.5,2,1,2,2,1,2,3,3,2)
-grass4 = c(1,1,4,4,3,4,4,3,3.5,2,1,3.5)
-df = data.frame(hw,grass1,grass2,grass3,grass4)
+#| warning: false
 
 library(tidyverse)
+
+hw = (1:12) # homeowner id
+grass1 = c(4,4,3,3,4,2,1,2,3.5,4,4,3.5) # preference for grass type 1 
+grass2 = c(3,2,1.5,1,2,2,3,4,1,1,2,1)# preference for grass type 2 
+grass3 = c(2,3,1.5,2,1,2,2,1,2,3,3,2)# preference for grass type 3 
+grass4 = c(1,1,4,4,3,4,4,3,3.5,2,1,3.5)# preference for grass type 4 
+df = data.frame(hw,grass1,grass2,grass3,grass4)
 
 df1 = df %>% 
   pivot_longer(cols = -hw, names_to =  "GrassType", values_to = "preference") 
 
+head(df1)
+
 friedman.test(y=df1$preference,df1$GrassType,blocks=df1$hw)
 
+```
+
+Results: Reject the null hypothesis. There is evidence to suggest that preference of grasses types are different among at least two homeowners.
+
+##### Post hoc analysis
+
+```{r}
 frdcomp = frdAllPairsConoverTest(y=df1$preference,
                                  df1$GrassType,
                                  blocks=df1$hw,
                                  p.adjust.method = "bon")
+frdcomp
 
 boxplot(preference~GrassType, data= df1)
 ```
 
-
+Multiple comparison with the Bonferroni correction shows no significance difference. We may conclude the significance results from the Friedman test may be a false positive.
 
 
 ## Correlation coefficient

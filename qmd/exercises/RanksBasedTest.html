@@ -407,19 +407,88 @@ Kruskal-Wallis chi-squared = 0.32093, df = 2, p-value = 0.8517</code></pre>
 <ul>
 <li>K dependent samples</li>
 </ul>
-<section id="example-1---homeowner-data" class="level3">
-<h3 class="anchored" data-anchor-id="example-1---homeowner-data">Example 1 - Homeowner data</h3>
-<p>12 homeowners are randomly selected to participate in an experiment with a plant nursery. Each homeowner was asked to select four.</p>
+<section id="example-1---homeowner-data---p.-371" class="level3">
+<h3 class="anchored" data-anchor-id="example-1---homeowner-data---p.-371">Example 1 - Homeowner data - p.&nbsp;371</h3>
+<p>12 homeowners are randomly selected to participate in an experiment with a plant nursery. Each homeowner was asked to select four fairly identical areas in his yard and to plant 4 different types of grasses.</p>
+<p>At the end of the experiment, each homeowner was asked to rank the grass types in order of preference. The rank 1 was assigned to the least preferred.</p>
+<p>The hypothesis was that there is no difference in preferences of the grass types.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>hw <span class="ot">=</span> (<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>) <span class="co"># homeowner id</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>grass1 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="fl">3.5</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="fl">3.5</span>) <span class="co"># preference for grass type 1 </span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>grass2 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">2</span>,<span class="fl">1.5</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>)<span class="co"># preference for grass type 2 </span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>grass3 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="fl">1.5</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">2</span>)<span class="co"># preference for grass type 3 </span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>grass4 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="fl">3.5</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="fl">3.5</span>)<span class="co"># preference for grass type 4 </span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(hw,grass1,grass2,grass3,grass4)</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">=</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>hw, <span class="at">names_to =</span>  <span class="st">"GrassType"</span>, <span class="at">values_to =</span> <span class="st">"preference"</span>) </span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 3
+     hw GrassType preference
+  &lt;int&gt; &lt;chr&gt;          &lt;dbl&gt;
+1     1 grass1             4
+2     1 grass2             3
+3     1 grass3             2
+4     1 grass4             1
+5     2 grass1             4
+6     2 grass2             2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">friedman.test</span>(<span class="at">y=</span>df1<span class="sc">$</span>preference,df1<span class="sc">$</span>GrassType,<span class="at">blocks=</span>df1<span class="sc">$</span>hw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Friedman rank sum test
+
+data:  df1$preference, df1$GrassType and df1$hw
+Friedman chi-squared = 8.0973, df = 3, p-value = 0.04404</code></pre>
+</div>
+</div>
+<p>Results: Reject the null hypothesis. There is evidence to suggest that preference of grasses types are different among at least two homeowners.</p>
+<section id="post-hoc-analysis" class="level5">
+<h5 class="anchored" data-anchor-id="post-hoc-analysis">Post hoc analysis</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>frdcomp <span class="ot">=</span> <span class="fu">frdAllPairsConoverTest</span>(<span class="at">y=</span>df1<span class="sc">$</span>preference,</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>                                 df1<span class="sc">$</span>GrassType,</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">blocks=</span>df1<span class="sc">$</span>hw,</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">p.adjust.method =</span> <span class="st">"bon"</span>)</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>frdcomp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+    Pairwise comparisons using Conover's all-pairs test for a two-way balanced complete block design</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>data: y, groups and blocks</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       grass1 grass2 grass3
+grass2 0.15   -      -     
+grass3 0.22   1.00   -     
+grass4 1.00   0.60   0.81  </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+P value adjustment method: bonferroni</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(preference<span class="sc">~</span>GrassType, <span class="at">data=</span> df1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="RanksBasedTest_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Multiple comparison with the Bonferroni correction shows no significance difference. We may conclude the significance results from the Friedman test may be a false positive.</p>
+</section>
 </section>
 </section>
 <section id="correlation-coefficient" class="level2">
 <h2 class="anchored" data-anchor-id="correlation-coefficient">Correlation coefficient</h2>
 <p>12 MBA students are studied to measure the strength of the relationship between their GMAT and GPA.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>gmat<span class="ot">=</span><span class="fu">c</span>(<span class="dv">710</span>,<span class="dv">610</span>,<span class="dv">640</span>,<span class="dv">580</span>,<span class="dv">545</span>,<span class="dv">560</span>,<span class="dv">610</span>,<span class="dv">530</span>,<span class="dv">560</span>,<span class="dv">540</span>,<span class="dv">570</span>,<span class="dv">560</span>)</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>gpa<span class="ot">=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">4</span>,<span class="fl">3.9</span>,<span class="fl">3.8</span>,<span class="fl">3.7</span>,<span class="fl">3.6</span>,<span class="fl">3.5</span>,<span class="fl">3.5</span>,<span class="fl">3.5</span>,<span class="fl">3.3</span>,<span class="fl">3.2</span>,<span class="fl">3.2</span>)</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(gmat,gpa,<span class="at">method =</span> <span class="st">"s"</span>,<span class="at">alternative =</span> <span class="st">"g"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>gmat<span class="ot">=</span><span class="fu">c</span>(<span class="dv">710</span>,<span class="dv">610</span>,<span class="dv">640</span>,<span class="dv">580</span>,<span class="dv">545</span>,<span class="dv">560</span>,<span class="dv">610</span>,<span class="dv">530</span>,<span class="dv">560</span>,<span class="dv">540</span>,<span class="dv">570</span>,<span class="dv">560</span>)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>gpa<span class="ot">=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">4</span>,<span class="fl">3.9</span>,<span class="fl">3.8</span>,<span class="fl">3.7</span>,<span class="fl">3.6</span>,<span class="fl">3.5</span>,<span class="fl">3.5</span>,<span class="fl">3.5</span>,<span class="fl">3.3</span>,<span class="fl">3.2</span>,<span class="fl">3.2</span>)</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(gmat,gpa,<span class="at">method =</span> <span class="st">"s"</span>,<span class="at">alternative =</span> <span class="st">"g"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in cor.test.default(gmat, gpa, method = "s", alternative = "g"): Cannot
 compute exact p-value with ties</code></pre>
