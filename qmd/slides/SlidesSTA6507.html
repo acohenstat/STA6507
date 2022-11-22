@@ -390,7 +390,7 @@
 
 <section id="title-slide" class="center">
   <h1 class="title">Nonparametric Statistics</h1>
-  <p class="subtitle">Dr.&nbsp;Cohen</p>
+  <p class="subtitle">Achraf Cohen</p>
 </section>
 
 <section id="welcome-to-sta-6507" class="slide level2">
@@ -399,10 +399,10 @@
 <ul>
 <li>Binomial based Tests</li>
 <li>Bootstrapping for CIs</li>
-<li>Goodness of fit Test</li>
-<li>Contingency Tables</li>
-<li>Ranks based Test</li>
-<li>Kernel smoothing</li>
+<li>Goodness of fit Tests</li>
+<li>Contingency Tables Tests</li>
+<li>Ranks based Tests</li>
+<li>Kernel smoothing / nonparametric regression</li>
 </ul>
 <p><strong>Slides are being updated…</strong></p>
 </section>
@@ -603,7 +603,7 @@
 <li>The <code>random variable</code> <span class="math inline">\(Y\)</span> is the number of successes (<span class="math inline">\(yesS\)</span>) observed during the <span class="math inline">\(n\)</span> trials.</li>
 </ul>
 </section>
-<section id="binomial-test-estimation-of-p-1" class="slide level2">
+<section id="binomial-test-estimation-of-p-1" class="slide level2 smaller">
 <h2>Binomial Test (Estimation of <span class="math inline">\(p\)</span>)</h2>
 <h4 id="binomial-distribution-1">Binomial distribution</h4>
 <p>Consider <span class="math inline">\(Y \sim binom(n,p)\)</span>, then <span class="math inline">\(Y\)</span> can take on values <span class="math inline">\(0, 1, 2, 3,\ldots, n\)</span>. The probability mass function is given by <span class="math display">\[\begin{align}
@@ -613,7 +613,7 @@ y=&amp;0,1,2,\ldots,n ; \qquad 0\leq p \leq 1 ; \quad q=1-p
 V(Y)=npq
 \end{align}\]</span></p>
 </section>
-<section id="binomial-test-estimation-of-p-2" class="slide level2">
+<section id="binomial-test-estimation-of-p-2" class="slide level2 smaller">
 <h2>Binomial Test (Estimation of <span class="math inline">\(p\)</span>)</h2>
 <p>There are some populations which are conceived as consisting of only two classes:</p>
 <ul>
@@ -623,52 +623,89 @@ V(Y)=npq
 </ul>
 <p>For such cases all the population observations will fall into either one or the other of the two classes. If we know that the proportion of cases in one class is <span class="math inline">\(p\)</span>, sometimes we are interested to estimate/test the population proportion <span class="math inline">\(p\)</span>.</p>
 </section>
-<section id="binomial-test-estimation-of-p-3" class="slide level2">
+<section id="binomial-test-estimation-of-p-3" class="slide level2 smaller">
 <h2>Binomial Test (Estimation of <span class="math inline">\(p\)</span>)</h2>
-<p><code>1.DATA:</code> The sample consists of outcomes of <span class="math inline">\(n\)</span> independent trails. Each trail has two outcomes (mutually exclusive= they cannot both occur at same time). Let consider <span class="math inline">\(O_1\)</span> to be <span class="math inline">\(\#\)</span> of observations in class1 and <span class="math inline">\(O_2\)</span> to be the <span class="math inline">\(\#\)</span> of observations in class2. We have <span class="math inline">\(n=O_1+O_2\)</span>.</p>
-<p><code>2.Assumptions:</code> - <span class="math inline">\(n\)</span> observation are independent. - Each trial has probability <span class="math inline">\(p\)</span> of resulting in the outcome <span class="math inline">\(O_1\)</span>, where <span class="math inline">\(p\)</span> is the same for all <span class="math inline">\(n\)</span> trials.</p>
-<p><code>3.Test Statistic:</code> Since we are interested in the probability of an outcome to be in class1, we will let the test statistic <span class="math inline">\(T\)</span> be <code>the number of times the outcomes is in class1</code>. Therefore, the test statistic follows the binomial distribution (null distribution) with <span class="math inline">\(n\)</span> and <span class="math inline">\(\hat{p}\)</span> (the hypothesized proportion) parameters.</p>
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Data</a></li><li><a href="#tabset-1-2">Assumptions</a></li><li><a href="#tabset-1-3">Test Statistic</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1">
+<ul>
+<li>The sample consists of outcomes of <span class="math inline">\(n\)</span> independent trails.</li>
+<li>Each trail has two outcomes (mutually exclusive= they cannot both occur at same time).</li>
+<li>Let consider <span class="math inline">\(O_1\)</span> to be <span class="math inline">\(\#\)</span> of observations in class1 and <span class="math inline">\(O_2\)</span> to be the <span class="math inline">\(\#\)</span> of observations in class2. We have <span class="math inline">\(n=O_1+O_2\)</span>.</li>
+</ul>
+</div>
+<div id="tabset-1-2">
+<ul>
+<li><span class="math inline">\(n\)</span> observation are independent.</li>
+<li>Each trial has probability <span class="math inline">\(p\)</span> of resulting in the outcome <span class="math inline">\(O_1\)</span>, where <span class="math inline">\(p\)</span> is the same for all <span class="math inline">\(n\)</span> trials.</li>
+</ul>
+</div>
+<div id="tabset-1-3">
+<ul>
+<li>Since we are interested in the probability of an outcome to be in class1, we will let the test statistic <span class="math inline">\(T\)</span> be <code>the number of times the outcomes is in class1</code>.</li>
+<li>The test statistic <span class="math inline">\(\sim binomial(n, p = \hat{p})\)</span>. The <span class="math inline">\(\hat{p}\)</span> is the hypothesized proportion</li>
+</ul>
+</div>
+</div>
+</div>
 </section>
-<section id="binomial-test-estimation-of-p-4" class="slide level2">
+<section id="binomial-test-estimation-of-p-4" class="slide level2 smaller">
 <h2>Binomial Test (Estimation of <span class="math inline">\(p\)</span>)</h2>
-<p><code>4.Hypothesis: Two-tailed test</code> <span class="math display">\[ H_0: p=p^* \]</span> <span class="math display">\[H_1: p \neq p^* \]</span><br>
+<div class="panel-tabset">
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Two-tailed test</a></li><li><a href="#tabset-2-2">Lower-tailed test</a></li><li><a href="#tabset-2-3">Upper-tailed test</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1">
+<p><span class="math display">\[ H_0: p=p^* \]</span> <span class="math display">\[H_1: p \neq p^* \]</span><br>
 - The rejection region is defined by <span class="math inline">\(t_1\)</span> and <span class="math inline">\(t_2\)</span> as follows: <span class="math display">\[ P( T \leq t_1) \approx \alpha/2 \]</span> <span class="math display">\[ P( T \leq t_2) \approx 1- \alpha/2 \]</span></p>
 <ul>
-<li><code>P-value</code><span class="math inline">\(= 2\times \min\{ P( Y \leq T_{Obs}), P(Y \geq T_{Obs}) \}\)</span>; If greater than 1 then <span class="math inline">\(P-value=1\)</span>.</li>
+<li><code>P-value</code><span class="math inline">\(= 2\times \min\{ P( Y \leq T_{Obs}), P(Y \geq T_{Obs}) \}\)</span>. If greater than 1 then <span class="math inline">\(P-value=1\)</span>.</li>
 </ul>
-</section>
-<section id="binomial-test-estimation-of-p-5" class="slide level2">
-<h2>Binomial Test (Estimation of <span class="math inline">\(p\)</span>)</h2>
-<p><code>4.Hypothesis: Upper-tailed test</code> <span class="math display">\[ H_0: p \leq p^* \]</span> <span class="math display">\[H_1: p &gt; p^* \]</span> The rejection region is defined by <span class="math inline">\(t\)</span> as follows:</p>
+</div>
+<div id="tabset-2-2">
+<p><span class="math display">\[ H_0: p \geq p^* \]</span> <span class="math display">\[H_1: p &lt; p^* \]</span></p>
+<ul>
+<li><p>The rejection region is defined by <span class="math inline">\(t_1\)</span> as follows: <span class="math display">\[P( T \leq t_1) \approx \alpha \]</span></p></li>
+<li><p><code>P-value</code> <span class="math inline">\(=P(Y \leq T_{Obs})\)</span></p></li>
+</ul>
+</div>
+<div id="tabset-2-3">
+<p><span class="math display">\[ H_0: p \leq p^* \]</span> <span class="math display">\[H_1: p &gt; p^* \]</span> The rejection region is defined by <span class="math inline">\(t_2\)</span> as follows:</p>
 <p><span class="math display">\[P( T \leq t_2) \approx 1-\alpha \]</span></p>
 <ul>
 <li><code>P-value</code> <span class="math inline">\(=P(Y \geq T_{Obs})\)</span></li>
 </ul>
-</section>
-<section id="binomial-test-estimation-of-p-6" class="slide level2">
-<h2>Binomial Test (Estimation of <span class="math inline">\(p\)</span>)</h2>
-<p><code>4.Hypothesis: Lower-tailed test</code> <span class="math display">\[ H_0: p \geq p^* \]</span> <span class="math display">\[H_1: p &lt; p^* \]</span></p>
-<ul>
-<li><p>The rejection region is defined by <span class="math inline">\(t\)</span> as follows: <span class="math display">\[P( T \leq t_1) \approx \alpha \]</span></p></li>
-<li><p><code>P-value</code> <span class="math inline">\(=P(Y \leq T_{Obs})\)</span></p></li>
-</ul>
-</section>
-<section id="binomial-test---example" class="slide level2">
-<h2>Binomial Test - Example</h2>
-<div class="r-fit-text">
-<p>We would like to know whether the passing rate for a course is <span class="math inline">\(75\%\)</span>. We have a sample of <span class="math inline">\(n=15\)</span> students taking the course and only 8 passed. Level of significance is <span class="math inline">\(5\%\)</span>. Test the appropriate hypothesis as follows:</p>
-<ol type="1">
-<li>Define the null and alternative hypotheses <br> <code>Answer:</code> <span class="math display">\[ H_0: p=0.75 \]</span> <span class="math display">\[H_1: p \neq 0.75 \]</span></li>
-<li>Find the Test statistic observed and null distribution<br> <code>Answer:</code> <span class="math inline">\(T_{obs}=8\)</span> and <span class="math inline">\(T\sim bin(15,0.75)\)</span></li>
-<li>Determine critical values (rejection region) <br> <code>Answer:</code> t_1=8 and t_2=14</li>
-<li>Find P-value<br> <code>Answer:</code> p-value=0.1132406</li>
-<li>Decision and Interpretation <br> <code>Answer:</code> Since P-value &gt; 0.05 then Fail to Reject <span class="math inline">\(H_0\)</span>.</li>
-</ol>
+</div>
+</div>
 </div>
 </section>
-<section id="binomial-test---example-in-r" class="slide level2">
+<section id="binomial-test---example" class="slide level2 smaller">
+<h2>Binomial Test - Example</h2>
+<div class="panel-tabset">
+<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Question</a></li><li><a href="#tabset-3-2">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1">
+<p>We want to know whether the passing rate for a course is <span class="math inline">\(75\%\)</span>. We have a sample of <span class="math inline">\(n=15\)</span> students taking the course and only 8 passed. Level of significance is <span class="math inline">\(5\%\)</span>. Test the appropriate hypothesis.</p>
+</div>
+<div id="tabset-3-2">
+<ol type="1">
+<li><p>Define the null and alternative hypotheses</p>
+<p><span class="math display">\[ H_0: p=0.75 \]</span> <span class="math display">\[H_1: p \neq 0.75 \]</span></p></li>
+<li><p>Find the Test statistic observed and null distribution <br> <span class="math inline">\(T_{obs}=8\)</span> and <span class="math inline">\(T\sim bin(15,0.75)\)</span></p></li>
+<li><p>Determine critical values (rejection region) <br> t_1=8 and t_2=14</p></li>
+<li><p>Find P-value<br> p-value=0.1132406</p></li>
+<li><p>Decision and Interpretation <br> Since P-value &gt; 0.05 then Fail to Reject <span class="math inline">\(H_0\)</span>. There is evidence that suggests that the passing rate of the course is 75%.</p></li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="binomial-test---example-in-r" class="slide level2 smaller">
 <h2>Binomial Test - Example in R</h2>
-<p><code>Solution</code></p>
+<div class="panel-tabset">
+<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">R code</a></li><li><a href="#tabset-4-2">p-value calculation in R</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a> <span class="fu">binom.test</span>(<span class="at">x =</span> <span class="dv">8</span>, <span class="co"># number of successes (#students pass)</span></span>
 <span id="cb9-2"><a href="#cb9-2"></a> <span class="at">n =</span> <span class="dv">15</span>, <span class="co"># sample size</span></span>
@@ -690,11 +727,29 @@ probability of success
 </div>
 </div>
 <ul>
-<li><code>Interpretation</code>: Fail to Reject <span class="math inline">\(H_0\)</span>. There is evidence to support that the passing rate of the course is not significantly different from <span class="math inline">\(75\%\)</span> <span class="math inline">\(p-value=0.787\)</span>; <span class="math inline">\(95\%CI (0.27,0.79)\)</span>.</li>
+<li><code>Interpretation</code>: Fail to Reject <span class="math inline">\(H_0\)</span>. There is evidence to support that the passing rate of the course is not significantly different from p-value=0.07 [<span class="math inline">\(95\%CI (0.27,0.79)\)</span>].</li>
 </ul>
+</div>
+<div id="tabset-4-2">
+<p>The p-value calculation in R is:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>prob <span class="ot">=</span> <span class="fu">dbinom</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">15</span>,<span class="dv">15</span>,<span class="fl">0.75</span>) <span class="co"># probabilities for binomial</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>prob<span class="sc">&lt;</span><span class="fu">dbinom</span>(<span class="dv">8</span>,<span class="dv">15</span>,<span class="fl">0.75</span>) <span class="co"># find extreme values where their prob is lower that the probability of the actual value.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE
+[13] FALSE FALSE  TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">sum</span>(prob[prob<span class="sc">&lt;=</span><span class="fu">dbinom</span>(<span class="dv">8</span>,<span class="dv">15</span>,<span class="fl">0.75</span>)]) <span class="co"># sum up those probs</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.06998377</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
-<section id="sign-test" class="slide level2">
-<h2>Sign Test</h2>
+<section id="sign-test---paired-data" class="slide level2">
+<h2>Sign Test - paired data</h2>
 <ul>
 <li><p>The sign test is a binomial test with <span class="math inline">\(p=0.5\)</span>.</p></li>
 <li><p>It is useful for testing whether one random variable in a pair <span class="math inline">\((X, Y)\)</span> tends to be larger than the other random variable in the pair.</p></li>
@@ -702,66 +757,87 @@ probability of success
 <li><p><code>This test can be use as alternative to the parametric t-paired test</code>.</p></li>
 </ul>
 </section>
-<section id="sign-test-1" class="slide level2">
+<section id="sign-test" class="slide level2 smaller">
 <h2>Sign Test</h2>
-<p><code>1.DATA:</code> The data consist of observations on a bivariate random sample <span class="math inline">\((X_i, Y_i)\)</span>, where <span class="math inline">\(n'\)</span> is the number of the <code>pairs</code>. If the X’s and Y’s are independent, then the more powerful Mann-Whitney test is more appropriate.</p>
-<p>Within each pair <span class="math inline">\((X_i, Y_i)\)</span> a comparison is made and the pair is classified as:</p>
+<div class="panel-tabset">
+<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">Data</a></li><li><a href="#tabset-5-2">Assumptions</a></li><li><a href="#tabset-5-3">Test Statistic</a></li></ul>
+<div class="tab-content">
+<div id="tabset-5-1">
+<ul>
+<li><p>The data consist of observations on a bivariate random sample <span class="math inline">\((X_i, Y_i)\)</span>, where <span class="math inline">\(n'\)</span> is the number of the <code>pairs</code>. If the X’s and Y’s are independent, then the more powerful Mann-Whitney test is more appropriate.</p></li>
+<li><p>Within each pair <span class="math inline">\((X_i, Y_i)\)</span> a comparison is made and the pair is classified as:</p>
 <ul>
 <li><code>"+"</code> if <span class="math inline">\(X_i &lt; Y_i\)</span></li>
 <li><code>"-"</code> if <span class="math inline">\(X_i &gt; Y_i\)</span></li>
 <li><code>"0"</code> if <span class="math inline">\(X_i = Y_i\)</span> (tie)</li>
+</ul></li>
 </ul>
-<p><code>2.Assumptions:</code> - The bivariate random variables <span class="math inline">\((X_i, Y_i)\)</span> are mutually independent . - The measurement scale is at least ordinal.</p>
-</section>
-<section id="sign-test-2" class="slide level2">
-<h2>Sign Test</h2>
-<p><code>3.Test Statistic:</code> The test statistic is defined as follows:</p>
+</div>
+<div id="tabset-5-2">
+<ul>
+<li>The bivariate random variables <span class="math inline">\((X_i, Y_i)\)</span> are mutually independent</li>
+<li>The measurement scale is at least ordinal.</li>
+</ul>
+</div>
+<div id="tabset-5-3">
+<p>The test statistic is defined as follows:</p>
 <p><span class="math display">\[T = \text{Total number of +'s}\]</span></p>
 <p>The null distribution is the binomial distribution with <span class="math inline">\(p=0.5\)</span> and <span class="math inline">\(n=\text{the number of non-tied pairs}\)</span>.</p>
+<p><span class="math display">\[
+T \sim binomial(n,p=0.5)
+\]</span></p>
+</div>
+</div>
+</div>
 </section>
-<section id="sign-test-3" class="slide level2">
+<section id="sign-test-1" class="slide level2 smaller">
 <h2>Sign Test</h2>
-<p><code>4.Hypothesis: Two-tailed test</code> <span class="math display">\[ H_0:E(X_i) = E(Y_i) \text{ or } P(+) = P(-) \]</span> <span class="math display">\[H_1: E(X_i) \neq E(Y_i) \text{ or } P(+) \neq P(-) \]</span> - The rejection region is defined by <span class="math inline">\(t\)</span> and <span class="math inline">\(n-t\)</span> where: <span class="math display">\[ P( Y \leq t) \approx \alpha/2 \]</span></p>
+<div class="panel-tabset">
+<ul id="tabset-6" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-6-1">Two-tailed test</a></li><li><a href="#tabset-6-2">Upper-tailed test</a></li><li><a href="#tabset-6-3">Lower-tailed test</a></li></ul>
+<div class="tab-content">
+<div id="tabset-6-1">
+<p><span class="math display">\[ H_0:E(X_i) = E(Y_i) \text{ or } P(+) = P(-) \]</span> <span class="math display">\[H_1: E(X_i) \neq E(Y_i) \text{ or } P(+) \neq P(-) \]</span> - The rejection region is defined by <span class="math inline">\(t\)</span> and <span class="math inline">\(n-t\)</span> where: <span class="math display">\[ P( Y \leq t) \approx \alpha/2 \]</span></p>
 <ul>
 <li><p><code>Decision</code>: IF <span class="math inline">\((T_{Obs} \leq t\)</span> or $T_{Obs} n-t) $ REJECT <span class="math inline">\(H_0\)</span></p></li>
 <li><p><code>P-value</code><span class="math inline">\(= 2\times \min\{ P( Y \leq T_{Obs}), P(Y \geq T_{Obs}) \}\)</span></p></li>
 </ul>
-</section>
-<section id="sign-test-4" class="slide level2">
-<h2>Sign Test</h2>
-<p><code>4.Hypothesis: Upper-tailed test</code></p>
+</div>
+<div id="tabset-6-2">
 <p><span class="math display">\[ H_0:E(X_i) \geq E(Y_i) \text{ or } P(+) \leq P(-) \]</span> <span class="math display">\[H_1: E(X_i) &lt; E(Y_i) \text{ or } P(+) &gt; P(-) \]</span> - The rejection region is defined by <span class="math inline">\(n-t\)</span> as follows: <span class="math display">\[P( Y \leq t) \approx \alpha \]</span> - <code>Decision</code>: IF <span class="math inline">\(T_{Obs} \geq n-t\)</span> REJECT <span class="math inline">\(H_0\)</span></p>
 <ul>
 <li><code>P-value</code><span class="math inline">\(= P( Y \geq T_{Obs})\)</span></li>
 </ul>
-</section>
-<section id="sign-test-5" class="slide level2">
-<h2>Sign Test</h2>
-<p><code>4.Hypothesis: Lower-tailed test</code></p>
+</div>
+<div id="tabset-6-3">
 <p><span class="math display">\[ H_0:E(X_i) \leq E(Y_i) \text{ or } P(+) \geq P(-) \]</span> <span class="math display">\[H_1: E(X_i) &gt; E(Y_i)  \text{ or } P(+) &lt; P(-)\]</span> - The rejection region is defined by <span class="math inline">\(t\)</span> where: <span class="math display">\[P( Y \leq t) \approx \alpha \]</span> - <code>Decision</code>: IF <span class="math inline">\(T_{Obs} \leq t\)</span> REJECT <span class="math inline">\(H_0\)</span></p>
 <ul>
 <li><code>P-value</code><span class="math inline">\(= P( Y \leq T_{Obs})\)</span></li>
 </ul>
+</div>
+</div>
+</div>
 </section>
-<section id="sign-test---example" class="slide level2">
+<section id="sign-test---example" class="slide level2 smaller">
 <h2>Sign Test - Example</h2>
+<div class="panel-tabset">
+<ul id="tabset-7" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-7-1">Question</a></li><li><a href="#tabset-7-2">Solution</a></li></ul>
+<div class="tab-content">
+<div id="tabset-7-1">
 <ul>
-<li>We are interested in comparing the reaction time before lunch (RTBL) vs the reaction time after lunch (RTAL) using a sample of 18 office workers.</li>
+<li>We are interested in comparing the reaction time before lunch (RTBL) vs.&nbsp;the reaction time after lunch (RTAL) using a sample of 18 office workers.</li>
 <li>12 found their RTBL was shorter</li>
 <li>1 could not detect a difference</li>
 </ul>
 <p><code>Is the RTAL significantly longer than RTBL?</code></p>
-<p><code>Solution:</code> <span class="math inline">\(n'=18\)</span> pairs, each is (RTBL,RTAL) = (X,Y)</p>
 <ul>
+<li><span class="math inline">\(n'=18\)</span> pairs, each is (RTBL,RTAL) = (X,Y)</li>
 <li><code>"+"</code> if <span class="math inline">\(RTBL &lt; RTAL\)</span> (#12)</li>
 <li><code>"-"</code> if <span class="math inline">\(RTBL &gt; RTAL\)</span> (#5)</li>
 <li><code>"0"</code> if <span class="math inline">\(RTBL = RTAL\)</span> (tie) (#1)</li>
 </ul>
 <p>then <span class="math inline">\(n=17\)</span></p>
-</section>
-<section id="sign-test---example-1" class="slide level2">
-<h2>Sign Test - Example</h2>
-<p><code>Solution</code></p>
+</div>
+<div id="tabset-7-2">
 <ol type="1">
 <li>Define the null and alternative hypotheses</li>
 </ol>
@@ -771,18 +847,20 @@ probability of success
 <li><p>Test statistic: <span class="math inline">\(T_{obs}=12\)</span> and <span class="math inline">\(T\sim bin(17,0.5)\)</span></p></li>
 <li><p>Determine critical values (rejection region): t = 12</p></li>
 <li><p>p-value=0.0717316</p></li>
-<li><p>Decision: P-value &lt; 0.05 then Reject <span class="math inline">\(H_0\)</span>.</p></li>
+<li><p>Decision: p-value &lt; 0.05 then Reject <span class="math inline">\(H_0\)</span>.</p></li>
 </ol>
+</div>
+</div>
+</div>
 </section>
-<section id="sign-test---example-r" class="slide level2">
+<section id="sign-test---example-r" class="slide level2 smaller">
 <h2>Sign Test - Example R</h2>
-<p><code>Solution</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a> <span class="fu">binom.test</span>(<span class="at">x =</span> <span class="dv">12</span>,</span>
-<span id="cb11-2"><a href="#cb11-2"></a> <span class="at">n =</span> <span class="dv">17</span>, </span>
-<span id="cb11-3"><a href="#cb11-3"></a> <span class="at">p =</span> <span class="fl">0.5</span>,</span>
-<span id="cb11-4"><a href="#cb11-4"></a> <span class="at">alternative =</span> <span class="st">'g'</span>,</span>
-<span id="cb11-5"><a href="#cb11-5"></a> <span class="at">conf.level =</span> <span class="fl">0.95</span>) <span class="co"># Confidence Interval</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a> <span class="fu">binom.test</span>(<span class="at">x =</span> <span class="dv">12</span>,</span>
+<span id="cb15-2"><a href="#cb15-2"></a> <span class="at">n =</span> <span class="dv">17</span>, </span>
+<span id="cb15-3"><a href="#cb15-3"></a> <span class="at">p =</span> <span class="fl">0.5</span>,</span>
+<span id="cb15-4"><a href="#cb15-4"></a> <span class="at">alternative =</span> <span class="st">'g'</span>,</span>
+<span id="cb15-5"><a href="#cb15-5"></a> <span class="at">conf.level =</span> <span class="fl">0.95</span>) <span class="co"># Confidence Interval</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Exact binomial test
@@ -798,7 +876,7 @@ probability of success
 </div>
 </div>
 <ul>
-<li><code>Interpretation</code>: Fail to Reject <span class="math inline">\(H_0\)</span>. There is evidence to support that the data is compatible with the null hypothesis <span class="math inline">\(p-value=0.071\)</span>; <span class="math inline">\(95\%CI (0.48,1)\)</span>.</li>
+<li><code>Interpretation</code>: Fail to Reject <span class="math inline">\(H_0\)</span>. There is evidence to support that the data is compatible with the null hypothesis <span class="math inline">\(p-value=0.071\)</span> [<span class="math inline">\(95\%CI (0.48,1)\)</span>].</li>
 </ul>
 </section>
 <section id="tolerance-limits" class="slide level2">
@@ -822,7 +900,7 @@ P(X_{(r)} \leq \text{a fraction q of the pop.} \leq X_{(n+m-1)}) \geq 1-\alpha
 <p>We can find The percent <span class="math inline">\(q\)</span> of the population that is within the tolerance limits, given n, <span class="math inline">\(1-\alpha\)</span>, <span class="math inline">\(r\)</span>, and <span class="math inline">\(m\)</span>:</p>
 <p><span class="math display">\[q=\frac{4n-2(r+m-1)-\chi^2_{1-\alpha;2(r+m)}}{4n-2(r+m-1) + \chi^2_{1-\alpha;2(r+m)}}\]</span></p>
 </section>
-<section id="tolerance-limits---example" class="slide level2">
+<section id="tolerance-limits---example" class="slide level2 smaller">
 <h2>Tolerance limits - Example</h2>
 <p>Electric seat adjusters for a luxury car manufacturer wants to know what <code>range</code> of vertical adjustment is needed to be <span class="math inline">\(90\%\)</span> sure that at least <span class="math inline">\(80\%\)</span> of population of potential buyers will be able to adjust their seat.</p>
 <ul>
@@ -831,8 +909,8 @@ P(X_{(r)} \leq \text{a fraction q of the pop.} \leq X_{(n+m-1)}) \geq 1-\alpha
 <p>To answer the question we need to find <span class="math inline">\(n\)</span></p>
 <h4 id="r-code-implementing-the-formula">R code implementing the formula</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>n<span class="ot">=</span> <span class="fl">0.25</span><span class="sc">*</span><span class="fu">qchisq</span>(<span class="fl">0.9</span>,<span class="dv">2</span><span class="sc">*</span>(<span class="dv">1</span><span class="sc">+</span><span class="dv">1</span>))<span class="sc">*</span>(<span class="dv">1</span><span class="fl">+0.8</span>)<span class="sc">/</span>(<span class="dv">1</span><span class="fl">-0.8</span>) <span class="sc">+</span> <span class="fl">0.5</span><span class="sc">*</span>(<span class="dv">1</span><span class="sc">+</span><span class="dv">1-1</span>)</span>
-<span id="cb13-2"><a href="#cb13-2"></a>n</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>n<span class="ot">=</span> <span class="fl">0.25</span><span class="sc">*</span><span class="fu">qchisq</span>(<span class="fl">0.9</span>,<span class="dv">2</span><span class="sc">*</span>(<span class="dv">1</span><span class="sc">+</span><span class="dv">1</span>))<span class="sc">*</span>(<span class="dv">1</span><span class="fl">+0.8</span>)<span class="sc">/</span>(<span class="dv">1</span><span class="fl">-0.8</span>) <span class="sc">+</span> <span class="fl">0.5</span><span class="sc">*</span>(<span class="dv">1</span><span class="sc">+</span><span class="dv">1-1</span>)</span>
+<span id="cb17-2"><a href="#cb17-2"></a>n</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 18.00374</code></pre>
 </div>
@@ -843,15 +921,15 @@ P(X_{(r)} \leq \text{a fraction q of the pop.} \leq X_{(n+m-1)}) \geq 1-\alpha
 <h2>Tolerance limits - Example in R</h2>
 <h4 id="r-code-with-tolerance-package">R code with tolerance package</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co">#install.packages("tolerance") # install package</span></span>
-<span id="cb15-2"><a href="#cb15-2"></a><span class="fu">library</span>(tolerance)</span>
-<span id="cb15-3"><a href="#cb15-3"></a></span>
-<span id="cb15-4"><a href="#cb15-4"></a><span class="co"># How to find Q</span></span>
-<span id="cb15-5"><a href="#cb15-5"></a><span class="fu">distfree.est</span>(<span class="at">n =</span> <span class="cn">NULL</span>, <span class="co"># to find sample size</span></span>
-<span id="cb15-6"><a href="#cb15-6"></a>             <span class="at">alpha =</span> <span class="fl">0.1</span>, <span class="co"># 1-alpha is the confidence</span></span>
-<span id="cb15-7"><a href="#cb15-7"></a>             <span class="at">P=</span> <span class="fl">0.8</span>, <span class="co"># fraction of the population </span></span>
-<span id="cb15-8"><a href="#cb15-8"></a>             <span class="at">side =</span> <span class="dv">2</span> <span class="co"># two sided interval</span></span>
-<span id="cb15-9"><a href="#cb15-9"></a>               )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="co">#install.packages("tolerance") # install package</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a><span class="fu">library</span>(tolerance)</span>
+<span id="cb19-3"><a href="#cb19-3"></a></span>
+<span id="cb19-4"><a href="#cb19-4"></a><span class="co"># How to find Q</span></span>
+<span id="cb19-5"><a href="#cb19-5"></a><span class="fu">distfree.est</span>(<span class="at">n =</span> <span class="cn">NULL</span>, <span class="co"># to find sample size</span></span>
+<span id="cb19-6"><a href="#cb19-6"></a>             <span class="at">alpha =</span> <span class="fl">0.1</span>, <span class="co"># 1-alpha is the confidence</span></span>
+<span id="cb19-7"><a href="#cb19-7"></a>             <span class="at">P=</span> <span class="fl">0.8</span>, <span class="co"># fraction of the population </span></span>
+<span id="cb19-8"><a href="#cb19-8"></a>             <span class="at">side =</span> <span class="dv">2</span> <span class="co"># two sided interval</span></span>
+<span id="cb19-9"><a href="#cb19-9"></a>               )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    0.8
 0.1  18</code></pre>
@@ -893,11 +971,17 @@ P(X_{(r)} \leq \text{a fraction q of the pop.} \leq X_{(n+m-1)}) \geq 1-\alpha
 </table>
 <p>2 x 2 contingency table</p>
 </section>
-<section id="contingency-tables-1" class="slide level2">
+<section id="contingency-tables-1" class="slide level2 smaller">
 <h2>Contingency Tables</h2>
 <h3 id="chi-squared-test-for-differences-in-probabilities">Chi-squared Test for differences in Probabilities</h3>
 <p><code>Data</code></p>
 <table>
+<colgroup>
+<col style="width: 32%">
+<col style="width: 23%">
+<col style="width: 21%">
+<col style="width: 23%">
+</colgroup>
 <thead>
 <tr class="header">
 <th></th>
@@ -909,21 +993,21 @@ P(X_{(r)} \leq \text{a fraction q of the pop.} \leq X_{(n+m-1)}) \geq 1-\alpha
 <tbody>
 <tr class="odd">
 <td><strong>Population 1</strong></td>
-<td style="text-align: center;">a (<span class="math inline">\(p_1\)</span>)</td>
-<td style="text-align: center;">b</td>
-<td style="text-align: center;"><span class="math inline">\(n_1\)</span> = a+b</td>
+<td style="text-align: center;"><span class="math inline">\(O_{11}\)</span> (<span class="math inline">\(p_1\)</span>)</td>
+<td style="text-align: center;"><span class="math inline">\(O_{12}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n_1\)</span> = <span class="math inline">\(O_{11}+O_{12}\)</span></td>
 </tr>
 <tr class="even">
 <td><strong>Population 2</strong></td>
-<td style="text-align: center;">c (<span class="math inline">\(p_2\)</span>)</td>
-<td style="text-align: center;">d</td>
-<td style="text-align: center;"><span class="math inline">\(n_2\)</span> = c+d</td>
+<td style="text-align: center;"><span class="math inline">\(O_{21}\)</span> (<span class="math inline">\(p_2\)</span>)</td>
+<td style="text-align: center;"><span class="math inline">\(O_{22}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n_2\)</span> = <span class="math inline">\(O_{21}+O_{22}\)</span></td>
 </tr>
 <tr class="odd">
 <td><strong><code>Totals</code></strong></td>
-<td style="text-align: center;"><span class="math inline">\(c_1\)</span> = a+c</td>
-<td style="text-align: center;"><span class="math inline">\(c_2\)</span>= b+d</td>
-<td style="text-align: center;">N = a+b+c+d</td>
+<td style="text-align: center;"><span class="math inline">\(c_1\)</span> = <span class="math inline">\(O_{11}+O_{21}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(c_2\)</span>= <span class="math inline">\(O_{12}+O_{22}\)</span></td>
+<td style="text-align: center;">N = <span class="math inline">\(n_1+n_1\)</span></td>
 </tr>
 </tbody>
 </table>
@@ -1020,10 +1104,10 @@ P(X_{(r)} \leq \text{a fraction q of the pop.} \leq X_{(n+m-1)}) \geq 1-\alpha
 <section id="chi-squared-test---example-1-with-r" class="slide level2">
 <h2>Chi-squared Test - Example 1 with R</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>data <span class="ot">=</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">13</span>,<span class="dv">17</span>),<span class="fu">c</span>(<span class="dv">73</span>,<span class="dv">57</span>)) <span class="co"># create data</span></span>
-<span id="cb17-2"><a href="#cb17-2"></a><span class="fu">chisq.test</span>(data, <span class="co"># table data</span></span>
-<span id="cb17-3"><a href="#cb17-3"></a>           <span class="at">correct =</span> <span class="cn">FALSE</span> <span class="co"># find p-value without Yates' correction</span></span>
-<span id="cb17-4"><a href="#cb17-4"></a>           ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>data <span class="ot">=</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">13</span>,<span class="dv">17</span>),<span class="fu">c</span>(<span class="dv">73</span>,<span class="dv">57</span>)) <span class="co"># create data</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a><span class="fu">chisq.test</span>(data, <span class="co"># table data</span></span>
+<span id="cb21-3"><a href="#cb21-3"></a>           <span class="at">correct =</span> <span class="cn">FALSE</span> <span class="co"># find p-value without Yates' correction</span></span>
+<span id="cb21-4"><a href="#cb21-4"></a>           ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Pearson's Chi-squared test
@@ -1031,9 +1115,9 @@ P(X_{(r)} \leq \text{a fraction q of the pop.} \leq X_{(n+m-1)}) \geq 1-\alpha
 data:  data
 X-squared = 1.6116, df = 1, p-value = 0.2043</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">chisq.test</span>(data, <span class="co"># table data</span></span>
-<span id="cb19-2"><a href="#cb19-2"></a>           <span class="at">correct =</span> <span class="cn">TRUE</span> <span class="co"># find p-value with Yates' correction</span></span>
-<span id="cb19-3"><a href="#cb19-3"></a>           ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">chisq.test</span>(data, <span class="co"># table data</span></span>
+<span id="cb23-2"><a href="#cb23-2"></a>           <span class="at">correct =</span> <span class="cn">TRUE</span> <span class="co"># find p-value with Yates' correction</span></span>
+<span id="cb23-3"><a href="#cb23-3"></a>           ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Pearson's Chi-squared test with Yates' continuity correction
@@ -1219,8 +1303,8 @@ X-squared = 1.1372, df = 1, p-value = 0.2863</code></pre>
 <section id="fishers-exact-test---example-with-r" class="slide level2">
 <h2>Fisher’s Exact Test - Example with R</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>data <span class="ot">=</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>),<span class="fu">c</span>(<span class="dv">9</span>,<span class="dv">1</span>)) <span class="co"># create data</span></span>
-<span id="cb21-2"><a href="#cb21-2"></a><span class="fu">fisher.test</span>(data,<span class="at">alternative =</span> <span class="st">"l"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>data <span class="ot">=</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>),<span class="fu">c</span>(<span class="dv">9</span>,<span class="dv">1</span>)) <span class="co"># create data</span></span>
+<span id="cb25-2"><a href="#cb25-2"></a><span class="fu">fisher.test</span>(data,<span class="at">alternative =</span> <span class="st">"l"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Fisher's Exact Test for Count Data
@@ -1328,13 +1412,13 @@ odds ratio
 <section id="the-median-test---example-r" class="slide level2">
 <h2>The Median Test - Example R</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="co"># install.packages("agricolae")</span></span>
-<span id="cb23-2"><a href="#cb23-2"></a><span class="fu">library</span>(agricolae) <span class="co"># package</span></span>
-<span id="cb23-3"><a href="#cb23-3"></a></span>
-<span id="cb23-4"><a href="#cb23-4"></a><span class="fu">data</span>(corn) <span class="co"># data</span></span>
-<span id="cb23-5"><a href="#cb23-5"></a></span>
-<span id="cb23-6"><a href="#cb23-6"></a><span class="co"># The Median Test</span></span>
-<span id="cb23-7"><a href="#cb23-7"></a>median_test_out<span class="ot">=</span> <span class="fu">Median.test</span>(corn<span class="sc">$</span>observation,corn<span class="sc">$</span>method)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="co"># install.packages("agricolae")</span></span>
+<span id="cb27-2"><a href="#cb27-2"></a><span class="fu">library</span>(agricolae) <span class="co"># package</span></span>
+<span id="cb27-3"><a href="#cb27-3"></a></span>
+<span id="cb27-4"><a href="#cb27-4"></a><span class="fu">data</span>(corn) <span class="co"># data</span></span>
+<span id="cb27-5"><a href="#cb27-5"></a></span>
+<span id="cb27-6"><a href="#cb27-6"></a><span class="co"># The Median Test</span></span>
+<span id="cb27-7"><a href="#cb27-7"></a>median_test_out<span class="ot">=</span> <span class="fu">Median.test</span>(corn<span class="sc">$</span>observation,corn<span class="sc">$</span>method)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 The Median Test for corn$observation ~ corn$method 
@@ -1366,11 +1450,11 @@ Treatments with the same letter are not significantly different.
 <h2>The Median Test - Example R</h2>
 <p>Multiple Comparison</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="co"># Visualization</span></span>
-<span id="cb25-2"><a href="#cb25-2"></a><span class="fu">plot</span>(median_test_out)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="co"># Visualization</span></span>
+<span id="cb29-2"><a href="#cb29-2"></a><span class="fu">plot</span>(median_test_out)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="SlidesSTA6507_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" class="r-stretch"></section>
+<img data-src="SlidesSTA6507_files/figure-revealjs/unnamed-chunk-11-1.png" width="960" class="r-stretch"></section>
 <section id="goodness-of-fit-tests---gof" class="slide level2">
 <h2>Goodness-of-Fit Tests - GOF</h2>
 <p>Test whether a sample is coming from a known distribution. For example, test the normality assumption.</p>
@@ -1385,25 +1469,25 @@ Treatments with the same letter are not significantly different.
 <p>Test if <code>speed</code> data is normally distributed.</p>
 <p><code>Data</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">hist</span>(cars<span class="sc">$</span>speed) <span class="co"># histogram of speed</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="fu">hist</span>(cars<span class="sc">$</span>speed) <span class="co"># histogram of speed</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>mean_speed <span class="ot">=</span> <span class="fu">mean</span>(cars<span class="sc">$</span>speed) <span class="co"># mean speed</span></span>
-<span id="cb27-2"><a href="#cb27-2"></a>mean_speed</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a>mean_speed <span class="ot">=</span> <span class="fu">mean</span>(cars<span class="sc">$</span>speed) <span class="co"># mean speed</span></span>
+<span id="cb31-2"><a href="#cb31-2"></a>mean_speed</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 15.4</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>sd_speed <span class="ot">=</span> <span class="fu">sd</span>(cars<span class="sc">$</span>speed) <span class="co"># standard deviation speed</span></span>
-<span id="cb29-2"><a href="#cb29-2"></a>sd_speed</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a>sd_speed <span class="ot">=</span> <span class="fu">sd</span>(cars<span class="sc">$</span>speed) <span class="co"># standard deviation speed</span></span>
+<span id="cb33-2"><a href="#cb33-2"></a>sd_speed</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5.287644</code></pre>
 </div>
 </div>
-<img data-src="SlidesSTA6507_files/figure-revealjs/unnamed-chunk-11-1.png" width="960" class="r-stretch"></section>
+<img data-src="SlidesSTA6507_files/figure-revealjs/unnamed-chunk-12-1.png" width="960" class="r-stretch"></section>
 <section id="normality-test" class="slide level2">
 <h2>Normality Test</h2>
 <h4 id="shapiro-wilk-test">Shapiro Wilk Test</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="fu">shapiro.test</span>(cars<span class="sc">$</span>speed)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="fu">shapiro.test</span>(cars<span class="sc">$</span>speed)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Shapiro-Wilk normality test
@@ -1415,7 +1499,7 @@ W = 0.97765, p-value = 0.4576</code></pre>
 <p><code>Interpretation</code>: Fail to reject H0. There is evidence to support that data is normally distributed.</p>
 <h4 id="kolmogorov-smirnov-test">Kolmogorov Smirnov Test</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="fu">ks.test</span>(cars<span class="sc">$</span>speed,<span class="st">'pnorm'</span>,mean_speed,sd_speed)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="fu">ks.test</span>(cars<span class="sc">$</span>speed,<span class="st">'pnorm'</span>,mean_speed,sd_speed)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Asymptotic one-sample Kolmogorov-Smirnov test
@@ -1431,35 +1515,35 @@ alternative hypothesis: two-sided</code></pre>
 <h2>Normality Test</h2>
 <h4 id="chi-squared-test">Chi-squared Test</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a>h <span class="ot">=</span> <span class="fu">hist</span>(cars<span class="sc">$</span>speed,<span class="at">plot =</span> <span class="cn">FALSE</span>) <span class="co"># hist of data</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a>h <span class="ot">=</span> <span class="fu">hist</span>(cars<span class="sc">$</span>speed,<span class="at">plot =</span> <span class="cn">FALSE</span>) <span class="co"># hist of data</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a>Ob <span class="ot">=</span> h<span class="sc">$</span>counts <span class="co"># observed frequencies in classes</span></span>
-<span id="cb36-2"><a href="#cb36-2"></a>Ob</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a>Ob <span class="ot">=</span> h<span class="sc">$</span>counts <span class="co"># observed frequencies in classes</span></span>
+<span id="cb40-2"><a href="#cb40-2"></a>Ob</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  2  7 17 17  7</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a>p1 <span class="ot">=</span> <span class="fu">pnorm</span>(<span class="dv">5</span>,mean_speed,sd_speed)<span class="co"># P(X &lt;= 5)</span></span>
-<span id="cb38-2"><a href="#cb38-2"></a>p2 <span class="ot">=</span> <span class="fu">pnorm</span>(<span class="dv">10</span>,mean_speed,sd_speed)<span class="sc">-</span><span class="fu">pnorm</span>(<span class="dv">5</span>,mean_speed,sd_speed) <span class="co"># P(5&lt;=X &lt;= 10)</span></span>
-<span id="cb38-3"><a href="#cb38-3"></a>p3 <span class="ot">=</span> <span class="fu">pnorm</span>(<span class="dv">15</span>,mean_speed,sd_speed)<span class="sc">-</span><span class="fu">pnorm</span>(<span class="dv">10</span>,mean_speed,sd_speed) <span class="co"># P(10&lt;=X &lt;= 15)</span></span>
-<span id="cb38-4"><a href="#cb38-4"></a>p4 <span class="ot">=</span> <span class="fu">pnorm</span>(<span class="dv">20</span>,mean_speed,sd_speed)<span class="sc">-</span><span class="fu">pnorm</span>(<span class="dv">15</span>,mean_speed,sd_speed) <span class="co"># P(15&lt;=X &lt;= 20)</span></span>
-<span id="cb38-5"><a href="#cb38-5"></a>p5 <span class="ot">=</span> <span class="dv">1</span><span class="sc">-</span> <span class="fu">pnorm</span>(<span class="dv">20</span>,mean_speed,sd_speed) <span class="co"># P(X&gt; 20)</span></span>
-<span id="cb38-6"><a href="#cb38-6"></a></span>
-<span id="cb38-7"><a href="#cb38-7"></a>Pj <span class="ot">=</span> <span class="fu">c</span>(p1,p2,p3,p4,p5) <span class="co"># put everything in one array</span></span>
-<span id="cb38-8"><a href="#cb38-8"></a>Pj</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a>p1 <span class="ot">=</span> <span class="fu">pnorm</span>(<span class="dv">5</span>,mean_speed,sd_speed)<span class="co"># P(X &lt;= 5)</span></span>
+<span id="cb42-2"><a href="#cb42-2"></a>p2 <span class="ot">=</span> <span class="fu">pnorm</span>(<span class="dv">10</span>,mean_speed,sd_speed)<span class="sc">-</span><span class="fu">pnorm</span>(<span class="dv">5</span>,mean_speed,sd_speed) <span class="co"># P(5&lt;=X &lt;= 10)</span></span>
+<span id="cb42-3"><a href="#cb42-3"></a>p3 <span class="ot">=</span> <span class="fu">pnorm</span>(<span class="dv">15</span>,mean_speed,sd_speed)<span class="sc">-</span><span class="fu">pnorm</span>(<span class="dv">10</span>,mean_speed,sd_speed) <span class="co"># P(10&lt;=X &lt;= 15)</span></span>
+<span id="cb42-4"><a href="#cb42-4"></a>p4 <span class="ot">=</span> <span class="fu">pnorm</span>(<span class="dv">20</span>,mean_speed,sd_speed)<span class="sc">-</span><span class="fu">pnorm</span>(<span class="dv">15</span>,mean_speed,sd_speed) <span class="co"># P(15&lt;=X &lt;= 20)</span></span>
+<span id="cb42-5"><a href="#cb42-5"></a>p5 <span class="ot">=</span> <span class="dv">1</span><span class="sc">-</span> <span class="fu">pnorm</span>(<span class="dv">20</span>,mean_speed,sd_speed) <span class="co"># P(X&gt; 20)</span></span>
+<span id="cb42-6"><a href="#cb42-6"></a></span>
+<span id="cb42-7"><a href="#cb42-7"></a>Pj <span class="ot">=</span> <span class="fu">c</span>(p1,p2,p3,p4,p5) <span class="co"># put everything in one array</span></span>
+<span id="cb42-8"><a href="#cb42-8"></a>Pj</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.02460029 0.12896802 0.31628124 0.33798729 0.19216316</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a><span class="fu">sum</span>(Pj) <span class="co"># should be equal to 1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a><span class="fu">sum</span>(Pj) <span class="co"># should be equal to 1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a>Ej <span class="ot">=</span> Pj<span class="sc">*</span><span class="dv">50</span> <span class="co"># Expected counts</span></span>
-<span id="cb42-2"><a href="#cb42-2"></a>Ej</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a>Ej <span class="ot">=</span> Pj<span class="sc">*</span><span class="dv">50</span> <span class="co"># Expected counts</span></span>
+<span id="cb46-2"><a href="#cb46-2"></a>Ej</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  1.230015  6.448401 15.814062 16.899365  9.608158</code></pre>
 </div>
@@ -1469,8 +1553,8 @@ alternative hypothesis: two-sided</code></pre>
 <h2>Normality Test</h2>
 <h4 id="chi-squared-test-1">Chi-squared Test</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a><span class="co"># Chi-squared test for GOF</span></span>
-<span id="cb44-2"><a href="#cb44-2"></a><span class="fu">chisq.test</span>(<span class="at">x=</span>Ob,<span class="at">p =</span> Pj)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a><span class="co"># Chi-squared test for GOF</span></span>
+<span id="cb48-2"><a href="#cb48-2"></a><span class="fu">chisq.test</span>(<span class="at">x=</span>Ob,<span class="at">p =</span> Pj)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Chi-squared test for given probabilities
@@ -1481,8 +1565,8 @@ X-squared = 1.3267, df = 4, p-value = 0.8568</code></pre>
 </div>
 <p>The degrees of freedom of the test is df=C-1-k=5-1-2=2. k=2 because we did estimate the mean and variance from the sample. We need to <code>recompute</code> the p-value.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a>pvalue <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">-</span><span class="fu">pchisq</span>(<span class="fl">1.3267</span>,<span class="at">df=</span><span class="dv">2</span>) <span class="co"># pvalue adjusted for the df</span></span>
-<span id="cb46-2"><a href="#cb46-2"></a>pvalue</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a>pvalue <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">-</span><span class="fu">pchisq</span>(<span class="fl">1.3267</span>,<span class="at">df=</span><span class="dv">2</span>) <span class="co"># pvalue adjusted for the df</span></span>
+<span id="cb50-2"><a href="#cb50-2"></a>pvalue</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.5151228</code></pre>
 </div>
@@ -1539,9 +1623,9 @@ X-squared = 1.3267, df = 4, p-value = 0.8568</code></pre>
 <p>High temperatures are randomly selected from days in a summer in 2 cities.</p>
 <p><code>Question</code>: Test if the mean high temperature in city1 is higher than the mean high temperature in city2.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a>temp_city1 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">83</span>,<span class="dv">91</span>,<span class="dv">89</span>,<span class="dv">89</span>,<span class="dv">94</span>,<span class="dv">96</span>,<span class="dv">91</span>,<span class="dv">92</span>,<span class="dv">90</span>)</span>
-<span id="cb48-2"><a href="#cb48-2"></a>temp_city2 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">78</span>,<span class="dv">82</span>,<span class="dv">81</span>,<span class="dv">77</span>,<span class="dv">79</span>,<span class="dv">81</span>,<span class="dv">80</span>,<span class="dv">81</span>)</span>
-<span id="cb48-3"><a href="#cb48-3"></a><span class="fu">wilcox.test</span>(temp_city1,temp_city2,<span class="at">alternative =</span> <span class="st">"g"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a>temp_city1 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">83</span>,<span class="dv">91</span>,<span class="dv">89</span>,<span class="dv">89</span>,<span class="dv">94</span>,<span class="dv">96</span>,<span class="dv">91</span>,<span class="dv">92</span>,<span class="dv">90</span>)</span>
+<span id="cb52-2"><a href="#cb52-2"></a>temp_city2 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">78</span>,<span class="dv">82</span>,<span class="dv">81</span>,<span class="dv">77</span>,<span class="dv">79</span>,<span class="dv">81</span>,<span class="dv">80</span>,<span class="dv">81</span>)</span>
+<span id="cb52-3"><a href="#cb52-3"></a><span class="fu">wilcox.test</span>(temp_city1,temp_city2,<span class="at">alternative =</span> <span class="st">"g"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Wilcoxon rank sum test with continuity correction
@@ -1602,9 +1686,9 @@ alternative hypothesis: true location shift is greater than 0</code></pre>
 <p>High temperatures are randomly selected from days in a summer in 2 cities.</p>
 <p><code>Question</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a>temp_city1 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">83</span>,<span class="dv">91</span>,<span class="dv">89</span>,<span class="dv">89</span>,<span class="dv">94</span>,<span class="dv">96</span>,<span class="dv">91</span>,<span class="dv">92</span>,<span class="dv">90</span>)</span>
-<span id="cb50-2"><a href="#cb50-2"></a>temp_city2 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">78</span>,<span class="dv">82</span>,<span class="dv">81</span>,<span class="dv">77</span>,<span class="dv">79</span>,<span class="dv">81</span>,<span class="dv">80</span>,<span class="dv">81</span>)</span>
-<span id="cb50-3"><a href="#cb50-3"></a><span class="fu">wilcox.test</span>(temp_city1,temp_city2,<span class="at">alternative =</span> <span class="st">"g"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a>temp_city1 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">83</span>,<span class="dv">91</span>,<span class="dv">89</span>,<span class="dv">89</span>,<span class="dv">94</span>,<span class="dv">96</span>,<span class="dv">91</span>,<span class="dv">92</span>,<span class="dv">90</span>)</span>
+<span id="cb54-2"><a href="#cb54-2"></a>temp_city2 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">78</span>,<span class="dv">82</span>,<span class="dv">81</span>,<span class="dv">77</span>,<span class="dv">79</span>,<span class="dv">81</span>,<span class="dv">80</span>,<span class="dv">81</span>)</span>
+<span id="cb54-3"><a href="#cb54-3"></a><span class="fu">wilcox.test</span>(temp_city1,temp_city2,<span class="at">alternative =</span> <span class="st">"g"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Wilcoxon rank sum test with continuity correction

@@ -1,6 +1,6 @@
 ---
 title: "Nonparametric Statistics"
-subtitle: "Dr. Cohen"
+subtitle: "Achraf Cohen"
 format: 
   revealjs:
     slide-number: true
@@ -19,15 +19,14 @@ editor:
 
 ## Welcome to STA 6507
 
-This course covers an introduction to nonparametric statistics methods
-as follows:
+This course covers an introduction to nonparametric statistics methods as follows:
 
 -   Binomial based Tests
 -   Bootstrapping for CIs
--   Goodness of fit Test
--   Contingency Tables
--   Ranks based Test
--   Kernel smoothing
+-   Goodness of fit Tests
+-   Contingency Tables Tests
+-   Ranks based Tests
+-   Kernel smoothing / nonparametric regression
 
 **Slides are being updated...**
 
@@ -43,10 +42,8 @@ as follows:
 
 ## Nonparamertic Methods?
 
--   Nonparametric methods require few assumptions about the underlying
-    population (e.g. normal)
--   Exact p-values for tests and exact coverage probabilities for
-    confidence intervals.
+-   Nonparametric methods require few assumptions about the underlying population (e.g. normal)
+-   Exact p-values for tests and exact coverage probabilities for confidence intervals.
 -   Nonparametric methods are relatively insensitive to outliers
 -   Nonparametric methods are only slightly less efficient than their
     normal theory competitors
@@ -235,7 +232,7 @@ A binomial experiment has the following properties:
 -   The `random variable` $Y$ is the number of successes ($yesS$)
     observed during the $n$ trials.
 
-## Binomial Test (Estimation of $p$)
+## Binomial Test (Estimation of $p$) {.smaller}
 
 #### Binomial distribution
 
@@ -249,7 +246,7 @@ p(y)=&P(Y=y)=\binom{n}{y}p^y q^{n-y}, \\
 V(Y)=npq
 \end{align}
 
-## Binomial Test (Estimation of $p$)
+## Binomial Test (Estimation of $p$) {.smaller}
 
 There are some populations which are conceived as consisting of only two
 classes:
@@ -263,75 +260,99 @@ or the other of the two classes. If we know that the proportion of cases
 in one class is $p$, sometimes we are interested to estimate/test the
 population proportion $p$.
 
-## Binomial Test (Estimation of $p$)
+## Binomial Test (Estimation of $p$) {.smaller}
 
-`1.DATA:` The sample consists of outcomes of $n$ independent trails.
-Each trail has two outcomes (mutually exclusive= they cannot both occur
-at same time). Let consider $O_1$ to be $\#$ of observations in class1
-and $O_2$ to be the $\#$ of observations in class2. We have $n=O_1+O_2$.
 
-`2.Assumptions:` - $n$ observation are independent. - Each trial has
-probability $p$ of resulting in the outcome $O_1$, where $p$ is the same
-for all $n$ trials.
+::: {.panel-tabset}
 
-`3.Test Statistic:` Since we are interested in the probability of an
-outcome to be in class1, we will let the test statistic $T$ be
-`the number of times the outcomes is in class1`. Therefore, the test
-statistic follows the binomial distribution (null distribution) with $n$
-and $\hat{p}$ (the hypothesized proportion) parameters.
+### Data
 
-## Binomial Test (Estimation of $p$)
+- The sample consists of outcomes of $n$ independent trails.
+- Each trail has two outcomes (mutually exclusive= they cannot both occur at same time). 
+- Let consider $O_1$ to be $\#$ of observations in class1 and $O_2$ to be the $\#$ of observations in class2. We have $n=O_1+O_2$.
 
-`4.Hypothesis: Two-tailed test` $$ H_0: p=p^* $$ $$H_1: p \neq p^* $$\
+### Assumptions
+
+- $n$ observation are independent. 
+- Each trial has probability $p$ of resulting in the outcome $O_1$, where $p$ is the same for all $n$ trials.
+
+### Test Statistic
+
+- Since we are interested in the probability of an
+outcome to be in class1, we will let the test statistic $T$ be `the number of times the outcomes is in class1`. 
+- The test statistic $\sim binomial(n, p = \hat{p})$. The $\hat{p}$ is the hypothesized proportion
+
+:::
+
+
+
+## Binomial Test (Estimation of $p$) {.smaller}
+
+::: {.panel-tabset}
+ 
+### Two-tailed test
+
+$$ H_0: p=p^* $$ $$H_1: p \neq p^* $$\
 - The rejection region is defined by $t_1$ and $t_2$ as follows:
 $$ P( T \leq t_1) \approx \alpha/2 $$
 $$ P( T \leq t_2) \approx 1- \alpha/2 $$
 
--   `P-value`$= 2\times \min\{ P( Y \leq T_{Obs}), P(Y \geq T_{Obs}) \}$;
-    If greater than 1 then $P-value=1$.
+-   `P-value`$= 2\times \min\{ P( Y \leq T_{Obs}), P(Y \geq T_{Obs}) \}$. If greater than 1 then $P-value=1$.
 
-## Binomial Test (Estimation of $p$)
+### Lower-tailed test
 
-`4.Hypothesis: Upper-tailed test` $$ H_0: p \leq p^* $$
-$$H_1: p > p^* $$ The rejection region is defined by $t$ as follows:
+ $$ H_0: p \geq p^* $$
+$$H_1: p < p^* $$
+
+-   The rejection region is defined by $t_1$ as follows:
+    $$P( T \leq t_1) \approx \alpha $$
+
+-   `P-value` $=P(Y \leq T_{Obs})$
+
+### Upper-tailed test
+
+$$ H_0: p \leq p^* $$
+$$H_1: p > p^* $$ The rejection region is defined by $t_2$ as follows:
 
 $$P( T \leq t_2) \approx 1-\alpha $$
 
 -   `P-value` $=P(Y \geq T_{Obs})$
 
-## Binomial Test (Estimation of $p$)
 
-`4.Hypothesis: Lower-tailed test` $$ H_0: p \geq p^* $$
-$$H_1: p < p^* $$
+::: 
 
--   The rejection region is defined by $t$ as follows:
-    $$P( T \leq t_1) \approx \alpha $$
 
--   `P-value` $=P(Y \leq T_{Obs})$
+## Binomial Test - Example {.smaller}
 
-## Binomial Test - Example
+::: {.panel-tabset}
 
-::: r-fit-text
-We would like to know whether the passing rate for a course is $75\%$.
-We have a sample of $n=15$ students taking the course and only 8 passed.
-Level of significance is $5\%$. Test the appropriate hypothesis as
-follows:
+### Question
 
-1.  Define the null and alternative hypotheses <br> `Answer:`
+We want to know whether the passing rate for a course is $75\%$. We have a sample of $n=15$ students taking the course and only 8 passed.
+Level of significance is $5\%$. Test the appropriate hypothesis.
+
+### Answer
+
+1.  Define the null and alternative hypotheses
+
     $$ H_0: p=0.75 $$ $$H_1: p \neq 0.75 $$
-2.  Find the Test statistic observed and null distribution<br> `Answer:`
+    
+2.  Find the Test statistic observed and null distribution <br>
     $T_{obs}=8$ and $T\sim bin(15,0.75)$
-3.  Determine critical values (rejection region) <br> `Answer:`
+3.  Determine critical values (rejection region) <br> 
     t_1=`r {qbinom(0.025,15,0.75)}` and t_2=`r {qbinom(0.975,15,0.75)}`
-4.  Find P-value<br> `Answer:`
+4.  Find P-value<br>
     p-value=`r {2*min(pbinom(8,15,0.75),pbinom(13,15,0.75,lower.tail=F))}`
-5.  Decision and Interpretation <br> `Answer:` Since P-value \> 0.05
-    then Fail to Reject $H_0$.
+5.  Decision and Interpretation <br> Since P-value \> 0.05
+    then Fail to Reject $H_0$. There is evidence that suggests that the passing rate of the course is 75%.
+
 :::
 
-## Binomial Test - Example in R
+## Binomial Test - Example in R {.smaller}
 
-`Solution`
+::: {.panel-tabset}
+
+### R code
 
 ```{r, echo=TRUE}
  binom.test(x = 8, # number of successes (#students pass)
@@ -343,9 +364,22 @@ follows:
 
 -   `Interpretation`: Fail to Reject $H_0$. There is evidence to support
     that the passing rate of the course is not significantly different
-    from $75\%$ $p-value=0.787$; $95\%CI (0.27,0.79)$.
+    from p-value=0.07 [$95\%CI (0.27,0.79)$].
 
-## Sign Test
+### p-value calculation in R
+
+The p-value calculation in R is:
+
+```{r}
+prob = dbinom(1:15,15,0.75) # probabilities for binomial
+prob<dbinom(8,15,0.75) # find extreme values where their prob is lower that the probability of the actual value.
+sum(prob[prob<=dbinom(8,15,0.75)]) # sum up those probs
+```
+
+
+::: 
+
+## Sign Test - paired data
 
 -   The sign test is a binomial test with $p=0.5$.
 
@@ -359,35 +393,49 @@ follows:
 
 -   `This test can be use as alternative to the parametric t-paired test`.
 
-## Sign Test
+## Sign Test {.smaller}
 
-`1.DATA:` The data consist of observations on a bivariate random sample
-$(X_i, Y_i)$, where $n'$ is the number of the `pairs`. If the X's and
-Y's are independent, then the more powerful Mann-Whitney test is more
-appropriate.
+::: {.panel-tabset}
 
-Within each pair $(X_i, Y_i)$ a comparison is made and the pair is
+### Data
+
+- The data consist of observations on a bivariate random sample $(X_i, Y_i)$, where $n'$ is the number of the `pairs`. If the X's and Y's are independent, then the more powerful Mann-Whitney test is more appropriate.
+
+- Within each pair $(X_i, Y_i)$ a comparison is made and the pair is
 classified as:
 
--   `"+"` if $X_i < Y_i$
--   `"-"` if $X_i > Y_i$
--   `"0"` if $X_i = Y_i$ (tie)
+    -   `"+"` if $X_i < Y_i$
+    -   `"-"` if $X_i > Y_i$
+    -   `"0"` if $X_i = Y_i$ (tie)
 
-`2.Assumptions:` - The bivariate random variables $(X_i, Y_i)$ are
-mutually independent . - The measurement scale is at least ordinal.
+### Assumptions
 
-## Sign Test
+- The bivariate random variables $(X_i, Y_i)$ are
+mutually independent
+- The measurement scale is at least ordinal.
 
-`3.Test Statistic:` The test statistic is defined as follows:
+### Test Statistic
+
+The test statistic is defined as follows:
 
 $$T = \text{Total number of +'s}$$
 
-The null distribution is the binomial distribution with $p=0.5$ and
-$n=\text{the number of non-tied pairs}$.
+The null distribution is the binomial distribution with $p=0.5$ and $n=\text{the number of non-tied pairs}$.
 
-## Sign Test
+$$
+T \sim binomial(n,p=0.5)
+$$
 
-`4.Hypothesis: Two-tailed test`
+:::
+
+
+
+## Sign Test {.smaller}
+
+::: {.panel-tabset}
+
+### Two-tailed test
+
 $$ H_0:E(X_i) = E(Y_i) \text{ or } P(+) = P(-) $$
 $$H_1: E(X_i) \neq E(Y_i) \text{ or } P(+) \neq P(-) $$ - The rejection
 region is defined by $t$ and $n-t$ where:
@@ -398,9 +446,9 @@ $$ P( Y \leq t) \approx \alpha/2 $$
 
 -   `P-value`$= 2\times \min\{ P( Y \leq T_{Obs}), P(Y \geq T_{Obs}) \}$
 
-## Sign Test
 
-`4.Hypothesis: Upper-tailed test`
+
+### Upper-tailed test
 
 $$ H_0:E(X_i) \geq E(Y_i) \text{ or } P(+) \leq P(-) $$
 $$H_1: E(X_i) < E(Y_i) \text{ or } P(+) > P(-) $$ - The rejection region
@@ -409,9 +457,8 @@ is defined by $n-t$ as follows: $$P( Y \leq t) \approx \alpha $$ -
 
 -   `P-value`$= P( Y \geq T_{Obs})$
 
-## Sign Test
 
-`4.Hypothesis: Lower-tailed test`
+### Lower-tailed test
 
 $$ H_0:E(X_i) \leq E(Y_i) \text{ or } P(+) \geq P(-) $$
 $$H_1: E(X_i) > E(Y_i)  \text{ or } P(+) < P(-)$$ - The rejection region
@@ -420,27 +467,30 @@ IF $T_{Obs} \leq t$ REJECT $H_0$
 
 -   `P-value`$= P( Y \leq T_{Obs})$
 
-## Sign Test - Example
+:::
 
--   We are interested in comparing the reaction time before lunch (RTBL)
-    vs the reaction time after lunch (RTAL) using a sample of 18 office
-    workers.
+## Sign Test - Example {.smaller}
+
+
+:::  {.panel-tabset}
+
+### Question
+
+-   We are interested in comparing the reaction time before lunch (RTBL) vs. the reaction time after lunch (RTAL) using a sample of 18 office workers.
 -   12 found their RTBL was shorter
 -   1 could not detect a difference
 
 `Is the RTAL significantly longer than RTBL?`
 
-`Solution:` $n'=18$ pairs, each is (RTBL,RTAL) = (X,Y)
-
+- $n'=18$ pairs, each is (RTBL,RTAL) = (X,Y)
 -   `"+"` if $RTBL < RTAL$ (#12)
 -   `"-"` if $RTBL > RTAL$ (#5)
 -   `"0"` if $RTBL = RTAL$ (tie) (#1)
 
 then $n=17$
 
-## Sign Test - Example
 
-`Solution`
+### Solution 
 
 1.  Define the null and alternative hypotheses
 
@@ -456,13 +506,13 @@ This is an upper-tailed test.
 
 4.  p-value=`r {pbinom(11,17,0.5,lower.tail=F)}`
 
-5.  Decision: P-value \< 0.05 then Reject $H_0$.
+5.  Decision: p-value \< 0.05 then Reject $H_0$.
 
-## Sign Test - Example R
+::: 
 
-`Solution`
+## Sign Test - Example R {.smaller}
 
-```{r, echo=TRUE}
+```{r}
  binom.test(x = 12,
  n = 17, 
  p = 0.5,
@@ -472,7 +522,7 @@ This is an upper-tailed test.
 
 -   `Interpretation`: Fail to Reject $H_0$. There is evidence to support
     that the data is compatible with the null hypothesis
-    $p-value=0.071$; $95\%CI (0.48,1)$.
+    $p-value=0.071$ [$95\%CI (0.48,1)$].
 
 ## Tolerance limits
 
@@ -504,7 +554,7 @@ tolerance limits, given n, $1-\alpha$, $r$, and $m$:
 
 $$q=\frac{4n-2(r+m-1)-\chi^2_{1-\alpha;2(r+m)}}{4n-2(r+m-1) + \chi^2_{1-\alpha;2(r+m)}}$$
 
-## Tolerance limits - Example
+## Tolerance limits - Example {.smaller}
 
 Electric seat adjusters for a luxury car manufacturer wants to know what
 `range` of vertical adjustment is needed to be $90\%$ sure that at least
@@ -554,17 +604,18 @@ matrix form where those numbers represent counts / frequencies
 
 2 x 2 contingency table
 
-## Contingency Tables
+## Contingency Tables {.smaller}
 
 ### Chi-squared Test for differences in Probabilities
+
 
 `Data`
 
 |                  |   Class 1   |   Class2   |  `Totals`   |
 |------------------|:-----------:|:----------:|:-----------:|
-| **Population 1** |  a ($p_1$)  |     b      | $n_1$ = a+b |
-| **Population 2** |  c ($p_2$)  |     d      | $n_2$ = c+d |
-| **`Totals`**     | $c_1$ = a+c | $c_2$= b+d | N = a+b+c+d |
+| **Population 1** |  $O_{11}$ ($p_1$)  |     $O_{12}$      | $n_1$ = $O_{11}+O_{12}$ |
+| **Population 2** |  $O_{21}$ ($p_2$)  |     $O_{22}$      | $n_2$ = $O_{21}+O_{22}$ |
+| **`Totals`**     | $c_1$ = $O_{11}+O_{21}$ | $c_2$= $O_{12}+O_{22}$ | N = $n_1+n_1$ |
 
 2 x 2 contingency table
 
