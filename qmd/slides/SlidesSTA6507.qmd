@@ -1,8 +1,9 @@
 ---
 title: "Nonparametric Statistics"
-subtitle: "Achraf Cohen"
+subtitle: "Dr. Cohen"
 format: 
   revealjs:
+    smaller: true
     slide-number: true
     footer: "STA 6507 Nonparametric Statistics"
     theme: dark #[moon, slidescss.scss]
@@ -29,7 +30,7 @@ as follows:
 -   Ranks based Tests
 -   Kernel smoothing / nonparametric regression
 
-**Slides are being updated...**
+**:warning: Slides are being updated...**
 
 ## What is Statistics?
 
@@ -73,7 +74,7 @@ as follows:
     -   The probability of the union of mutually exclusive events is the
         sum of the probabilities of the individual events.
 
-## Random Variables? (review)
+## Random Variables? (review) {.smaller}
 
 -   Definition: A function that assigns real numbers to the points in a
     sample space.
@@ -85,7 +86,7 @@ as follows:
     -   *Continuous*: N($\mu$,$\sigma^2$), Gamma($\alpha$,$\beta$), etc.
     -   *Sampling distributions*: $\chi^2_{df}$, $F_{u,v}$, $t_{n}$
 
-## Expected Values? (review)
+## Expected Values? (review) {.smaller}
 
 Let's $X \sim p(x)$ be a discrete r.v., then the expected value:
 
@@ -100,7 +101,7 @@ $$E(X) = \int_{\forall x} x f(x) dx $$
     -   $E(a) = a$; $E(aX+b) = aE(X)+b$
     -   $Var(a) = 0$; $V(aX+b) = a^2 Var(X)$
 
-## Introduction to R/RStudio
+## Introduction to R/RStudio {.smaller}
 
 -   [**R**](https://www.r-project.org/) is a free software environment
     for statistical computing and graphics.
@@ -116,7 +117,7 @@ $$E(X) = \int_{\forall x} x f(x) dx $$
     **UWF account.** Go to [UWF RStudio
     Server](https://rstudio.hmcse.uwf.edu/)
 
-## Quantiles
+## Quantiles {.smaller}
 
 > The number $x_p$ ($0 \leq p \leq 1$) is called the $p^{th}$ quantile
 > of a random variable $X$ if: <br> - Continuous:
@@ -378,6 +379,90 @@ sum(prob[prob<=dbinom(8,15,0.75)]) # sum up those probs
 ```
 :::
 
+
+
+
+## Quantile Test (Estimation of $x_p$) {.smaller}
+
+::: panel-tabset
+### Data
+
+-   $X_1, X_2, \ldots, X_n$ be a random sample
+
+
+### Assumptions
+
+-   $X_i$ are independent and identically distributed.
+-   The scale of measurement is at least ordinal
+
+### Test Statistic
+
+Two statistics are considered for this test:
+
+-   $T_1$ = number of obs. $\leq x^*$ (the hypothesized quantile) 
+-   $T_2$ = number of obs. $< x^*$ (the hypothesized quantile) 
+
+Both test statistics, under the null hypothesis, are binomial(n,p=p*)
+
+- Note that $T_2 \leq T_1$
+
+:::
+
+## Quantile Test (Estimation of $x_p$) {.smaller}
+
+::: panel-tabset
+### Two-tailed test
+
+$$ H_0: x_p^*=x^* \text{ the p*th quantile of X is x*}$$ 
+$$H_1: x_p^* \neq x^* \text{ the p*th quantile of X is not x*}$$
+
+
+-   `P-value`$= 2\times \min\{ P( T_1 \leq T_{1,Obs}), P(T_2 \geq T_{2,Obs}) \}$.
+
+### Lower-tailed test
+
+$$ H_0: x_p^* \leq x^* (P(X<x^*) \geq p^*) $$ $$H_1: x_p^* > x^* (P(X<x^*) < p^*) $$
+
+-   `P-value` $=P(T_1 \leq T_{1,Obs})$
+
+### Upper-tailed test
+
+$$ H_0: x_p^* \geq x^* (P(X<x^*) \leq p^* $$ $$H_1: x_p^* < x^* (P(X<x^*) > p^*) $$ The rejection region is defined
+by $t_2$ as follows:
+
+-   `P-value` $=P(T_2 \geq T_{2,Obs})$
+:::
+
+## Quantile Test - Example {.smaller}
+
+::: panel-tabset
+### Question
+
+High school examination scores (X) to college admission studies showed that the upper-quartile $X_{0.75} = 193$. A sample of 15 graduate student from a high school had the following scores
+
+```{r}
+scores = c(189,233,195,160,212,176,231,185,199,213,202,193,174,166,248)
+```
+
+- Test if the upper quartile of the population of this high school student is still 193.
+
+- We use a two-tailed quantile test to answer the question.
+
+### Answer
+
+1.  Define the null and alternative hypotheses
+
+    $$H_0: X_{0.75}=193$$ $$H_1: X_{0.75}\neq 193 $$
+
+2.  Find the Test statistics observed and null distribution <br>
+    $T_{1,obs}=7$, $T_{2,obs}=6$, and $T\sim bin(15,0.75)$
+
+4.  Find P-value<br>
+    p-value=`r {2*min(pbinom(7,15,0.75),pbinom(6,15,0.75,lower.tail=F))}`
+
+5.  Decision and Interpretation <br> Since P-value \< 0.05 then Reject $H_0$. There is evidence that suggests that the upper quartile of the examination score is not 193.
+:::
+
 ## Sign Test - paired data
 
 -   The sign test is a binomial test with $p=0.5$.
@@ -601,7 +686,7 @@ matrix form where those numbers represent counts / frequencies
 ### Data
 
 |                  |         Class 1         |         Class2         |        `Totals`         |
-|-----------------|:-----------------:|:----------------:|:-----------------:|
+|------------------|:-----------------:|:----------------:|:-----------------:|
 | **Population 1** |    $O_{11}$ ($p_1$)     |        $O_{12}$        | $n_1$ = $O_{11}+O_{12}$ |
 | **Population 2** |    $O_{21}$ ($p_2$)     |        $O_{22}$        | $n_2$ = $O_{21}+O_{22}$ |
 | **`Totals`**     | $c_1$ = $O_{11}+O_{21}$ | $c_2$= $O_{12}+O_{22}$ |      N = $n_1+n_1$      |
@@ -768,8 +853,7 @@ x=0,1,2,...,min(r,m)
 
 ## Fisher's Exact Test {.smaller}
 
-::: {.panel-tabset}
-
+::: panel-tabset
 ### Two-tailed test
 
 $$ H_0:p_1 = p_2 $$
@@ -783,9 +867,8 @@ obs from the row 1 will be in col 1.
 
 ### Lower-tailed test
 
-$$ H_0:p_1 = p_2 $$
-$$H_1: p_1 < p_2 $$ - $p_1$ the probability that a randomly selected obs
-from the row 1 will be in col 1.
+$$ H_0:p_1 = p_2 $$ $$H_1: p_1 < p_2 $$ - $p_1$ the probability that a
+randomly selected obs from the row 1 will be in col 1.
 
 -   `P-value`$= P( T \leq T_{Obs})$
 
@@ -793,20 +876,17 @@ from the row 1 will be in col 1.
 
 ### Upper-tailed test
 
-$$ H_0:p_1 = p_2 $$
-$$H_1: p_1 > p_2 $$ - $p_1$ the probability that a randomly selected obs
-from the row 1 will be in col 1.
+$$ H_0:p_1 = p_2 $$ $$H_1: p_1 > p_2 $$ - $p_1$ the probability that a
+randomly selected obs from the row 1 will be in col 1.
 
 -   `P-value`$= P( T \geq T_{Obs})$
 
 -   `Decision`: IF p_value \< $\alpha$ then REJECT $H_0$
-
 :::
 
 ## Fisher's Exact Test - Example {.smaller}
 
-::: {.panel-tabset}
-
+::: panel-tabset
 ### Question
 
 14 newly hired business majors. - 10 males and 4 females - 2 Jobs are
@@ -825,15 +905,14 @@ account Rep. job.
 
 ### Solution
 
-1.  Define the null and alternative hypotheses:
-    $$ H_0: p_1 \geq p_2 $$ $$H_1: p_1 < p_2 $$ This is an lower-tailed
-    test.
+1.  Define the null and alternative hypotheses: $$ H_0: p_1 \geq p_2 $$
+    $$H_1: p_1 < p_2 $$ This is an lower-tailed test.
 2.  Find the Test statistic observed and null distribution:
     $T_{obs}=X=1$ and $T\sim hypergeometric(14,10,4)$\`
 3.  Find P-value: p-value=`r {phyper(1,10,4,4)}`
-4.  Decision and Interpretation: Since P-value \< 0.05
-    then Reject $H_0$.
-    
+4.  Decision and Interpretation: Since P-value \< 0.05 then Reject
+    $H_0$.
+
 ### R Code
 
 ```{r, echo=TRUE}
@@ -843,16 +922,16 @@ fisher.test(data,alternative = "l")
 
 -   `Interpretation`: Reject $H_0$. There is evidence to support that
     the data is compatible with the assumption that females are more
-    likely than males to get the account Rep. job; pvalue=0.041; OR=0.055 [95\%CI 0.00 to 1.29]
+    likely than males to get the account Rep. job; pvalue=0.041;
+    OR=0.055 \[95%CI 0.00 to 1.29\]
 :::
 
 ## The Median Test {.smaller}
 
-::: {.panel-tabset}
-
+::: panel-tabset
 ### Data
 
-- Test for equal medians.
+-   Test for equal medians.
 
 $$H_0:  \text{All C populations have the same median} $$
 $$H_1:  \text{At least two populations have different medians} $$
@@ -869,7 +948,6 @@ $$H_1:  \text{At least two populations have different medians} $$
 | $\leq$ GM    | $O_{21}$ | $O_{22}$ | ... | $O_{2C}$ |      b       |
 | **`Totals`** | $n_{1}$  | $n_{1}$  | ... | $n_{C}$  |      N       |
 
-
 ### Test Statistic
 
 $$ T = \frac{N^2}{ab} \sum_{i=1}^{C} \frac{O^2_{1i}}{n_i}  - \frac{Na}{b} $$
@@ -880,14 +958,11 @@ with C-1 degrees of freedom.
 -   `P-value` $=P(T \geq T_{obs})$
 
 -   `Decision`: IF p_value \< $\alpha$ then REJECT $H_0$
-
 :::
-
 
 ## The Median Test - Example {.smaller}
 
-::: {.panel-tabset}
-
+::: panel-tabset
 ### Question
 
 -   4 methods of growing corn is used.
@@ -896,6 +971,7 @@ with C-1 degrees of freedom.
 `Question`: Do the medians yield per acre differ across the 4 methods.
 
 `Data`:
+
 ```{r}
 #| echo: false
 #| fig-width: 5.5
@@ -905,7 +981,6 @@ library(agricolae)
 data(corn)
 boxplot(observation~method, data=corn)
 ```
-
 
 ### Solution
 
@@ -923,7 +998,6 @@ Under Null hypothesis: $T \sim \chi^2_{3}$
 
 ### R Code
 
-
 ```{r}
 #| echo: true
 # install.packages("agricolae")
@@ -936,7 +1010,6 @@ median_test_out= Median.test(corn$observation,corn$method)
 
 ```
 
-
 ### Multiple Comparison
 
 ```{r}
@@ -946,11 +1019,12 @@ plot(median_test_out)
 
 ### Interpretation
 
-Reject the null hypothesis. There is evidence that supports that at least two methods give different median yield per acre. 
+Reject the null hypothesis. There is evidence that supports that at
+least two methods give different median yield per acre.
 
-Multiple comparison shows that all methods are significantly different except 1 and 2. Method 3 has the higher median yield per acre and is significantly different from all other methods.
-
-
+Multiple comparison shows that all methods are significantly different
+except 1 and 2. Method 3 has the higher median yield per acre and is
+significantly different from all other methods.
 :::
 
 ## Goodness-of-Fit Tests - GOF {.smaller}
@@ -958,7 +1032,7 @@ Multiple comparison shows that all methods are significantly different except 1 
 Test whether a sample is coming from a known distribution. For example,
 test the normality assumption.
 
--   Kolmogorov-Smirnov Test 
+-   Kolmogorov-Smirnov Test
 -   Shapiro-Wilk Test (Normality)
 -   Chi-squared Test
 -   Lilliefors Test (Normality)
@@ -969,8 +1043,7 @@ See lecture notes for more details.
 
 Test if `speed` data is normally distributed.
 
-:::  {.panel-tabset}
-
+::: panel-tabset
 ### Data
 
 ```{r}
@@ -992,7 +1065,8 @@ sd_speed
 shapiro.test(cars$speed)
 ```
 
-`Interpretation`: Fail to reject H0. There is evidence to support that data is normally distributed.
+`Interpretation`: Fail to reject H0. There is evidence to support that
+data is normally distributed.
 
 ### Kolmogorov Smirnov Test
 
@@ -1025,7 +1099,9 @@ Ej = Pj*50 # Expected counts
 chisq.test(x=Ob,p = Pj)
 ```
 
-The degrees of freedom of the test is df=C-1-k=5-1-2=2. k=2 because we did estimate the mean and variance from the sample. We need to `recompute` the p-value.
+The degrees of freedom of the test is df=C-1-k=5-1-2=2. k=2 because we
+did estimate the mean and variance from the sample. We need to
+`recompute` the p-value.
 
 ```{r}
 #| echo: true
@@ -1039,7 +1115,6 @@ pvalue
 library(nortest)
 lillie.test(cars$speed)
 ```
-
 :::
 
 ## Tests Based on the Ranks
