@@ -18,11 +18,7 @@ All problems should be solved as follows, if applicable:
 One hundred men and 100 women were asked to try a new toothpaste and to state whether they liked or did not like the new taste. 32 men and 26 women said they did not like the new taste. Does this indicate a difference in preferences between men and women in general?
 
 ```{r}
-#| echo: false
-#| eval: false
-data = cbind(c(68,74),c(32,26))
-data
-chisq.test(data,correct = FALSE)
+
 ```
 
 ## Problem 2
@@ -40,11 +36,7 @@ Suppose that 16 observations pairs of X = age of marriage of a husband, and Y=ag
 Are the two variables positively correlated?
 
 ```{r}
-#| echo: false
-#| eval: false
-data = cbind(c(1,7),c(7,1))
-data
-fisher.test(data,alternative = "l")
+
 ```
 
 ## Problem 3
@@ -54,15 +46,7 @@ A random sample of stocks from the American Stock Exchange (ASE) is compared wit
 What does your analysis look like?
 
 ```{r}
-#| echo: false
-#| eval: false
-data3 = cbind(c(11,24),c(11,11),c(1,0))
-data3
-chisq.test(data3)
 
-data2 = cbind(c(11,24),c(12,11))
-data2
-chisq.test(data2)
 ```
 
 ## Problem 4
@@ -82,16 +66,8 @@ A television-marketing firm would like to determine if the time of the ad appear
 1.  What does your analysis look like?
 2.  Calculate and comment the Cramer's Contingency Coefficient.
 
-
 ```{r}
-#| echo: false
-#| eval: false
-data4 = cbind(c(6,14,21),c(73,65,58),c(55,82,48),c(7,8,8))
-data4
-chisq.test(data4)
 
-library(lsr)
-cramersV(data4)
 ```
 
 ## Problem 5
@@ -105,46 +81,28 @@ Sample2: 34, 38, 26, 17, 42, 28, 35, 33, 16
 Sample3: 17, 29, 30, 36, 41, 30, 31, 23, 38
 
 ```{r}
-#| echo: false
-#| eval: false
-values = c(35, 42, 42, 30, 15, 31, 29, 29, 17,
-            34, 38, 26, 17, 42, 28, 35, 33, 16,
-            17, 29, 30, 36, 41, 30, 31, 23, 38)
-samples = gl(3,9)
 
-library(agricolae)
-Median.test(values,samples)
 ```
 
 ## Problem 6
 
 Random samples from each of three different types of light bulbs were tested to see how long the light bulbs lasted, with the following results:
 
-+----------+----------+----------+----------+----------+
-| A        | 73       | 64       | 67       | 62       |
-+----------+----------+----------+----------+----------+
-| B        | 84       | 80       | 81       | 77       |
-+----------+----------+----------+----------+----------+
-| C        | 82       | 79       | 71       | 75       |
-+----------+----------+----------+----------+----------+
++--------+--------+--------+--------+--------+
+| A      | 73     | 64     | 67     | 62     |
++--------+--------+--------+--------+--------+
+| B      | 84     | 80     | 81     | 77     |
++--------+--------+--------+--------+--------+
+| C      | 82     | 79     | 71     | 75     |
++--------+--------+--------+--------+--------+
 
 Are there differences among the reliability of the different types of light bulbs? if yes, which ones are different from each other (post hoc analysis). Solve this problem using:
 
 1.  Median Test
 2.  Kruskal-Wallis Test
 
-
 ```{r}
-#| echo: false
-#| eval: false
-values = c(73,64,67,62,84 ,80 ,81,77,82 ,79,71,75) 
-samples = gl(3,4)
 
-library(agricolae)
-Median.test(values,samples)
-
-kruskal.test(values,samples)
-kwAllPairsConoverTest(values,samples,p.adjust.method = "bon")
 ```
 
 ## Problem 7
@@ -152,14 +110,6 @@ kwAllPairsConoverTest(values,samples,p.adjust.method = "bon")
 A blood bank kept a record of the rate of heartbeats for several blood donors. The data is given as follows:
 
 ```{r}
-#| echo: false
-#| eval: false
-Men =c(58,65,74,74,76,79,82,86)
-Women = c(66,68,67,69,72,73,74,75,76)
-
-wilcox.test(Men,Women)
-# T = 1.21 = W - (m * n / 2) /  (m * n * (m + n + 1) / 12)
-# p = 0.226
 
 ```
 
@@ -179,15 +129,7 @@ wilcox.test(Men,Women)
 
 1\. Does the husband tend to spend more than the wife?
 
-
 ```{r}
-#| echo: false
-#| eval: false
-Husband.X = c(25,21,38,64,52,16,26)
-Wife.Y    = c(16,42,56,41,19,26,24) 
-# D= Y-X
-wilcox.test(Wife.Y,Husband.X,
-            alternative = "l", paired = TRUE)
 
 
 ```
