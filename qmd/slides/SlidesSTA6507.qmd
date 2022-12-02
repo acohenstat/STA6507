@@ -32,6 +32,20 @@ as follows:
 
 **:warning: Slides are being updated...**
 
+
+## What is Statistics?
+
+The next time you read a newspaper, look for items such as the following:
+
+- $53\%$ of the people surveyed believe that the president is doing good job
+- The average selling price of a new house is $\$74, 500$
+- The unemployment level is 4.9\%
+
+
+The numerical facts or data in the news items ($53\%$, $\$74, 500$, 4.9\%) commonly are referred to as statistics. 
+
+In common, everyday usage, the term statistics refers to numerical facts.
+
 ## What is Statistics?
 
 -   Statistics deals with 4 subtopics:
@@ -523,7 +537,7 @@ $$H_1: E(X_i) \neq E(Y_i) \text{ or } P(+) \neq P(-) $$ - The rejection
 region is defined by $t$ and $n-t$ where:
 $$ P( Y \leq t) \approx \alpha/2 $$
 
--   `Decision`: IF $(T_{Obs} \leq t$ or \$T\_{Obs} \geq n-t) \$ REJECT
+-   `Decision`: IF $(T_{Obs} \leq t$ or $T\_{Obs} \geq n-t)$ REJECT
     $H_0$
 
 -   `P-value`$= 2\times \min\{ P( Y \leq T_{Obs}), P(Y \geq T_{Obs}) \}$
@@ -541,7 +555,7 @@ is defined by $n-t$ as follows: $$P( Y \leq t) \approx \alpha $$ -
 
 $$ H_0:E(X_i) \leq E(Y_i) \text{ or } P(+) \geq P(-) $$
 $$H_1: E(X_i) > E(Y_i)  \text{ or } P(+) < P(-)$$ - The rejection region
-is defined by $t$ where: $$P( Y \leq t) \approx \alpha $$ - `Decision`:
+is defined by $t$ where: $$P( Y \leq t) \approx \alpha$$ - `Decision`:
 IF $T_{Obs} \leq t$ REJECT $H_0$
 
 -   `P-value`$= P( Y \leq T_{Obs})$

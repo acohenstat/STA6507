@@ -11,6 +11,8 @@ We consider data from a gamma distribution with shape = 1.5 and scale = 1.5.
 
 ```{r}
 #| warning: false
+#| echo: false
+#| eval: false
 library(nortest)
 library(tidyverse)
 

@@ -408,6 +408,17 @@
 </section>
 <section id="what-is-statistics" class="slide level2">
 <h2>What is Statistics?</h2>
+<p>The next time you read a newspaper, look for items such as the following:</p>
+<ul>
+<li><span class="math inline">\(53\%\)</span> of the people surveyed believe that the president is doing good job</li>
+<li>The average selling price of a new house is <span class="math inline">\(\$74, 500\)</span></li>
+<li>The unemployment level is 4.9%</li>
+</ul>
+<p>The numerical facts or data in the news items (<span class="math inline">\(53\%\)</span>, <span class="math inline">\(\$74, 500\)</span>, 4.9%) commonly are referred to as statistics.</p>
+<p>In common, everyday usage, the term statistics refers to numerical facts.</p>
+</section>
+<section id="what-is-statistics-1" class="slide level2">
+<h2>What is Statistics?</h2>
 <ul>
 <li>Statistics deals with 4 subtopics:
 <ul>
@@ -881,7 +892,7 @@ T \sim binomial(n,p=0.5)
 <div id="tabset-9-1">
 <p><span class="math display">\[ H_0:E(X_i) = E(Y_i) \text{ or } P(+) = P(-) \]</span> <span class="math display">\[H_1: E(X_i) \neq E(Y_i) \text{ or } P(+) \neq P(-) \]</span> - The rejection region is defined by <span class="math inline">\(t\)</span> and <span class="math inline">\(n-t\)</span> where: <span class="math display">\[ P( Y \leq t) \approx \alpha/2 \]</span></p>
 <ul>
-<li><p><code>Decision</code>: IF <span class="math inline">\((T_{Obs} \leq t\)</span> or $T_{Obs} n-t) $ REJECT <span class="math inline">\(H_0\)</span></p></li>
+<li><p><code>Decision</code>: IF <span class="math inline">\((T_{Obs} \leq t\)</span> or <span class="math inline">\(T\_{Obs} \geq n-t)\)</span> REJECT <span class="math inline">\(H_0\)</span></p></li>
 <li><p><code>P-value</code><span class="math inline">\(= 2\times \min\{ P( Y \leq T_{Obs}), P(Y \geq T_{Obs}) \}\)</span></p></li>
 </ul>
 </div>
@@ -892,7 +903,7 @@ T \sim binomial(n,p=0.5)
 </ul>
 </div>
 <div id="tabset-9-3">
-<p><span class="math display">\[ H_0:E(X_i) \leq E(Y_i) \text{ or } P(+) \geq P(-) \]</span> <span class="math display">\[H_1: E(X_i) &gt; E(Y_i)  \text{ or } P(+) &lt; P(-)\]</span> - The rejection region is defined by <span class="math inline">\(t\)</span> where: <span class="math display">\[P( Y \leq t) \approx \alpha \]</span> - <code>Decision</code>: IF <span class="math inline">\(T_{Obs} \leq t\)</span> REJECT <span class="math inline">\(H_0\)</span></p>
+<p><span class="math display">\[ H_0:E(X_i) \leq E(Y_i) \text{ or } P(+) \geq P(-) \]</span> <span class="math display">\[H_1: E(X_i) &gt; E(Y_i)  \text{ or } P(+) &lt; P(-)\]</span> - The rejection region is defined by <span class="math inline">\(t\)</span> where: <span class="math display">\[P( Y \leq t) \approx \alpha\]</span> - <code>Decision</code>: IF <span class="math inline">\(T_{Obs} \leq t\)</span> REJECT <span class="math inline">\(H_0\)</span></p>
 <ul>
 <li><code>P-value</code><span class="math inline">\(= P( Y \leq T_{Obs})\)</span></li>
 </ul>
