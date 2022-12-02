@@ -88,13 +88,13 @@ Sample3: 17, 29, 30, 36, 41, 30, 31, 23, 38
 
 Random samples from each of three different types of light bulbs were tested to see how long the light bulbs lasted, with the following results:
 
-+--------+--------+--------+--------+--------+
-| A      | 73     | 64     | 67     | 62     |
-+--------+--------+--------+--------+--------+
-| B      | 84     | 80     | 81     | 77     |
-+--------+--------+--------+--------+--------+
-| C      | 82     | 79     | 71     | 75     |
-+--------+--------+--------+--------+--------+
++------+------+------+------+------+
+| A    | 73   | 64   | 67   | 62   |
++------+------+------+------+------+
+| B    | 84   | 80   | 81   | 77   |
++------+------+------+------+------+
+| C    | 82   | 79   | 71   | 75   |
++------+------+------+------+------+
 
 Are there differences among the reliability of the different types of light bulbs? if yes, which ones are different from each other (post hoc analysis). Solve this problem using:
 
