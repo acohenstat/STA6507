@@ -623,7 +623,7 @@ This is an upper-tailed test.
     Formally:
 
 $$
-P(X_{(r)} \leq \text{a fraction q of the pop.} \leq X_{(n+m-1)}) \geq 1-\alpha
+P(X_{(r)} \leq \text{a fraction q of the pop.} \leq X_{(n+1-m)}) \geq 1-\alpha
 $$
 
 ## Tolerance limits
