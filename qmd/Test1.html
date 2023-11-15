@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Assignment 4</title>
+<title>First Quarto Doc</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,19 +20,53 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="Assignment4_files/libs/clipboard/clipboard.min.js"></script>
-<script src="Assignment4_files/libs/quarto-html/quarto.js"></script>
-<script src="Assignment4_files/libs/quarto-html/popper.min.js"></script>
-<script src="Assignment4_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="Assignment4_files/libs/quarto-html/anchor.min.js"></script>
-<link href="Assignment4_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="Assignment4_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="Assignment4_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="Assignment4_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="Assignment4_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="Test1_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Test1_files/libs/quarto-html/quarto.js"></script>
+<script src="Test1_files/libs/quarto-html/popper.min.js"></script>
+<script src="Test1_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Test1_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Test1_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Test1_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Test1_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Test1_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Test1_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 
 
 </head>
@@ -45,7 +79,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Assignment 4</h1>
+<h1 class="title">First Quarto Doc</h1>
 </div>
 
 
@@ -60,172 +94,26 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>In this assignment, we will practice using tests for contingency tables and rank-based tests; submit the HTML file. <strong>Solve all problems but only two will be graded.</strong></p>
-<p>All problems should be solved as follows, if applicable:</p>
-<ol type="1">
-<li>State the hypothesis</li>
-<li>Test Statistic and Null Distribution</li>
-<li>P-value and CI</li>
-<li>Decision and Interpretation</li>
-</ol>
-<section id="problem-1" class="level2">
-<h2 class="anchored" data-anchor-id="problem-1">Problem 1</h2>
-<p>One hundred men and 100 women were asked to try a new toothpaste and to state whether they liked or did not like the new taste. 32 men and 26 women said they did not like the new taste. Does this indicate a difference in preferences between men and women in general?</p>
+<section id="quarto" class="level2">
+<h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
+<p>Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <a href="https://quarto.org" class="uri">https://quarto.org</a>.</p>
 </section>
-<section id="problem-2" class="level2">
-<h2 class="anchored" data-anchor-id="problem-2">Problem 2</h2>
-<p>A quick test for correlation between two variables X and Y, each of which has at least an ordinal scale of measurement, can be performed using the Fisher’s exact test. The procedure is as follows:</p>
-<ul>
-<li><p>Divide the scatter plot of the N values of (X,Y) with a vertical line at the median of X.</p></li>
-<li><p>Divide the scatter plot of the N values of (X,Y) with a horizontal line at the median of Y.</p></li>
-<li><p>Count the number of observations in each of the four quadrants. Note that the row and column totals are N/2, and are not random.</p></li>
-</ul>
-<p>Suppose that 16 observations pairs of X = age of marriage of a husband, and Y=age of marriage of his father, resulted on 7 pairs where both ages were above the median.</p>
-<p>Are the two variables positively correlated?</p>
-</section>
-<section id="problem-3" class="level2">
-<h2 class="anchored" data-anchor-id="problem-3">Problem 3</h2>
-<p>A random sample of stocks from the American Stock Exchange (ASE) is compared with a random sample of stocks from the New York Stock Exchange to see if any difference in the rating percentages of the two exchanges. Of the 23 stocks from the ASE there were 11 As, 11 Bs, and 1 C. Of the 35 stocks from the NYSE there were 24 As, 11 Bs, and no Cs.</p>
-<p>What does your analysis look like?</p>
-</section>
-<section id="problem-4" class="level2">
-<h2 class="anchored" data-anchor-id="problem-4">Problem 4</h2>
-<p>A television-marketing firm would like to determine if the time of the ad appeared in television is related to the product being sold. The number of responses to the product’s firm is as follows:</p>
-<table class="table">
-<colgroup>
-<col style="width: 20%">
-<col style="width: 17%">
-<col style="width: 18%">
-<col style="width: 16%">
-<col style="width: 23%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Products -&gt;<br>
-</th>
-<th>Fishing Rod</th>
-<th>Kitchen Tool</th>
-<th>Music CD</th>
-<th>Exercise Machine</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Daytime</td>
-<td>6</td>
-<td>73</td>
-<td>55</td>
-<td>7</td>
-</tr>
-<tr class="even">
-<td>Nighttime</td>
-<td>14</td>
-<td>65</td>
-<td>82</td>
-<td>8</td>
-</tr>
-<tr class="odd">
-<td>Weekend</td>
-<td>21</td>
-<td>58</td>
-<td>48</td>
-<td>8</td>
-</tr>
-</tbody>
-</table>
-<ol type="1">
-<li>What does your analysis look like?</li>
-<li>Calculate and comment the Cramer’s Contingency Coefficient.</li>
-</ol>
-</section>
-<section id="problem-5" class="level2">
-<h2 class="anchored" data-anchor-id="problem-5">Problem 5</h2>
-<p>Test the hypothesis that the following samples were obtained from populations having the same medians.</p>
-<p>Sample1: 35, 42, 42, 30, 15, 31, 29, 29, 17</p>
-<p>Sample2: 34, 38, 26, 17, 42, 28, 35, 33, 16</p>
-<p>Sample3: 17, 29, 30, 36, 41, 30, 31, 23, 38</p>
-</section>
-<section id="problem-6" class="level2">
-<h2 class="anchored" data-anchor-id="problem-6">Problem 6</h2>
-<p>Random samples from each of three different types of light bulbs were tested to see how long the light bulbs lasted, with the following results:</p>
-<table class="table">
-<tbody>
-<tr class="odd">
-<td>A</td>
-<td>73</td>
-<td>64</td>
-<td>67</td>
-<td>62</td>
-</tr>
-<tr class="even">
-<td>B</td>
-<td>84</td>
-<td>80</td>
-<td>81</td>
-<td>77</td>
-</tr>
-<tr class="odd">
-<td>C</td>
-<td>82</td>
-<td>79</td>
-<td>71</td>
-<td>75</td>
-</tr>
-</tbody>
-</table>
-<p>Are there differences among the reliability of the different types of light bulbs? if yes, which ones are different from each other (post hoc analysis). Solve this problem using:</p>
-<ol type="1">
-<li>Median Test</li>
-<li>Kruskal-Wallis Test</li>
-</ol>
-</section>
-<section id="problem-7" class="level2">
-<h2 class="anchored" data-anchor-id="problem-7">Problem 7</h2>
-<p>A blood bank kept a record of the rate of heartbeats for several blood donors. The data is given as follows:</p>
-<p><strong>Men</strong>: 58, 65, 74, 74, 76, 79, 82, 86</p>
-<p><strong>Women</strong>: 66, 68, 67, 69, 72, 73, 74, 75, 76</p>
-<ol type="1">
-<li>Is the average of the rate of heartbeats the same for men and women?</li>
-</ol>
-</section>
-<section id="problem-8" class="level2">
-<h2 class="anchored" data-anchor-id="problem-8">Problem 8</h2>
-<p>7 married couples were selected at random, and each husband and each wife was asked how much money they spent on their spouse’s Christmas present year. The responses were as follows:</p>
-<table class="table">
-<tbody>
-<tr class="odd">
-<td></td>
-<td>1</td>
-<td>2</td>
-<td>3</td>
-<td>4</td>
-<td>5</td>
-<td>6</td>
-<td>7</td>
-</tr>
-<tr class="even">
-<td>Husband</td>
-<td>25</td>
-<td>21</td>
-<td>38</td>
-<td>64</td>
-<td>52</td>
-<td>16</td>
-<td>26</td>
-</tr>
-<tr class="odd">
-<td>Wife</td>
-<td>16</td>
-<td>42</td>
-<td>56</td>
-<td>41</td>
-<td>19</td>
-<td>26</td>
-<td>24</td>
-</tr>
-</tbody>
-</table>
-<p>1. Does the husband tend to spend more than the wife?</p>
+<section id="running-code" class="level2">
+<h2 class="anchored" data-anchor-id="running-code">Running Code</h2>
+<p>When you click the <strong>Render</strong> button a document will be generated that includes bothkwjfkwejkfebfwbfjebhwfw content and the output of embedded code. You can embed code like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+</div>
+<p>You can add options to executable code like this</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
+</div>
+<p>The <code>echo: false</code> option disables the printing of code (only output is displayed).</p>
 </section>
 
 </main>

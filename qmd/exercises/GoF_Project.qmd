@@ -14,7 +14,7 @@ We will conduct a simulation study to investigate the power of the goodness-of-f
 -   Lilliesfors
 -   Shapiro-Wilk
 
-1.  Generate samples of size $n = {5,10,20,40,80,160,320,1000}$ from:
+1.  Generate samples of size $n = {5,10,20,40,80,160,320,500,1000}$ from:
 
 -   Chi-squared distribution with df=3
 -   Student's t-Distribution df=4
@@ -28,3 +28,4 @@ We will conduct a simulation study to investigate the power of the goodness-of-f
 ```{r}
 
 ```
+4. Comments on the results and provide recommendations for each case.

@@ -88,13 +88,11 @@ Sample3: 17, 29, 30, 36, 41, 30, 31, 23, 38
 
 Random samples from each of three different types of light bulbs were tested to see how long the light bulbs lasted, with the following results:
 
-+------+------+------+------+------+
-| A    | 73   | 64   | 67   | 62   |
-+------+------+------+------+------+
-| B    | 84   | 80   | 81   | 77   |
-+------+------+------+------+------+
-| C    | 82   | 79   | 71   | 75   |
-+------+------+------+------+------+
+|     |     |     |     |     |
+|-----|-----|-----|-----|-----|
+| A   | 73  | 64  | 67  | 62  |
+| B   | 84  | 80  | 81  | 77  |
+| C   | 82  | 79  | 71  | 75  |
 
 Are there differences among the reliability of the different types of light bulbs? if yes, which ones are different from each other (post hoc analysis). Solve this problem using:
 
@@ -109,6 +107,10 @@ Are there differences among the reliability of the different types of light bulb
 
 A blood bank kept a record of the rate of heartbeats for several blood donors. The data is given as follows:
 
+**Men**: 58, 65, 74, 74, 76, 79, 82, 86
+
+**Women**: 66, 68, 67, 69, 72, 73, 74, 75, 76
+
 ```{r}
 
 ```
@@ -119,13 +121,11 @@ A blood bank kept a record of the rate of heartbeats for several blood donors. T
 
 7 married couples were selected at random, and each husband and each wife was asked how much money they spent on their spouse's Christmas present year. The responses were as follows:
 
-+---------+-------+-------+-------+-------+-------+-------+-------+
-|         | 1     | 2     | 3     | 4     | 5     | 6     | 7     |
-+---------+-------+-------+-------+-------+-------+-------+-------+
-| Husband | 25    | 21    | 38    | 64    | 52    | 16    | 26    |
-+---------+-------+-------+-------+-------+-------+-------+-------+
-| Wife    | 16    | 42    | 56    | 41    | 19    | 26    | 24    |
-+---------+-------+-------+-------+-------+-------+-------+-------+
+|         |     |     |     |     |     |     |     |
+|---------|-----|-----|-----|-----|-----|-----|-----|
+|         | 1   | 2   | 3   | 4   | 5   | 6   | 7   |
+| Husband | 25  | 21  | 38  | 64  | 52  | 16  | 26  |
+| Wife    | 16  | 42  | 56  | 41  | 19  | 26  | 24  |
 
 1\. Does the husband tend to spend more than the wife?
 

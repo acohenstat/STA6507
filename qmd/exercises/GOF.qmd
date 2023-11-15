@@ -44,7 +44,7 @@ lillie.test(cars$speed)
 ks.test(cars$speed,'pnorm',mean_speed,sd_speed)
 
 # Test for N(0,1)
-ks.test(cars$speed,'pnorm')
+ks.test(rnorm(100,5,1),'pnorm')
 ```
 
 ## Chi-squared Test
@@ -52,7 +52,7 @@ ks.test(cars$speed,'pnorm')
 ```{r}
 h = hist(cars$speed) # hist of data
 Ob = h$counts # observed frequencies in classes
-
+Ob
 
 p1 = pnorm(5,mean_speed,sd_speed)# P(X <= 5)
 p2 = pnorm(10,mean_speed,sd_speed)-pnorm(5,mean_speed,sd_speed) # P(5<=X <= 10)
@@ -82,9 +82,9 @@ pvalue
 
 Binomial Example : pp.244 18 baseball players with 45 times at-bat. We have the number of hits.
 
-| \# hits    | \<=7 | 8   | 9   | 10  | 11  | 12  | 13  | 14  | 15  | 16  | 17  |
-|------------|------|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
-| \# players | 1    | 1   | 1   | 5   | 2   | 1   | 1   | 2   | 1   | 1   | 1   |
+| \# hits    | \<=7 | 8   | 9   | 10  | 11  | 12  | 13  | 14  | 15  | 16  | 17  | >=18 |
+|------------|------|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|------|
+| \# players | 1    | 1   | 1   | 5   | 2   | 1   | 1   | 2   | 1   | 1   | 1   | 1    |
 
 Consider X is the \# hits, X $\sim$ binom(n= 45, p=? )
 
@@ -94,7 +94,7 @@ Ob=c(1,1,1,5,2,1,1,2,1,1,1,1)
 # Estimate p- probability that a player will get a hit at-bat.
 # p = #hits/total #of at-bats
 p= sum((7:18)*Ob) / (18*45)
-
+p
 p1 <- pbinom(7,45,prob = p)
 p2 <- dbinom(8:17,45,prob = p)
 p12 <- pbinom(17,45,p,lower.tail = F)
