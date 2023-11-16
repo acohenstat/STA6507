@@ -2,6 +2,7 @@
 title: "Ranks Based Tests"
 format: html
 author: Dr. Cohen 
+self-contained: true
 ---
 
 ## Wilcoxon rank sum Test or Mann-Whitney Test
@@ -172,6 +173,7 @@ Multiple comparison with the Bonferroni correction shows no significance differe
 gmat=c(710,610,640,580,545,560,610,530,560,540,570,560)
 gpa=c(4,4,3.9,3.8,3.7,3.6,3.5,3.5,3.5,3.3,3.2,3.2)
 
-cor.test(gmat,gpa,method = "s",alternative = "g")
-
+cor.test(gmat,gpa,method = "s",alternative = "t")
+cor.test(gmat,gpa,method = "k",alternative = "t")
+cor.test(gmat,gpa,method = "p",alternative = "t")
 ```
