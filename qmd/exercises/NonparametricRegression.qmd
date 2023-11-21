@@ -1,0 +1,91 @@
+---
+title: "Nonparametric Regression - Bootstrap -"
+format: html
+author: Dr. Cohen 
+self-contained: true
+execute: 
+  warning: false
+---
+
+The linear regression model: $$
+y_i = f(x_i)  = \beta_0 + \beta_1 X_{i1} + \ldots + \beta_p X_{ip} + \varepsilon_i
+$$
+
+We are not assuming that the $y_i \sim N(\mu_i, \sigma^2)$.
+
+```{r}
+library(carData)
+library(MASS)
+library(boot)
+library(Hmisc)
+library(sjPlot)
+library(tidyverse)
+data("Duncan")
+```
+
+## Linear Regression parametric
+
+```{r}
+mod.lm =  lm(prestige ~ income + education , data= Duncan)
+tab_model(mod.lm)
+```
+
+## Bootstrap Regression - Random X
+
+$$
+Y_{n\times1} =  X_{n\times p+1}  \beta_{p+1\times1}
+$$ We assume X is random and we sample from the entire data sets bootstrap samples to get the CI for the regression coefficients.
+
+```{r}
+boot.reg = function(data,indices){
+  data = data[indices,] # select obs from bootstrap samples
+  model.reg = lm(prestige ~ income + education , data= data)
+  coefficients(model.reg) #return the coefficients vector
+}
+
+results = boot(data=Duncan, statistic = boot.reg, R= 10000)
+
+hist.data.frame(as.data.frame(results$t)) 
+
+# 95% CI for regression coefficients; index is #of the variable column - example: index=1 is intercept coefficient
+boot.ci(results,conf = 0.95,type="perc",index = 1) # intercept
+
+boot.ci(results,conf = 0.95,type="perc",index = 2) # income coefficient
+
+boot.ci(results,conf = 0.95,type="perc",index = 3) # education coefficient
+```
+
+## X is Fixed
+
+The idea is to fit a regression based on the original sample and extract the fitted values and error.
+
+-    Y = FIT + ERROR
+
+-    Bootstrap ERROR
+
+-   Y Bootstrap = FIT + Bootstrap ERROR
+
+```{r}
+mod.lm =  lm(prestige ~ income + education , data= Duncan)
+error = residuals(mod.lm)
+fit = fitted(mod.lm) # from original sample
+X = model.matrix(mod.lm)
+
+
+boot.reg.fixed = function(data,indices){
+  y = fit + error[indices]
+  mod = lm(y ~ X - 1) # -1 means without intercept since X has the first column coding the intercept
+  coefficients(mod)
+}
+
+results = boot(data=Duncan, statistic = boot.reg.fixed, R= 10000)
+
+hist.data.frame(as.data.frame(results$t)) 
+
+# 95% CI for regression coefficients; index is #of the variable column - example: index=1 is intercept coefficient
+boot.ci(results,conf = 0.95,type="perc",index = 1) # intercept
+
+boot.ci(results,conf = 0.95,type="perc",index = 2) # income coefficient
+
+boot.ci(results,conf = 0.95,type="perc",index = 3) # education coefficient
+```

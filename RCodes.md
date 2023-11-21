@@ -19,4 +19,4 @@ show_sidebar: false
 | - Goodness-Of-Fit Tests | [.html file](qmd/exercises/GOF.html) |
 | - Contingency Tables | [.html file](qmd/exercises/ContingencyTables.html) |
 | - Ranks based Tests | [.html file](qmd/exercises/RanksBasedTest.html) |
-
+| - Bootstrap Regression | [.html file](qmd/exercises/NonparametricRegression.html) |
